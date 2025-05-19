@@ -21,13 +21,12 @@
 title: App-Dev World
 email: bitaimov@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  I'm a new iOS app developer. I'm going to record my programming learning
+  process here, mainly in Swift language. Hope we can help each other:)
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
-github_username:  jekyll
+twitter_username: cduoyue@CBitai
+github_username:  cduoyue
 
 # Build settings
 theme: minima
