@@ -30,14 +30,14 @@ github_username:  cduoyue
 
 # Build settings
 # theme: minima
-theme: jekyll-theme-primer
+# theme: jekyll-theme-primer
 # theme: jekyll-theme-cayman
 # theme: jekyll-theme-minimal
-# theme: jekyll-theme-hacker
+theme: jekyll-theme-hacker
 plugins:
   - jekyll-feed
-  - jekyll-paginate
-  - jemoji
+  #- jekyll-paginate
+  #- jemoji
 
 # Exclude from processing.
 # The following items will not be processed, by default.
