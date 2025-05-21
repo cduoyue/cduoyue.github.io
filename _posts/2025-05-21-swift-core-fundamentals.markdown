@@ -1,7 +1,8 @@
 ---
 layout: post
 title:  "Swift Core Fundamentals"
-date:   2025-05-21 19:56:52 +0800
-categories: jekyll update
+date:   2025-05-21 
+categories: Swift Language Learning
+author: Neoren
 ---
-**_upcoming..._** 
+**_upcoming..._**
