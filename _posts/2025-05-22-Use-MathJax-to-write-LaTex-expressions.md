@@ -18,6 +18,14 @@ author: Neoren
 </script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
+
+
+## Original code
+
+[original code of the blog is here](https://github.com/cduoyue/cduoyue.github.io/blob/main/_posts/2025-05-22-Use-MathJax-to-write-LaTex-expressions.md?plain=1)
+
+
+
 ## Basic syntax
 
 ### Inline equations
@@ -30,6 +38,7 @@ Einstein mass-energy equation:
 $$
 E=mc^2
 $$
+
 
 
 ## Common math symbols
