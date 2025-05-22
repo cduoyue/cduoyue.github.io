@@ -34,7 +34,7 @@ Einstein mass-energy equation: $E=mc^2$
 
 ### Equation block
 
-Einstein mass-energy equation:
+Einstein mass-energy equation:  
 $$
 E=mc^2
 $$
