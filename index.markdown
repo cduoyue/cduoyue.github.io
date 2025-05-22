@@ -5,7 +5,7 @@
 layout: default
 ---
 
-# 最近文章
+# Articles
 
 <ul>
   {% for post in site.posts %}
