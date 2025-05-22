@@ -6,7 +6,17 @@ categories: necessary skills
 author: Neoren
 ---
 
-
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$','$$'], ['\\[','\\]']],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+    }
+  });
+</script>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 ## Basic syntax
 
@@ -61,10 +71,6 @@ $\alpha, \beta, \gamma, \pi, \theta$
 $$\begin{bmatrix} a & b \\ c & d \end{bmatrix}$$
 
 $$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
-
-
-
-
 
 
 
