@@ -19,6 +19,8 @@ This is a demo post to show you how to write blog posts with markdown.  I strong
 
 [This is a link to a different site](https://deanattali.com/) and [this is a link to a section inside this page](#local-urls).
 
+
+
 Here's a table:
 
 | Number | Next number | Previous number |
@@ -84,7 +86,15 @@ You can add notification, warning and error boxes like this:
 {: .box-error}
 **Error:** This is an error box.
 
-## Local URLs in project sites {#local-urls}
+
+
+<a id="local-urls"></a>
+
+## Local URLs in project sites
+
+
+
+
 
 When hosting a *project site* on GitHub Pages (for example, `https://USERNAME.github.io/MyProject`), URLs that begin with `/` and refer to local files may not work correctly due to how the root URL (`/`) is interpreted by GitHub Pages. You can read more about it [in the FAQ](https://beautifuljekyll.com/faq/#links-in-project-page). To demonstrate the issue, the following local image will be broken **if your site is a project site:**
 
