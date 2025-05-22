@@ -8,10 +8,6 @@ author: Neoren
 
 
 
-# Use [MathJax](https://www.mathjax.org/) to write LaTeX expressions
-
-
-
 ## Basic syntax
 
 ### Inline equations
