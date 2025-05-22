@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Use MathJax to write LaTex expressions"
+title: "Use MathJax to Write LaTex Expressions"
 date: 2025-05-22
 categories: necessary skills
 author: Neoren
