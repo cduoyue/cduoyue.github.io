@@ -21,7 +21,7 @@ This part is about to master the necessary knowledge that a good iOS developer n
 5. Performance Optimization: Instruments
 6. Tests: testing pyramid (UI tests, integration tests, unit tests)
 
-## Learning Pathways
+## Learning pathway
 
 1. [Swift Language](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/)
 2. Official sample code (learn basic syntax & usage of frameworks)
