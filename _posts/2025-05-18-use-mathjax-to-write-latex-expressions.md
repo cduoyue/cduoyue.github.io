@@ -2,7 +2,6 @@
 layout: post
 title: "Use MathJax to Write LaTex Expressions"
 date: 2025-05-18
-tags: [Markdown, LaTex]
 categories: Markdown
 author: Neoren
 ---
