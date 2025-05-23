@@ -2,7 +2,7 @@
 layout: post
 title:  "Software Architecture Patterns"
 date:   2025-05-22 
-categories: iOS app development
+tags: [iOS, Software Architecture Pattern]
 author: Neoren
 ---
 **_upcoming..._**

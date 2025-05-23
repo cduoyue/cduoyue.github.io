@@ -2,7 +2,7 @@
 layout: post
 title:  "How to Become A Good iOS Developer"
 date:   2025-05-23 
-categories: General Ideas
+tags: [iOS, General Ideas]
 author: Neoren
 ---
 # Part I: Knowledge

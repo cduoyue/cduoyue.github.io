@@ -2,7 +2,7 @@
 layout: post
 title:  "SwiftUI Fundamentals"
 date:   2025-05-22 
-categories: iOS app development
+tags: [iOS, SwiftUI]
 author: Neoren
 ---
 **_upcoming..._**

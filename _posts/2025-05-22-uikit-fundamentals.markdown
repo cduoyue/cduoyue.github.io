@@ -2,7 +2,7 @@
 layout: post
 title:  "UIKit Fundamentals"
 date:   2025-05-22 
-categories: iOS app development
+tags: [iOS, UIKit]
 author: Neoren
 ---
 **_upcoming..._**
