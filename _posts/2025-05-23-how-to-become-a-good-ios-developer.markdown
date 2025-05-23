@@ -11,15 +11,15 @@ This part is about to master the necessary knowledge that a good iOS developer n
 
 ## Knowledge needs to be mastered
 
-1. _**Swift**_ fundamentals & standard library 
-2. _**frameworks**_: 
+1. Swift fundamentals & standard library 
+2. frameworks: 
    - Basic: UIKit, SwiftUI, Combine, Foundation
    - Important: AVFoundation, CoreLocation, UserNotifications, WebKit, CoreAnimation
    - Optional: MapKit, StoreKit, CoreImage, CloudKit
-3. _**Data storage**_: SwiftData, Core Data, UserDefaults (Foundation), Keychain (Security), File system 
-4. _**Software architecture patterns**_: MVVM
-5. _**Performance Optimization**_: Instruments
-6. _**Tests**_: testing pyramid (UI tests, integration tests, unit tests)
+3. Data storage: SwiftData, Core Data, UserDefaults (Foundation), Keychain (Security), File system 
+4. Software architecture patterns: MVVM
+5. Performance Optimization: Instruments
+6. Tests: testing pyramid (UI tests, integration tests, unit tests)
 
 ## Learning Pathways
 
@@ -30,6 +30,5 @@ This part is about to master the necessary knowledge that a good iOS developer n
 5. Community’s communication: [Stack Overflow](https://stackoverflow.com/), [Apple Developer Forums](https://developer.apple.com/forums/) (ask coding questions, participates in issue discussion)
 6. Continuously follow WWDC videos and official Apple announcements (for new frameworks, features etc.)
 7. Do our own projects
-
 8. Write blogs & document project achievements (regularly review and refine to improve our problem-solving speed and capacity)
 
