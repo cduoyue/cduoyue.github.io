@@ -18,3 +18,4 @@ layout: default
     </li>
   {% endfor %}
 </ul>
+[RSS](/feed.xml)
