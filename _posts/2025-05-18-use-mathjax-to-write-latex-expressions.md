@@ -6,6 +6,7 @@ categories: Markdown
 author: Neoren
 ---
 
+{% raw %}
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({
     tex2jax: {
@@ -17,6 +18,10 @@ author: Neoren
   });
 </script>
 <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+{% endraw %}
+
+
 
 
 
