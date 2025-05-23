@@ -4,26 +4,8 @@ title: "Use MathJax to Write LaTex Expressions"
 date: 2025-05-18
 categories: Markdown
 author: Neoren
+excerpt: "Learn how to use MathJax to write mathematical expressions in Jekyll blogs"
 ---
-
-{% raw %}
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [['$','$'], ['\\(','\\)']],
-      displayMath: [['$$','$$'], ['\\[','\\]']],
-      processEscapes: true,
-      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  });
-</script>
-<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-{% endraw %}
-
-
-
-
 
 ## Original code
 
