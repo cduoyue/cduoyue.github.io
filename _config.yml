@@ -24,7 +24,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   I'm a new iOS app developer. I'm going to record my programming learning
   process here, mainly in Swift language. Hope we can help each other:)
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://cduoyue.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: cduoyue
 github_username:  cduoyue
 
