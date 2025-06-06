@@ -16,6 +16,7 @@ author: Neoren
 
 - String: 21-bit unicode scalar, UTF-8/16/32, String.Index
 - Int, Double, Bool, Array, Dictionary, Set, Optional
+- Array syntax sugar: Array<Int>(arrayLiteral: 1, 2, 3) == Array<Int>([1, 2, 3]) == [1, 2, 3]
 - Variable, constant
 
 ### Control flow
@@ -81,5 +82,8 @@ author: Neoren
 
 ### JSON parsing
 
-- codable
+- typealias Codable = Encodable & Decodable
+- jsonData = try? JSONEncoder().encode(user), jsonString = String(data: jsonData, encoding: .utf8)
+- jsonData = jsonString.data(using: .utf8), decodedUser = try? JSONDecoder().decode(User.self, from: jsonData)
+- JSONEncoder, JSONDecoder -> Foundation framework
 
