@@ -61,6 +61,6 @@ excerpt: "A comprehensive guide to UIKit fundamentals for iOS development"
 
 - App bundle: MyApp.app, a special folder including MyApp, Info.plist, Main.storyboard, Assets.car, Frameworks
 - Info.plist file: declare your app's hardware and software requirements, the App Store prevents an app from being installed on a device that does not meet your app's requirements 
-- ![MVC](/Users/neoren/Documents/Computer/GitHub/myblog/photos/MVC.png)
+- ![MVC](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/MVC.png?raw=true)
 - 
 
