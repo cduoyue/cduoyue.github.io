@@ -60,7 +60,31 @@ excerpt: "A comprehensive guide to UIKit fundamentals for iOS development"
 ### About app development with UIKit
 
 - App bundle: MyApp.app, a special folder including MyApp, Info.plist, Main.storyboard, Assets.car, Frameworks
+
 - Info.plist file: declare your app's hardware and software requirements, the App Store prevents an app from being installed on a device that does not meet your app's requirements 
-- ![MVC](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/MVC.png?raw=true)
-- 
+
+- MVC:
+
+  ![MVC](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/MVC.png?raw=true)
+
+- The UIApplication object has two core responsibilities:
+
+  - Continuously listening for and dispatching user events to the appropriate objects
+  - Handling state transitions such as launching, activating, backgrounding, and terminating, and calling the corresponding delegate methods 
+
+### App and environment 
+
+- Adapt to different environments by checking view.traitCollection or viewController.traitCollection
+
+- The application(_:didFinishLaunchingWithOptions:) method lets you make final adjustments before the interface appears
+
+- Performing long-running tasks in application(\_:didFinishLaunchingWithOptions:) or application(\_:willFinishLaunchingWithOptions:) might make your app appear sluggish to the user
+
+- Launch options dictionary: when tapping App to launch, the dictionary will be empty or nil
+
+- Launch sequence:
+
+  ![launch sequence]()
+
+- At
 
