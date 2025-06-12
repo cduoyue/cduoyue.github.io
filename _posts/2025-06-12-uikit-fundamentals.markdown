@@ -84,7 +84,28 @@ excerpt: "A comprehensive guide to UIKit fundamentals for iOS development"
 
 - Launch sequence:
 
-  ![launch sequence](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/Launch%20time.jpg?raw=true)
+  ![launch sequence](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/Launch%20sequence.png?raw=true)
 
-- At
+- At appropriate times, UIKit preserves the state of your app's views and view controllers to an encrypted file on disk. When your app is terminated  and relaunched later, UIKit reconstructs your views and view controllers from the preserved data
+
+- Every iOS app has exactly one instance of UIApplication, which can be referred to as UIApplication.shared
+
+- The UIApplication class defines a delegate that conforms to the UIApplicationDelegate protocol and must implement some of the protocol's methods
+
+### Views and controls 
+
+- The inheritance hierarchy: NSObject -> UIResponder -> UIView -> UIControl
+- Frame (tells superview) & bounds (relates to subview)
+- All UI operations: on main thread
+- Collection views are a collaboration between many different objects: cells, layouts, UICollectionViewDataSource (protocol), UICollectionViewDelegate (protocol), UICollectionViewController
+
+### View controllers
+
+- Every view controller needs to do the following:
+  - Fill its views with data, and update those views when data changes
+  - Report data changes back to your data model objects
+  - Adjust the size, position, and visibility of views to match the current environment 
+  - Facilitate transitions to other pages of content
+- Most custom view controllers you create are content view controllers -- that is, the view controller owns all of its views and manages interactions with those views
+- UIViewController contains a content view, accessible from the view property, which serves as the root view of its view hierarchy 
 
