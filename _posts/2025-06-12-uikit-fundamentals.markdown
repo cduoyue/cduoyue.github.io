@@ -84,7 +84,7 @@ excerpt: "A comprehensive guide to UIKit fundamentals for iOS development"
 
 - Launch sequence:
 
-  ![launch sequence]()
+  ![launch sequence](https://github.com/cduoyue/cduoyue.github.io/blob/main/photos/Launch%20time.jpg?raw=true)
 
 - At
 
