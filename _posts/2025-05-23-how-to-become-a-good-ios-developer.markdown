@@ -14,8 +14,8 @@ This part is about to master the necessary knowledge that a good iOS developer n
 1. Swift fundamentals & standard library 
 2. frameworks: 
    - Basic: UIKit, SwiftUI, Combine, Foundation
-   - Important: AVFoundation, CoreLocation, UserNotifications, WebKit, CoreAnimation
-   - Optional: MapKit, StoreKit, CoreImage, CloudKit
+   - Important: AVFoundation, CoreLocation, UserNotifications,  CoreAnimation
+   - Optional: MapKit, StoreKit, CoreImage, CloudKit, WebKit
 3. Data storage: SwiftData, Core Data, UserDefaults (Foundation), Keychain (Security), File system 
 4. Software architecture patterns: MVVM
 5. Performance Optimization: Instruments
