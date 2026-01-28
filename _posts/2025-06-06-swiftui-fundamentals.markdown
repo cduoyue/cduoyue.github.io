@@ -21,6 +21,9 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 ### 状态变化驱动视图更新
 
 - 状态是**被观察**的，即SwiftUI能“订阅/追踪”的东西：@State (视图内部状态，适合简单值类型状态) / @Binding (父子视图间共享状态，实现单一数据源的双向绑定) / @StateObject (引用类型状态，视图内部创建并需要在视图周期内保持的对象) / @ObservedObject（配合 ObservableObject + @Published）(引用类型状态，由外部注入的可观察对象)/ @Environment & @EnvironmentObject (在更上层环境共享数据)/ @FocusState / @AppStorage / @SceneStorage，以及 Swift 5.9+ 的 @Observable（Observation）体系等（**学习的重中之重**）
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128125626566.png" alt="image-20260128125626566" style="zoom:50%;" />
+
 - 普通数据（不在状态系统里）一般不会自动驱动更新
 
 ### 动画支持
@@ -73,6 +76,10 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - **Modeling data** is a complex part of any app
 
+- Business logic & data:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128133636055.png" alt="image-20260128133636055" style="zoom:50%;" />
+
 ## SwiftUI essentials
 
 ### Basic protocols
@@ -92,7 +99,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - Use **List, TextField, Bindings** to create dynamic content
 
-  ```Swift
+  ```swift
   @State private var items = ["Apple", "Banana"]
   @State private var newItem = ""
   
@@ -111,6 +118,8 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 - _**@State**_: works only for value types, such as structures and enumerations
 
   <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260127232826238.png" alt="image-20260127232826238" style="zoom:50%;" />
+
+  @State只初始化一次，不管是在View的生命周期还是在App的生命周期内
 
 - **Mechanism of Binding**:
 
@@ -195,9 +204,32 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
         return context.fetch(/*查询条件*/)
       }
     }
+    
+    // 第一句代码会大致展开成：
+    private var _items = Query<Item>()
+    private var items: [Item] {
+      get { _items.wrappedValue }
+      set { _items.wrappedValue = newValue }
+    }
     ```
 
-  - _**ModelContext**_: a connection between the view and the model container, so that you can fetch, insert, delete items in the container
+  - _**ModelContext**_: a connection between the view and the model container, so that you can fetch, insert, delete items in the container. _**context.save**_:
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128160009584.png" alt="image-20260128160009584" style="zoom:50%;" />
+
+  - _**Schema**_:
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155020464.png" alt="image-20260128155020464" style="zoom:50%;" />
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155038796.png" alt="image-20260128155038796" style="zoom:50%;" />
+
+  - _**ModelConfiguration**_:
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155503115.png" alt="image-20260128155503115" style="zoom:50%;" />
+
+  - **Predicates**: you use predicates to describe conditions for SwiftData to filter data (谓词 = 描述 _对每个模型对象_ 应该返回true还是false的那条规则)
+
+  - 
 
 - **Modal** interface:
 
@@ -205,11 +237,28 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
   - **Sheets** animate from the bottom of the screen, pushing the current view into the background
   - You can trigger a sheet to appear when an **optional property** has a value
 
+- **dismiss**: 不是闭包类型，它是 SwiftUI 环境里提供的一个 DismissAction 值。不过它“用起来像闭包”：因为 DismissAction 实现了 callAsFunction()，所以你可以直接写 dismiss() 来执行关闭/退出当前呈现的视图
+
+- **KeyPath**：本质是一个类型安全的属性访问描述符
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128132835406.png" alt="image-20260128132835406" style="zoom:50%;" />
+
+- @Environment(\\.modelContext) var modelContext中的**键路径**是作为给属性包装器**传参**，将其赋予wrappedValue
+
+- Protocol _**Codable: Decodable & Encodable**_
+
+- 添加**搜索框**思路：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128210647312.png" alt="image-20260128210647312" style="zoom:50%;" />
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128212758956.png" alt="image-20260128212758956" style="zoom:50%;" />
+
 ## SwiftUI elements
 
 ### Basic views
 
 ```swift
+// Text(_:style:) displays a localized date or time
 Text("Hello, world!")
 Spacer()
 Divider()
@@ -244,19 +293,22 @@ ForEach($players) { $player in TextField("Name", text: $player.name) }
 ### Container views
 
 ```swift
+// 布局容器
 VStack {}; VStack(alignment: .leading, spacing: 20) {} ; HStack {}; ZStack {}
+Grid {
+  GridRow {}
+  GridRow {}
+}
+
+// 功能容器
 ScrollView(.horizontal) {}
 List {}
 TabView {}
 	.tabViewStyle(.page)
 NavigationStack {}
 NavigationSplitView {} detail: {}
-Group {}
+Group {}  // Useful for wrapping conditions & apply modifiers to all group
 Section("Favorited by") {}
-Grid {
-  GridRow {}
-  GridRow {}
-}
 ```
 
 ### Modifiers
@@ -280,7 +332,7 @@ Grid {
 .border(.purple, width: 1.7)
 .resizable()
 .frame(width: 170, height: 170); .frame(maxWidth: 170, maxHeight: 170); .frame(maxHeight: .infinity); .frame(maxWidth: .infinity, alignment: .trailing)
-.overlay(alignment: .topleading) {}
+.overlay(alignment: .topleading) {} // 闭包有结果构建器@ViewBuilder
 .rotationEffect(.degrees(180))
 .tabViewStyle(.page)
 .buttonStyle(.bordered)
@@ -296,7 +348,7 @@ Grid {
 // .focused(_ condition: FocusState<Bool>.Binding)
 .focused($isTextFieldFocused)
 .onSubmit {}
-.onAppear {}
+.onAppear {} // 不会因为body重算而触发，它只关心视图是否第一次变成可见
 .contentShape(Rectangle())
 .onTapGesture {}
 .navigationTitle("Birthdays")
@@ -326,7 +378,7 @@ Grid {
 }
 // @State private var newMovie: Movie?  其中Movie遵循Identifiable
 .sheet(item: $newMovie) { movie in NavigationStack {} }
-.tag()
+.tag(8) // 给视图附加一个标记值
 .searchable(text: $searchText)
 .labelsHidden()
 .stroke(lineWidth: 17); .strokeBorder(lineWidth: 17)

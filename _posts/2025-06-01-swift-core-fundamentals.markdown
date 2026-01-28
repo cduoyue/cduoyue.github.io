@@ -311,3 +311,16 @@ author: Neoren
 - **结果构建器** = 一组static方法 + 编译器自动把闭包里的代码翻译成对这些方法的调用 = 写起来像是“在闭包里堆一堆东西”，实际上是“编译器在帮你调用一堆静态方法，把这些东西合成一个最终结果”
 - VStack: @ViewBuilder content: () -> Content
 
+## Programming styles
+
+### Functional programming 
+
+- 高阶函数: filter等，将函数作为参数传入 (函数式编程的核心)
+
+  _**filter**_ :
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128150254690.png" alt="image-20260128150254690" style="zoom:50%;" />
+
+- 强调：数据结构尽量不被修改，而是生成新的数据
+
+- 重要风格：声明式写法，描述“是什么”而不是“怎么做”
