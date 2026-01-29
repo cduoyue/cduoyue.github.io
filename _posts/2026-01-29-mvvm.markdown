@@ -1,0 +1,89 @@
+---
+layout: post
+title:  "MVVM Fundamentals"
+date:   2026-01-29 00:00:00 +0000
+tags: [iOS, Software Architecture Pattern]
+author: Neoren
+excerpt: "A comprehensive guide to MVVM for iOS development"
+---
+## History及简介
+
+- **2005**年由微软提出（SwiftUI 2019年发布），引入SwiftUI后非常受欢迎、被广泛采用
+
+- MVVM强调将应用的**视图**和**逻辑**相分离
+- MVVM将代码分为**模型**、**视图**、**视图模型** 三部分
+- 重要原则：View和Model之间不能直接通信，必须通过ViewModel作为中介
+- 间接通信也实现了数据的**双向绑定**：模型的数据变化会反应到界面上，用户在界面上的操作也会通过ViewModel更新回模型数据
+
+## MVVM架构中各层的职责和结构
+
+### View层
+
+- 职责：
+
+  - 负责 **UI 展示 + 交互事件采集**
+
+  - 只做**轻量逻辑**：布局、动画、简单的显示分支
+
+  - 不直接访问网络/数据库，不写业务规则
+
+- 结构：
+  - 持有一个ViewModel实例（通过@Observable + @State/@Bindable）
+  - 用$将输入绑定到vm的状态
+  - 事件调用：vm.onAppear() (页面出现时加载数据), vm.refresh() (下拉刷新), vm.submit() (表单提交)
+  - 事件调用里的逻辑应该是**逻辑编排** 
+
+### ViewModel层
+
+- 职责：
+
+  - 提供View可直接消费的**状态**
+
+  - 把**用户意图**转换成**动作**（对应View中的事件调用，比如：）
+
+    <img src="/Users/zhengjiancheng/Desktop/Screenshot 2026-01-29 at 21.36.28.png" alt="Screenshot 2026-01-29 at 21.36.28" style="zoom:50%;" />
+
+  - 协调业务流程：调用 UseCase/Service/Repository (**业务编排**)，进行必要的数据转换、格式化、排序、过滤、权限判断等 (**适配/派生**)
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129214614001.png" alt="image-20260129214614001" style="zoom:50%;" />
+
+  - **管理异步**：Task {}、async/await，以及**错误处理、取消**（可选）
+
+- 结构：
+
+  - iOS 17+：_**@Observable**_ class XxxViewModel { ... }
+  - 将 UI 状态集中成一个类型更清晰：_**enum ViewState**_ { case idle, loading, loaded([Item]), empty, failed(String) } 或 _**struct State**_ { var items: [Item]; var isLoading: Bool; ... }
+  - 依赖通过初始化注入（便于测试）：init(service: FooServiceProtocol)
+  - 经验法则：ViewModel 不持有 View，也不返回 View；它**只输出“可渲染的数据 + 可调用的动作”**
+
+### Model层
+
+- (业务)**领域模型**(Domain Model / Entity)职责：
+
+  - 描述**业务数据结构与规则**（例如 User, Trip, Photo）
+  - 可包含纯业务计算（不依赖 UI/网络）
+  - 尽量保持与 UI 无关、与存储无关
+
+- **数据来源与业务用例**职责：
+
+  - **Repository**：屏蔽数据来源（网络/数据库/缓存），对上提供统一接口
+  - **Service/API Client**：封装网络请求细节
+  - **UseCase**（可选）：把“业务动作”封装成可复用单元
+  - 是否需要 UseCase 取决于项目规模：中大型项目更值得拆出来，小项目可以 VM 直接调用 Repository。
+
+- 一句话：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129231730785.png" alt="image-20260129231730785" style="zoom:50%;" />
+
+### 小结
+
+<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129232957932.png" alt="image-20260129232957932" style="zoom:50%;" />
+
+
+
+
+
+
+
+
+
