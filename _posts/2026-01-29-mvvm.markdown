@@ -41,7 +41,7 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
   - 把**用户意图**转换成**动作**（对应View中的事件调用，比如：）
 
-    <img src="/Users/zhengjiancheng/Desktop/Screenshot 2026-01-29 at 21.36.28.png" alt="Screenshot 2026-01-29 at 21.36.28" style="zoom:50%;" />
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130002359714.png" alt="image-20260130002359714" style="zoom:50%;" />
 
   - 协调业务流程：调用 UseCase/Service/Repository (**业务编排**)，进行必要的数据转换、格式化、排序、过滤、权限判断等 (**适配/派生**)
 
@@ -79,7 +79,38 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
 <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129232957932.png" alt="image-20260129232957932" style="zoom:50%;" />
 
+## 数据流向
 
+<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130001346508.png" alt="image-20260130001346508" style="zoom:50%;" />
+
+## MVVM架构的优点
+
+- 分离关注点后，代码的**可维护性提高**
+- 由于ViewModel不依赖View，可以在不启动UI的情况下进行单元测试，这使**可测试性提高**
+- 代码更干净，**可读性更好**
+- **单一可信源**符合SwiftUI哲学
+
+## PokedexUI
+
+### README.md
+
+- PokedexUI implements a **Protocol-Oriented MVVM** architecture with **Clean Architecture** principles. 
+
+- 整洁架构的核心是：
+
+  - 把代码按职责分层
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130220421343.png" alt="image-20260130220421343" style="zoom:50%;" />
+
+  - 让依赖方向保持干净可控
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130220531574.png" alt="image-20260130220531574" style="zoom:50%;" />
+
+  - 协议隔离细节
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130231649521.png" alt="image-20260130231649521" style="zoom:50%;" />
+
+- 
 
 
 

@@ -10,7 +10,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - SwiftUI is a **UI framework**, introduced in **2019** on WWDC. 它采用**声明式**的方式，允许开发者通过**描述界面**的代码来构建UI
 
-## Main Features
+## Main features
 
 ### 声明式界面构建
 

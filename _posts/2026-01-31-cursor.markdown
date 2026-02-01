@@ -1,0 +1,178 @@
+---
+layout: post
+title:  "Cursor"
+date:   2026-01-31 00:00:00 +0000
+tags: [iOS, IDE]
+author: Neoren
+excerpt: "A basic programming tool"
+---
+## History
+
+- **Cursor**由Anysphere开发，**2023**年推出，是一款深度融合AI的编程IDE
+
+- 本质上是Visual Studio Code的衍生版本，内置强大的**AI编程助手**
+
+## Interesting ideas
+
+- A **human-AI programmer**, orders of magnitude more effective than any developer alone : )
+
+## Main features
+
+### Agent (智能体)
+
+- _**Cursor Agent**_ turns **ideas** into **code**
+
+- Agent uses _**tools**_ to **search, edit, and run commands**. From **semantic** codebase search to terminal execution, these tools enable **autonomous task completion**
+
+- 可连接_**MCP**_ (Model Context Protocol, Anthropic提出):
+
+  - Agent客户端连接一个或多个_**MCP服务器**_
+  - MCP 服务器去对接真实的资源/工具（文件、DB、API、脚本等），并把它们以 MCP 的 _**resources/tools/prompts**_ 形式暴露出来
+  - Agent再通过 _**MCP 接口**_按需读取资源、调用工具，把读到的内容当上下文、把工具当可执行动作来用
+
+- 有_**Rules**_:
+
+  - 可定义Agent行为的自定义说明
+
+  - Rules用来**维持编码规范**、**强制约定的模式**。比如必须用**Swift Concurrency**、必须**MVVM**、必须写**单元测试**、禁止**强引用循环**、**命名规则**等
+
+  - Rules = 把你反复对AI说的话，变成项目里的**“制度 + 自动化流程”**
+
+  - 四种**Rules类型**：
+
+    - _**Project Rules**_: 存放在_**.cursor/rules**_里（在Cursor/Settings里添加），会进Git，只作用在当前代码库。适合做**MVVM架构约定、命名规范、目录结构**等。这是最常用、最核心的一类。
+    - _**User Rules**_: 个人偏好，所有项目通用。存放在Cursor/Settings里，作用在你自己的Cursor环境。适合做**回答风格（简洁/中文/多示例）、通用编码习惯（比如默认给我最小改动）**
+    - _**Team Rules**_: 管理位置在Cursor/Dashboard(团队/企业版)，作用在整个团队的所有项目，可强制（成员不能关）。是公司/团队强制统一的“红线规则”。适合做**公司级编码规范、合规/安全要求、统一工作流**。
+    - _**AGENTS.md**_: 最简单的规则形式，一份Markdown说明书。存放在项目根目录（或子目录），作用在当前项目/子目录。是一份纯文本，非常直观。适合做**小项目、个人项目、想快速告诉Agent这个项目怎么写代码**。是轻量版的Project Rules。
+    - **优先级**：Team > Project/Agent > User
+
+  - Rule应用的控制：
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201194107798.png" alt="image-20260201194107798" style="zoom:50%;" />
+
+- 有_**Checkpoints**_:
+
+  - 给Agent每次改代码做的**自动快照**和**一键回滚**
+  - 如何恢复：在对应那次请求旁边会有_**Restore checkpoint**_ 按钮
+  - 它不是 Git 的替代品，仍建议关键节点用 Git commit 做可靠版本管理
+
+- 生成_**Todos**_:
+
+  - _**Plan**_ 模式生成的一个计划文件，保存在_**.cursor/plans/**_ 文件夹（Todos的待办项也都会显示在Cursor页面上）
+  - 运行Plan后，点按_**build**_ 会执行计划，会按照Todos改代码并记录进度、完成勾选
+  - 总之，Todos = **计划书 + 进度条**。它把复杂任务拆成一串可执行的小步骤，并标记哪些已完成、哪些卡住、下一步是什么
+
+- 操作_**Terminal**_:
+
+  - Cursor会操作终端（应该是Cursor的内嵌终端），并且会盯着终端的输出把**流程**走完
+  - 可以构建受信任的自动流程，或者安全考虑需要确认
+  - Agent是在一个**沙盒**中运行终端的，它会阻止非授权的文件访问和网络活动
+
+- **Diff** 功能：
+
+  - 在接受Agent的改变之前，先把所有改动用类似**Git diff** 的方式给你看，让你逐行决定要不要保留
+  - 所有改动将以有颜色的行显示在_**Review**_ 界面
+
+### Modes
+
+- _**Agent**_:
+
+  - For: 复杂功能、重构
+  - Capabilities: 自主探索、多文件编辑
+  - Tools: 启用所有工具
+
+- _**Plan**_:
+
+  - For: 需要计划的复杂功能
+  - Capabilities: 执行前做出详细的计划，ask clarifying questions 
+  - Tools: 启用所有工具
+
+- _**Debug**_:
+
+  - For: tricky bugs, regression
+
+  - Capabilities: hypothesis generation, log instrumentation, runtime analysis 
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201053025836.png" alt="image-20260201053025836" style="zoom:50%;" />
+
+  - Tools: 启用所有工具 + _**debug server**_
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201054118419.png" alt="image-20260201054118419" style="zoom:50%;" />
+
+- _**Ask**_:
+
+  - For: 学习、计划、提问
+  - Capabilities: 只读探索、没有自主修改
+  - Tools: 只启用搜索工具
+
+### Cursor Tab
+
+- A special Cursor Model for autocompletion
+- The more you use it, the better it becomes as you **inject intent** by accepting or rejecting suggestions (这里指的是你通过“接受 / 拒绝 / 改掉建议”这些动作，把你当下真正想写的方向（意图）用行为信号注入到补全系统里，让它后续的建议更贴近你要做的事)
+- Tab的实际功能：
+  - 一次修改多行
+  - 添加缺少的Import语句
+  - 在文件内及跨文件跳转以进行协同编辑
+  - 根据最近的更改、linter 错误和已接受的编辑获取建议
+- Tab 预测跨文件的上下文感知编辑。当建议进行跨文件跳转时，底部会出现一个门户窗口
+- You can accept a suggestion by pressing _**Tab**_, or reject it by pressing _**Esc**_. To partially accept a suggestion word-by-word, press _**⌘ →**_.
+
+### Cursor Terminal
+
+- 按_**command K**_ 会打开一个prompt bar，在里面用自然语言描述你的动作就能生成对应的指令
+- 例如，不记得 find 命令的复杂参数时，只需输入**“查找过去24小时修改的所有文件”**，Cursor 会自动转换成正确的 shell 命令。
+
+### Context
+
+- _**@Docs**_ lets you use documentation to help write code (包括**Apple Developer Documentation**)
+- 添加上下文的方式：
+  - @+显式点名要带哪些上下文
+  - 自动上下文（隐式）
+  - Rules（持久上下文）
+  - MCP 接入外部上下文/工具
+  - 拖拽文件/文本进输入框
+
+### Bugbot
+
+- 绑定GitHub，用于Pull Request代码审查：
+  - 它会自动审查 PR，发现潜在 bug 或问题后留下评论提示修复
+  - 开发者也可以在 PR 评论中手动调用 BugBot，让其审查代码并列出 bug 清单及解释
+  - 相当于一个自动化的资深代码审查员，能够在数十秒内完成过去需要几天的人力 code review 工作
+
+### Cloud Agent
+
+- 在**云端远程**环境里**异步**运行的 agent
+- 它可以自己跑、改代码、（按配置）跑命令，完成后给你结果/PR
+- 有点类似“拥有了一支不需要休息的AI开发小组”
+
+## Cursor Models
+
+### Codebase Embedding Model
+
+- It gives agent deep understanding and recall
+- 这个模型首先把你仓库里的代码片段（Cursor会先把文件按块/语法块切分）转换成_**embedding向量**_表示并存到索引里，用来支持_**semantic search**_（语义检索），即当你用自然语言提问时，Cursor会用你的问题生成一个向量，再用**向量相似度**在索引里找最相关的代码块，再把这些代码块拿来给Agent/Chat作为上下文
+
+### Reranker
+
+- _**重排**_模型。在检索到一堆候选代码/上下文后，用重排把最相关的片段排到前面并压缩到可用的上下文预算里
+
+### Composer 1
+
+- Cursor自家的**agentic coding**模型
+
+### Cursor Tab
+
+- 专门用于**实时自动补全/下一步编辑预测**的模型
+
+## Cursor-Xcode
+
+### 读取项目
+
+- **假报错**，需要通过终端创建一个_**buildServer.json**_文件:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201193734925.png" alt="image-20260201193734925" style="zoom:50%;" />
+
+  进入目录后，可仅运行第三行。（Cursor 里的 Swift 语言服务SourceKit-LSP没拿到 Xcode 工程的编译参数/SDK/scheme，于是把很多符号当成“找不到”）（运行类似_**xcode-build-server config -project GratefulMoments.xcodeproj -scheme GratefulMoments**_）
+
+
+
