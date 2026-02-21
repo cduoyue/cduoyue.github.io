@@ -88,7 +88,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
   - 唯一要求 @SceneBuilder var body: Self.Body { get } 其中Body: Scene
   - @main必须应用在遵循App协议的结构体上
 - _**Scene**_: 
-  - _**WindowGroup**_是一个遵循Scene协议的类型，其初始化器为 nonisolated init(@ViewBuilder makeContent: @escaping () -> Content) 其中Content: View，nonisolated意味着它没有被绑定在MainActor上，@escaping是因为闭包不是一次执行，而是被存到WindowGroup这个Scene值里，以后会多次调用。（WindowGroup定义的是一组可实例化的窗口场景，每次新建窗口时，都会通过同一个闭包重新生成视图内容，最终，你会在多个独立的窗口中看到相同的界面布局，但每个窗口是互相独立的视图实例）
+  - _**WindowGroup**_是一个遵循Scene协议的类型，其初始化器为 nonisolated init(@ViewBuilder makeContent: @escaping () -> Content) 其中Content: View，nonisolated意味着它没有被绑定在MainActor上，@escaping是因为闭包不是一次执行，而是被存到WindowGroup这个Scene值里（可以是某个属性），以后会多次调用。（WindowGroup定义的是一组可实例化的窗口场景，每次新建窗口时，都会通过同一个闭包重新生成视图内容，最终，你会在多个独立的窗口中看到相同的界面布局，但每个窗口是互相独立的视图实例）
   - Types of scenes: **WindowGroup, Window, DocumentGroup, Settings**
 - _**View**_:
   - 核心要求 @ViewBuilder var body: Self.Body { get } 其中Body: View
@@ -390,3 +390,18 @@ Section("Favorited by") {}
 .accessibilityValue("10 minutes")
 ```
 
+### Some Explanations
+
+- TabView:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260221215402044.png" alt="image-20260221215402044" style="zoom:50%;" />
+
+- @ModelActor宏：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260221232358519.png" alt="image-20260221232358519" style="zoom:50%;" />
+
+- Sendable引入：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260222001546051.png" alt="image-20260222001546051" style="zoom:50%;" />
+
+- 

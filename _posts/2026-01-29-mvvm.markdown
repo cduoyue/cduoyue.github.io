@@ -25,13 +25,13 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
   - 只做**轻量逻辑**：布局、动画、简单的显示分支
 
-  - 不直接访问网络/数据库，不写业务规则
+  - 不直接访问网络/数据库/缓存，不写业务规则
 
 - 结构：
   - 持有一个ViewModel实例（通过@Observable + @State/@Bindable）
   - 用$将输入绑定到vm的状态
   - 事件调用：vm.onAppear() (页面出现时加载数据), vm.refresh() (下拉刷新), vm.submit() (表单提交)
-  - 事件调用里的逻辑应该是**逻辑编排** 
+  - 事件调用里的逻辑应该是**业务编排** 
 
 ### ViewModel层
 
@@ -43,7 +43,7 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
     <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130002359714.png" alt="image-20260130002359714" style="zoom:50%;" />
 
-  - 协调业务流程：调用 UseCase/Service/Repository (**业务编排**)，进行必要的数据转换、格式化、排序、过滤、权限判断等 (**适配/派生**)
+  - 协调业务流程：（意图转换成动作时）调用 UseCase/Service/Repository (**业务编排**)，进行必要的数据转换、格式化、排序、过滤、权限判断等 (**适配/派生**)
 
     <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129214614001.png" alt="image-20260129214614001" style="zoom:50%;" />
 
@@ -54,11 +54,13 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
   - iOS 17+：_**@Observable**_ class XxxViewModel { ... }
   - 将 UI 状态集中成一个类型更清晰：_**enum ViewState**_ { case idle, loading, loaded([Item]), empty, failed(String) } 或 _**struct State**_ { var items: [Item]; var isLoading: Bool; ... }
   - 依赖通过初始化注入（便于测试）：init(service: FooServiceProtocol)
-  - 经验法则：ViewModel 不持有 View，也不返回 View；它**只输出“可渲染的数据 + 可调用的动作”**
+  - 经验法则：ViewModel 不持有 View（某属性不应指向一个View），也不返回 View（某方法不应返回一个View）；它**只输出“可渲染的数据 + 可调用的动作”**
 
 ### Model层
 
-- (业务)**领域模型**(Domain Model / Entity)职责：
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260219153431318.png" alt="image-20260219153431318" style="zoom:50%;" />
+
+- **领域模型**(Domain Model / Entity)职责：
 
   - 描述**业务数据结构与规则**（例如 User, Trip, Photo）
   - 可包含纯业务计算（不依赖 UI/网络）
@@ -67,13 +69,17 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 - **数据来源与业务用例**职责：
 
   - **Repository**：屏蔽数据来源（网络/数据库/缓存），对上提供统一接口
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260219155049592.png" alt="image-20260219155049592" style="zoom:50%;" />
   - **Service/API Client**：封装网络请求细节
   - **UseCase**（可选）：把“业务动作”封装成可复用单元
   - 是否需要 UseCase 取决于项目规模：中大型项目更值得拆出来，小项目可以 VM 直接调用 Repository。
 
-- 一句话：
+- 推荐链路：**ViewModel → UseCase → Repository → Domain Model → ViewModel(转UI State)**
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129231730785.png" alt="image-20260129231730785" style="zoom:50%;" />
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260218145451100.png" alt="image-20260218145451100" style="zoom:50%;" />
+
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260218145932961.png" alt="image-20260218145932961" style="zoom:50%;" />
 
 ### 小结
 
@@ -94,7 +100,7 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
 ### README.md
 
-- PokedexUI implements a **Protocol-Oriented MVVM** architecture with **Clean Architecture** principles. 
+- PokedexUI implements a **Protocol-Oriented MVVM** architecture with **Clean Architecture** principles (不是严格的Clean架构，因为没有Domain层). 
 
 - 整洁架构的核心是：
 
@@ -110,6 +116,34 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
     <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130231649521.png" alt="image-20260130231649521" style="zoom:50%;" />
 
+### Cursor代码解读
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- 你可以把 container 理解成：“当前这个 JSON 对象（大括号 {}）的读取手柄”。
+- KeyedDecodingContainer 就是“对某个 JSON 对象节点的按键读取接口”，支持继续深入嵌套解码
+- CodingKey协议的要求会由编码器自动生成，主要得到一个stringValue属性（比如.id.stringValue），会在解码时被间接调用
+- Keyed 是“字典/对象”，Unkeyed 是“数组/列表”
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260204111043429.png" alt="image-20260204111043429" style="zoom:50%;" />
+- 解码中嵌套类/结构体就是嵌套字典
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260204132947030.png" alt="image-20260204132947030" style="zoom:30%;" />
+- 核心是把“怎么请求/怎么把响应变成 ViewModel”交给泛型 APIService 和 Config
+- PokemonService 是“业务入口”，APIService 是“通用引擎”
+- Config 负责告诉 APIService 三个点：列表请求怎么建、详情请求怎么建、最终怎么把详情数组变成 ViewModel 数组
+- @ModelActor 会为这个 actor 提供一个隔离的 SwiftData modelContext
+- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260205211150414.png" alt="image-20260205211150414" style="zoom:50%;" />
 - 
 
 
