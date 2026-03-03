@@ -1,0 +1,648 @@
+---
+layout: post
+title:  "HIG Application"
+date:   2026-02-27 00:00:00 +0000
+tags: [iOS, App Design]
+author: Neoren
+excerpt: "A comprehensive guide to HIG for iOS development"
+---
+## HIG深度研究报告(GPT5.2) 
+
+### 执行摘要
+
+- Apple 的 **Human Interface Guidelines**（HIG）是一套面向多平台的**设计与交互规范体系**，旨在帮助设计师与开发者构建“看起来像系统原生、用起来符合预期、并能长期演进”的应用体验。
+
+- 2022 年 Apple 对 HIG 做了系统性重构：将平台分散的指南整合为统一文档（unified document），并强化了按“基础（Foundations）、模式（Patterns）、组件（Components）、技术（Technologies）”等维度的导航与关联资源（视频、文章、API 文档）的连接。
+
+- 2025 年起，Apple 以“Liquid Glass”为核心推出跨平台的新设计系统与视觉语言。
+
+### 目的、受众和核心原则
+
+- HIG 的直接**目的**，是为“跨 Apple 平台的体验一致性”提供**可复用的默认解与最佳实践**。
+- HIG核心受众是**设计师与开发者**的共同体。
+- 核心设计原则与模式：
+  - **内容优先与层级表达**：
+    - Deference(尊重)：界面帮助用户理解与操作内容，但不与内容竞争；
+    - Clarity：可读文本、精确图标、克制装饰、以功能驱动设计；
+    - Depth：视觉层级与真实动效增强理解与愉悦。
+  - **一致性与跨设备连续性**：WWDC25 明确把 **continuity** 作为新设计系统的重要主题。
+    - 同一决策（布局/层级/交互）应跨设备延续；
+    - iPhone 画布更窄更纵向，Mac 更宽更展开，iPad 位于两者之间并承担“可伸缩的中间层”。
+    - 要求团队先定义共享的“**应用解剖结构**”，再让它在不同设备形态下适配，而不是每个平台从零开始。
+  - **可访问性内建**：
+    - 在**视觉可访问性**方面，WWDC 会话强调：视觉障碍是连续谱（低视力、色弱、光敏、动效敏感等），iOS 提供多种设置；
+    - 应用需要通过自适应颜色、可读文本、对比度等保持一致体验；
+  - **隐私与权限沟通**：
+    - App Store 的“**User Privacy and Data Use**”明确要求：应用必须尊重用户权限设置，不得试图操纵、欺骗或强迫用户同意不必要的数据访问；
+    - 在沟通层面，Apple 通过“写清楚 **purpose strings**（权限用途说明）”的会话强调：文案要清晰、简短，帮助用户理解为何需要访问受保护资源（相机、位置、健康等）。
+
+### 当前HIG的结构和主要模块
+
+- Apple把 HIG 的顶层信息架构归纳为 6 个模块：
+  - Getting started：从“让应用在所有支持的平台都显得合适（feel at home）”出发，介绍各**平台差异**与入门路径。
+  - Foundations：**基础设计元素**（如布局、排版、颜色、图标、材料、动效、可访问性等）的理解与使用。
+  - Patterns：**常见任务与体验**的设计指导（例如导航、搜索、输入、反馈等范式）。
+  - Components：**系统定义组件**（buttons、bars、menus、controls 等）及其使用方式，以获得熟悉与一致体验。
+  - Inputs：用户**如何控制与输入**——触控、键盘、鼠标/触控板、遥控器、Apple Pencil、空间交互等。
+  - Technologies：将**Apple 技术/服务融入应用体验**（例如支付、健康、AR、通知、系统体验等）的设计注意点。
+
+# Human Interface Guidelines
+
+- 设计时要遵循以下三个原则：
+  - **Hierarchy**: 一些控件和界面（结构性）元素要“浮”上来，和下面的内容清楚分离。
+  - **Harmony**：让界面在形状、层级、动效与触觉上，和设备与系统本身的“同心”设计语言保持一致，这样界面元素、系统体验、和设备看起来就会和谐一致。（即充分利用系统和设备已有的各种设计元素）
+  - **Consistency**：尽量遵循对应平台的系统惯例（UI 模式/控件/交互/布局规则），这样你的界面既“看起来像这个平台的原生应用”，又能在不同窗口尺寸、不同屏幕上持续自适应，而不是做一套固定死的布局。（做成平台的**原生应用**，实现自适应布局）
+
+## Getting Started
+
+- Create an app that **feels at home** on every platform you support.
+
+### Designing for iOS
+
+- Fundamental device characteristics and patterns that distinguish the **iOS experience**:
+  - **Display**: Medium-size, high-resolution.
+  - **Inputs**: Multi-Touch gestures, virtual keyboards, and voice control let people perform actions and accomplish meaningful tasks. In addition, people often want apps to use their personal data and input from the device’s gyroscope and accelerometer, and they may also want to participate in spatial interactions.
+  - **App interactions**: Sometimes one minute or two, sometimes hours. People typically have multiple apps open at the same time, and they appreciate switching frequently among them.
+  - **System features**: Widgets, home screen quick actions, spotlight, shortcuts, activity views.
+
+#### Best Practices 
+
+- Great iPhone experiences integrate the **platform and device capabilities** that people value most.
+  - 通过限制屏幕上控件的数量，来帮助用户专注于主要任务和内容；同时，确保次要细节和操作能通过最少的交互被发现。（利用系统的**交互能力**，如使用手势、长按、或菜单等方式**隐藏非关键操作**）
+  - 无缝衔接**外观的改变**，如横竖屏、黑白模式、Dynamic Type等设置。
+  - 提供**交互**来补偿人们的握持手机的方式，比如通过**滑动**来导航返回。
+  - 在用户许可下，整合**平台功能提供的信息**来增强体验，而无需让用户手动输入数据。（如通过生物认证来安全识别、或提供使用设备的位置等）
+
+## Foundation
+
+- Understand how **fundamental design elements** help you create rich experiences.
+
+### Accessibility （可访问性、无障碍设计）
+
+- **Accessible user interfaces** empower **everyone** to have a great experience with your app.
+- 无障碍设计意味着：
+  - 对残疾用户更友好：例如视障、听障、肢体障碍、认知障碍人群，都能顺利访问和使用你的产品。
+  - 不排斥任何人：设计时考虑不同能力、年龄、语言背景、设备条件等差异，让更多人享受到同样的体验。
+- 无障碍界面的特征：
+  - **直观**：使用**熟悉、一致**的交互方式，执行任务简单明了。
+  - **可感知**：不依赖单一信息传达方式，用户无论通过**视觉、听觉、语音、或触摸**都能访问内容。
+  - **可适应**：支持**系统无障碍功能**和个性化设置。
+- 设计app时，可以使用**Accessibility Inspector**检测界面问题；还可通过App Store的**Accessibility Nutrition Labels**传达应用的无障碍程度。
+
+#### Vision
+
+- 为盲人、色盲、弱视、光敏人群设计。
+
+- 应使app支持**Dynamic Type**。
+
+- 不同平台的（文字）自定义类型尺寸的推荐默认值为：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228171525966.png" alt="image-20260228171525966" style="zoom:50%;" />
+
+- 记住**字重**会影响文字阅读的容易程度。（应设计成可通过iPhone设置）
+
+- 文字/图标（前景）和背景**颜色**之间必须达到一定“**亮度差**”，否则很多人（低视力、强光环境、色弱等）会看不清。通常，应努力满足“颜色对比度最小标准”。两个流行的测量颜色对比度的标准是Web Content Accessibility Guidelines (WCAG) 和Accessible Perceptual Contrast Algorithm (APCA)。**Accessibility Inspector** uses the following values from WCAG Level AA as guidance in determining whether your app’s colors have an acceptable contrast: (找出表中对比度的计算公式)
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228173604021.png" alt="image-20260228173604021" style="zoom:50%;" />
+
+  iPhone的设置里有一个Increase Contrast选项，至少要确保打开它时你的app的对比度满足要求。
+
+- 尽量选择**系统定义的颜色**，这些颜色通常有它们自己的**accessible variants**。如图：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228205014898.png" alt="image-20260228205014898" style="zoom:50%;" />
+
+  左图显示systemRed是一种**动态颜色**，会随深浅背景改变；右图显示当打开**Increase Contrast**后，会变成无障碍变体。
+
+- 不要单独使用颜色来传递信息，防色盲。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228205757579.png" alt="image-20260228205757579" style="zoom:50%;" />
+
+- 应用**VoiceOver**，为盲人。
+
+#### Hearing
+
+- 为聋人、弱听设计。也考虑在嘈杂、公共的环境中使用应用。
+
+- 支持**基于文本的方式**来享受音频和视频。根据不同的情境，为人们提供不同的基于文本的方式来体验他们的媒体，并允许人们自定义该文本的视觉呈现方式：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228212348137.png" alt="image-20260228212348137" style="zoom:50%;" />
+
+- Use **haptics** in addition to **audio cues**：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228212826601.png" alt="image-20260228212826601" style="zoom:50%;" />
+
+#### Mobility
+
+- 为灵活性或行动受限的人设计。
+
+- 提供足够大尺寸的控件，推荐：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228213753144.png" alt="image-20260228213753144" style="zoom:50%;" />
+
+- Consider **spacing between controls** as important as size:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228215210653.png" alt="image-20260228215210653" style="zoom:50%;" />
+
+  通常，给有**bezel**的控件提供**12点**padding，给没有bezel的控件提供**24点**padding（2个没bezel的控件之间就是48点）。
+
+- 为常用交互提供**简单手势**，避免复杂手势。
+
+- Offer **alternatives** to gestures. Make sure your UI’s core functionality is accessible through more than one type of physical interaction：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228223859220.png" alt="image-20260228223859220" style="zoom:50%;" />
+
+- 应用系统的**Voice Control**。To ensure a smooth experience, label interface elements appropriately.
+
+- Integrate with **Siri and Shortcuts** to let people perform tasks using voice alone. 
+
+- 支持行动相关辅助科技。
+
+#### Speech
+
+- 为哑人设计。
+- Let people use the **keyboard alone** to navigate and interact with your app. People can turn on **Full Keyboard Access** to navigate apps using their physical keyboard.（对哑人使用外接键盘输入友好）
+
+#### Cognitive
+
+- 最小化app的复杂程度会让所有人受益，包括有认知障碍的人。
+- 保持操作简单直观，确保用户能用**易记且一致的交互**导航页面。优先使用用户已熟悉的**系统手势和行为**，而非创建需要学习记忆的自定义手势。
+
+### App Icons
+
+- 一个独特、易记的图标能表达应用的目的和气质。
+
+#### Layer Design
+
+- 一个**图层化**的应用图标能产生**深度和活力感**。
+- 图标采用多层设计（背景层 + 一个/多个前景层）产生立体感，具有**液态玻璃**效果：高光、磨砂、半透明。这些效果会根据光线变化和设备移动产生动态响应。
+- 前景层应使用**清晰边缘**，避免柔化或羽化效果。这样系统生成的高光和阴影效果会更好看。
+- 设计一个既醒目又能突出前景内容的背景。**从上到下、由浅到深的细微渐变**通常能很好地响应系统的光照效果。Icon Composer支持solid color和gradient背景层，通常无需再导入自定义背景层。
+- 在将图层导入Icon Composer时，建议用**矢量图**（如**SVG或PDF**），因为它们在任意尺寸下都能保持清晰、不失真。在设计中应将图形**轮廓化**，并将文字转化成轮廓，这样即使目标设备没有该字体，外观也不会变化。对位图类的艺术作品（如照片），就用**PNG**格式，因为PNG是无损的，不会像JPEG那样压缩丢失细节。
+
+#### Design
+
+- 在图标设计中，**拥抱简单**。简单的图标往往最容易让人理解和识别。
+
+- 找到一个能够**抓住你应用本质的概念或元素**，把它作为图标的核心创意，并用尽可能少的形状以简洁、独特的方式表达出来…优先选择简单的背景，例如纯色或渐变，以突出你的主要设计。
+
+- 考虑将图标设计基于实心、重叠的形状（立体感）：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301130654500.png" alt="image-20260301130654500" style="zoom:50%;" />
+
+- 仅在对你的体验或品牌至关重要时才包含**文本**。图标中的文本不利于无障碍或本地化，通常过小难以阅读，还会使图标显得杂乱。
+
+- 优先使用插图而非**照片**，照片包含大量细节，在以不同外观显示、以较小尺寸查看或被拆分为图层时效果不佳。
+
+#### Visual Effects 
+
+- 让**系统**处理模糊和其他视觉效果。
+
+#### Appearances
+
+- 你可以为每种外观变体设计应用图标变体，系统会自动生成你未提供的变体。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301132128871.png" alt="image-20260301132128871" style="zoom:39%;" />
+
+- 设计深色和有色调的图标，使其与系统应用图标和小组件和谐搭配。即图标要适配**系统的视觉风格**，特别是深色模式和主体色调。
+
+- 以浅色图标为基础制作深色图标。选择能体现默认设计的互补颜色，并避免使用过于明亮的图像。纯色背景通常能在深色图标中提供最大的对比度。
+
+- 经典的深色模式设计矛盾：
+
+  - 不调暗：保留高亮度颜色，对比度足够、可读性强，但在深色背景上太刺眼。
+  - 调暗：视觉上更柔和、和谐，但对比度会下降，影响可读性。
+
+  HIG解决方案：
+
+  - 适度降低亮度：降低亮度和饱和度到一个中间值。
+  - 避免纯黑背景：如背景是微亮的深色，就不会那么刺眼。
+  - 局部使用亮色：亮色用于重点或可交互元素。
+
+#### Icon Composer
+
+- 图标的基础设计在外部工具，最终效果调整在Icon Composer。
+
+- 为 Liquid Glass 重新构想你的应用图标。运用关键设计原则，让你的应用图标脱颖而出：
+
+  - 提供视觉一致、视觉上平衡的设计。
+  - 考虑一种由实心、填充、相互重叠的半透明形状组成的简化设计。
+  - 让系统来处理应用遮罩、模糊和其他视觉效果。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301172510302.png" alt="image-20260301172510302" style="zoom:39%;" />
+
+- 在设计（可用Sketch等软件）你的应用图标并导出图层之前，请遵循以下指南以获得最佳效果：
+
+  - 从一个应用图标模板开始。
+  - 以分层方式设计你的应用图标，系统会在 z 轴平面上从后到前进行渲染。
+  - 由于 SVG 格式不会保留字体，请将文本转换为轮廓。
+  - 为图层赋予包含数字的有意义名称（从后到前递增编号），以帮助你在 Icon Composer 中进行整理。
+
+- 请等待在 Icon Composer 中应用一些效果，你可以在Sketch中：
+
+  - 移除模糊和阴影，以及高光、不透明度和半透明设置。
+  - 移除背景图层。
+
+- 打开Icon Composer: _**Xcode –> Open Developer Tool –> Icon Composer**_。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301175206103.png" alt="image-20260301175206103" style="zoom:50%;" />
+
+  You use the **sidebar** on the left to organize layers into groups, the **canvas** in the middle to preview variants, and the **inspectors** on the right to modify appearances.
+
+- Icon Composer中的**分组**对应图标的不同**深度层级**，形成立体视觉。应最多限制在4组，否则太复杂。
+
+- Tinted:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301182351524.png" alt="image-20260301182351524" style="zoom:50%;" />
+
+### Branding
+
+- 应用需要展现自己**独特的品牌特征**，让用户一眼就能认出来，同时也要与所在平台的整体设计风格保持一致。
+
+#### Best Practices 
+
+- 在应用中显示的所有文字内容都要体现你品牌独特的**语言风格和语调**：
+  - **Voice**: 品牌的个性特征，比如**专业、友好、幽默或严肃**。
+  - **Tone**: 根据具体情境调整的情感表达，比如**鼓励、警示或中性**。
+- 考虑选择一种**强调色**。
+
+### Color
+
+- 明智地使用颜色可以：
+  - 增强沟通效果：颜色能传达感情和重要性。
+  - 唤起品牌联想：使用**品牌色**加强品牌识别。
+  - 提供视觉连续性：统一的配色方案让界面更协调。
+  - 传达状态和反馈：如红色表示错误、绿色表示成功。
+  - 帮助用户理解信息：颜色分类帮助用户快速识别内容类型。
+- 使用**系统颜色**是一种让你的体验在设备上更具**原生感**的便捷方式。
+
+#### Best Practices 
+
+- 避免使用相同的颜色表示不同的含义。
+
+- 确保你的应用颜色在浅色和深色环境中都能良好显示…**系统颜色**会根据系统外观微妙变化；开启“增强对比度”设置后，颜色差异会更加明显。如果使用**自定义颜色**，请为其提供**浅色和深色变体**，并为每个变体提供**增强对比度选项**。
+
+- 在**不同光照**条件下测试应用的配色方案。
+
+- 在 Liquid Glass 中谨慎使用颜色。为减少视觉干扰，应限制应用于材质本身以及材质上的符号或文本的颜色用量。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301213727854.png" alt="image-20260301213727854" style="zoom:39%;" />
+
+- 常见的色彩空间（有时称为色域）包括 **sRGB** 和 **Display P3**。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301214416906.png" alt="image-20260301214416906" style="zoom:50%;" />
+
+### 深色模式
+
+- 深色模式是一种全系统外观设置，使用**深色调色板**，为低光环境提供舒适的观看体验。深色调色板指：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301215535188.png" alt="image-20260301215535188" style="zoom:50%;" />
+
+- 深色模式时，**深色文字**可能难以辨识，打开Increase Contrast反而可能让对比度更低。
+
+- 采用能够适应当前外观的颜色：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301221238741.png" alt="image-20260301221238741" style="zoom:50%;" />
+
+  当你需要自定义颜色时，在 Xcode 中将一个颜色集资源添加到应用的资源目录中，并指定该颜色的明亮和暗色变体。避免使用硬编码的颜色值或无法自适应的颜色。
+
+- **柔化白色背景**的颜色。如果你显示包含白色背景的内容图像，请考虑**稍微调暗图像**，以防止背景在周围的深色模式环境中发光。
+
+- 尽可能使用 **SF Symbols**。在使用动态颜色为其着色或添加活力效果时，这些符号在两种外观模式下都能很好地呈现。
+
+### Icons
+
+- 一个有效的图标是一种**图形资产**，它以人们能够瞬间理解的方式表达单一概念。
+- 与应用图标可以使用阴影、纹理、高光等丰富视觉细节不同，**界面图标**通常使用**简化形状和少量颜色**来传达直接明确的概念。
+- 你可以设计界面图标 — 也称为**字形**（glyphs） — 或者从 SF Symbols 应用中选择符号，按原样使用或根据需要进行自定义。
+
+#### Best Practices 
+
+- 在你的应用中保持所有界面图标的**视觉一致性**…使用一致的尺寸、细节程度、描边粗细（或字重）以及透视效果。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301230432902.png" alt="image-20260301230432902" style="zoom:50%;" />
+
+- In general, match the weights of interface icons and adjacent text.
+
+- 如果你创建自定义界面图标，请使用诸如 **PDF 或 SVG** 之类的矢量格式。系统会自动为高分辨率显示器缩放基于矢量的界面图标，因此你无需提供其高分辨率版本。
+
+### Images
+
+- 为确保你的作品在所有支持的设备上都能呈现出色效果，请了解**系统如何显示内容**，以及如何以合适的**缩放比例**提供图像。
+
+- 交付位图时，需要提供@1x, @2x, @3x三个版本（文件名需附加@1x等后缀），缺少高像素版本会插值虚化；不要对位图进行放大，也会插值虚化。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302102753131.png" alt="image-20260302102753131" style="zoom:50%;" />
+
+- 设计图像时，先设计**@1x版本**（尺寸最小），再放大导出@2x和@3x版本。在@1x画板上做图时，尺寸/坐标都用整数，这样做能保证放大后依然落在像素栅格上，线条不会因落在半像素而发糊。画可缩放矢量图时，把锚点和尺寸、圆角、描边宽度都设为整数pt，确保在@1x时与像素网格对齐。
+
+- 始终在**多种真实设备**上测试图像。在设计阶段看起来效果很好的图像，在不同设备上查看时可能会出现像素化、拉伸或压缩的情况。
+
+### Layout
+
+- 一个**一致的布局**（指视觉和交互上的结构一致），能够根据不同环境（上下文）自适应，让你的应用更亲和，且在所有设备上都能愉快使用它（如**Spotify**）。
+
+#### Best Practices
+
+- 将相关项目**分组**，以帮助人们找到他们想要的信息。例如，你可以使用**留白、背景形状、颜色、材质或分隔线**来显示元素何时相关，并将信息划分为不同的区域。（即用视觉设计元素将相关内容聚合，不相关内容分离）
+- 通过给予**充足的空间**，使**关键信息**易于查找。人们希望能立刻看到最重要的信息，因此不要用无关的细节将其挤在一起而使其变得难以辨认。
+
+#### Visual Hierarchy
+
+- 区分控件和内容，即引入Liquid Glass。
+- 放置项目以传达它们的相对重要性。人们通常会按照阅读顺序查看项目（也就是从上到下、从起始侧到末尾侧），因此通常将最重要的项目放在窗口、显示区域或视野的顶部和起始侧附近效果最佳。
+- **渐进式披露**是逐步展示信息的设计技术，先显示主要内容，用户需要时再展示详细内容，避免界面混乱。
+- 通过在**控件**周围提供足够的空间并将它们按逻辑分组，使其更易于使用。
+
+#### Adaptability（适应性）
+
+- 每个应用都需要在设备或系统上下文发生变化时进行适配。
+
+- Apple 会用一组“环境特征（**traits**）”来描述设备/系统当前的使用场景，而这些特征的变化会影响你的界面应该怎么排版、怎么显示。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302142816861.png" alt="image-20260302142816861" style="zoom:50%;" />
+
+- 使用 **SwiftUI 或 Auto Layout** 可以帮助你确保界面能够动态适应这些特征以及其他上下文变化。
+
+- 你可以通过遵循系统定义的**安全区域、边距和参考线**，并指定**布局修饰符**来微调界面中视图的位置，从而帮助确保界面具有良好的适应性。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302145044737.png" alt="image-20260302145044737" style="zoom:50%;" />
+
+- 在多台设备上预览你的应用，使用不同的屏幕方向、本地化设置和文本大小。
+
+### Material
+
+- 材质是一种**视觉效果**，用于在前景与背景元素之间营造深度、层次和层级感。
+- Liquid Glass 是一种**动态材质**，可在 Apple 各平台间统一设计语言，使你能够呈现控件和导航，同时不遮挡底层内容。
+
+#### Liquid Glass
+
+- Liquid Glass 允许内容在这些元素下方滚动并隐约透出，从而为界面带来动感和层次感，同时保持控件和导航的可读性。
+- 不要在**内容层**中使用 Liquid Glass。Liquid Glass 在为交互元素与内容之间提供清晰区分时效果最佳，而将其包含在内容层中可能会导致不必要的复杂性和令人困惑的视觉层级…对此有一个例外，即内容层中带有瞬时交互元素（如滑块和切换开关）的控件。
+- 谨慎使用 Liquid Glass 效果。系统框架中的标准组件会自动采用这种材质的外观和行为。
+
+#### Standard Materials
+
+- 使用标准材质和效果（例如模糊、活力效果以及混合模式），来传达 Liquid Glass 下方内容的结构感。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302155549930.png" alt="image-20260302155549930" style="zoom:50%;" />
+
+- 根据**语义含义和推荐用法**选择材质和效果。避免仅根据它在界面上呈现的表面颜色来选择材质或效果，因为系统设置可能会改变其外观和行为。相反，应将**材质或鲜活度样式**与**具体使用场景**相匹配。（即选择材质要看功能目的，不是看颜色效果）
+
+- 通过在材质上使用活力颜色来确保**易读性**。**系统活力颜色**会自动适配不同的环境，无需担心在不同背景下过暗、过亮、对比度不足。（即用系统活力颜色代替固定颜色，自动保持可读性）
+
+#### Platform Considerations
+
+- iOS/iPadOS为**标签、填充、分隔符**定义了专门与各种材质配合的**活力颜色**，以保持最佳对比度和可读性。
+
+- 标签和填充都有多个活力等级（如主要、次要、第三级），分隔符只有一个活力等级。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302161514864.png" alt="image-20260302161514864" style="zoom:50%;" />
+
+### Motion（动效）
+
+- **优美、流畅的动效**让界面焕发生命力（让界面不是死板的堆叠），传达状态（如加载动画表示“正在进行中”；按钮按下后轻微缩放表示“已点击”），提供反馈（如拖拽卡片时卡片跟随手指移动，并在松手时回弹，这让用户清楚知道“系统收到了我的操作”）与指引（首次进入页面时，按钮轻微闪动或抖动，暗示用户可以点击），并丰富应用的视觉体验。（动效的本质是**功能+美感**）
+- 许多系统组件会自动包含动效，让你能够在整个应用中提供熟悉且一致的体验。
+
+#### Best Practices 
+
+- 要有**目的**地增加动效，**支持体验**而非喧宾夺主。
+
+### Privacy
+
+- 隐私至关重要：必须对你所需的与隐私相关的数据和资源保持透明，并且必须**保护**人们允许你访问的数据。
+
+- 当你提交新的或更新的应用时，必须提供有关你的**隐私实践**以及你收集的**与隐私相关数据的详细信息**，以便 App Store 能在你的产品页面上显示这些信息。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302165117121.png" alt="image-20260302165117121" style="zoom:50%;" />
+
+#### Best Practices 
+
+- **仅请求**访问你**实际需要的数据**。请求超过某个功能所需的数据——或在用户尚未对该功能表现出兴趣之前就请求数据——都会让人们难以信任你的应用。通过尽可能具体地提出权限请求，让用户能够对其数据进行精确控制。
+- 尽可能在设备本地处理数据，不要都传到远程服务器，可减少延迟和数据泄漏的风险。
+- 采用**系统定义的隐私保护**并遵循**安全最佳实践**。例如，在 iOS 15 及更高版本中，你可以依赖 **CloudKit** 为更多数据类型（如字符串、数字和日期）提供加密和密钥管理。
+
+#### Requesting Permission
+
+- 以下是一些你必须请求许可才能访问的事项示例：
+  - **个人数据**，包括位置、健康、财务、联系方式以及其他可识别个人身份的信息。
+  - **用户生成的内容**，如电子邮件、消息、日历数据、联系人、Apple Music 活动、HomeKit 数据，以及音频、视频和照片内容。
+  - **受保护的资源**，如蓝牙外设、家庭自动化功能、Wi-Fi 连接和本地网络。
+  - **设备功能**，如摄像头和麦克风。
+  - **设备的广告标识符**，用于支持应用跟踪。
+- **编写文案**，清楚说明你的应用如何使用你所请求的能力、数据或资源…力求用**一句简短而完整的话**，表达直接、具体且易于理解。使用句式首字母大写，避免被动语态，并在句末加上句号。
+
+#### Protecting Data
+
+- 避免仅依赖密码进行身份验证。在可能的情况下，使用**通行密钥**替代密码。如果需要继续使用密码进行身份验证，请通过要求**双重身份验证**来增强安全性。
+- 将敏感信息存储在**钥匙串**中。
+- 切勿将密码或其他安全内容存储在纯文本文件中。
+
+### SF Symbols
+
+- SF Symbols 提供**数千**个一致且高度可配置的符号，可与 San Francisco 系统字体无缝集成，并能在所有字重和尺寸下自动与文本对齐。
+- 注意：在某一年推出的符号及符号功能在较早版本的操作系统中不可用。
+- 请务必理解使用 SF Symbols 的条款和条件，包括**禁止**在**应用图标、标志或任何其他商标用途**中使用这些符号——或与其容易造成混淆的相似图像。
+
+#### Rending Modes
+
+- SF Symbols支持以下渲染模式：
+
+  - **Monochrome**（单色）：整枚符号用同一种颜色渲染（所有层同色/同不透明度）。
+  - **Hierarchical**（层级）：用同一种颜色，但按层级给不同层分配不同不透明度，形成前后/主次层次感。
+  - **Palette**（调色板）：对不同层分别指定两种或多种颜色（通常“一层一种颜色”）。
+  - **Multicolor**（多色/固有色）：符号自带预设的语义颜色（例如叶子偏绿、警示偏红）；有些符号仍允许部分层再叠加你指定的颜色。
+
+- 确认符号的渲染模式在所有上下文中都能良好工作…你可以使用**自动设置**来获取符号的**首选渲染模式**，但仍然建议检查结果，以确定在某些情况下使用不同的渲染模式是否能提高符号的可读性。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303104757838.png" alt="image-20260303104757838" style="zoom:50%;" />
+
+#### 可变颜色
+
+- 通过可变颜色，你可以表示一种会随时间变化的特性（例如容量或强度）。为了在视觉上传达这种变化，可变颜色会在数值从 0% 到 100% 之间达到不同阈值时，将颜色应用到符号的不同图层上。
+- 用可变颜色来传达“变化”，不要传达“深度”。
+
+#### Weights and Scales 
+
+- **九**种符号字重——从超细到黑体——分别对应旧金山系统字体的字重。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303105800298.png" alt="image-20260303105800298" style="zoom:50%;" />
+
+- 每个符号也提供**三**种缩放级别（新版 SF Symbols 没有 scales 选项，只能在代码中设定）：small、**medium**（默认）和 large。这些缩放级别是相对于 San Francisco 系统字体的大写字母高度来定义的。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303105954210.png" alt="image-20260303105954210" style="zoom:50%;" />
+
+#### Design Variants
+
+- SF Symbols 定义了多种设计变体——例如 **fill、slash 和 enclosed**——可帮助你在保持界面视觉一致性和简洁性的同时，清晰传达**精确的状态和操作**。例如，你可以使用某个符号的 slash 变体来表示某个项目或操作不可用，或使用 fill 变体来表示已选中。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303110505304.png" alt="image-20260303110505304" style="zoom:50%;" />
+
+- 符号变体支持多种设计目标：
+
+  - **轮廓变体**在工具栏、列表以及其他在文本旁显示符号的地方效果很好。
+  - 使用**包围形状**（如方形或圆形）的符号，在较小尺寸下可以提高可读性。
+  - **填充变体**中的实心区域往往会让符号在视觉上更具强调效果，因此非常适合用于 iOS 标签栏、滑动操作，以及使用强调色来传达选中状态的场景。
+
+#### Animations
+
+- SF Symbols 提供了一系列富有表现力且可配置的动画，可增强你的界面并为你的应用增添活力。
+
+#### Custom Symbols
+
+- 要创建自定义符号，请先导出一个与所需设计相似的**符号模板**，然后使用矢量编辑工具对其进行修改。
+- SF Symbols 包含描绘 Apple 产品和功能的受版权保护的符号。你可以在你的应用中显示这些符号，但不能对其进行自定义。
+
+### Typography（排版）
+
+- 你的字体排版选择可以帮助你呈现清晰易读的文本、传达信息层级、突出重要内容，并表达你的品牌或风格。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303113212775.png" alt="image-20260303113212775" style="zoom:50%;" />
+
+#### 确保可读性
+
+- 使用大多数人能轻松阅读的字体大小：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303114113824.png" alt="image-20260303114113824" style="zoom:50%;" />
+
+- 一般来说，避免使用过细的字体粗细。
+
+#### Conveying Hierarchy
+
+- 根据需要调整字体粗细、大小和颜色，以强调重要信息并帮助人们直观地理解层级。请确保在人们调整文本大小时，保持文本元素的相对层级关系和视觉区分。
+- 尽量减少所使用的**字体数量**，即使是在高度定制的界面中也是如此。混合使用过多不同的字体不仅会模糊信息层级、影响可读性，还会让界面在内部显得不一致或设计欠佳。
+
+#### 使用系统字体
+
+- Apple 提供了两种字体家族，支持广泛的字重、字号、样式和语言。
+
+- San Francisco（**SF**）是一款**无衬线**（sans serif）字体家族，包括 **SF Pro**（iOS/iPadOS的系统字体）、SF Compact、SF Arabic、SF Armenian、SF Georgian、SF Hebrew 和 SF Mono 等变体。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303115434385.png" alt="image-20260303115434385" style="zoom:39%;" />
+
+- 纽约（**NY**）是一款**衬线**字体家族，旨在能够单独使用，并与 SF 字体搭配良好。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303115615420.png" alt="image-20260303115615420" style="zoom:39%;" />
+
+#### 支持Dynamic Type
+
+- 确保你的应用布局能够适应所有字体大小…在 iPhone 或 iPad 上，前往“设置”>“辅助功能”>“显示与文字大小”>“更大字体”，开启“更大的辅助功能字体”，并确认你的应用仍然保持良好的可读性。
+
+### Writing（写作）
+
+#### Getting Started
+
+- 确定你应用的**语调**（voice）。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303143207839.png" alt="image-20260303143207839" style="zoom:50%;" />
+
+- 使你的语气（tone）与语境相匹配。一旦你确立了应用的语气风格，就要根据具体情况调整语气。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303143808422.png" alt="image-20260303143808422" style="zoom:50%;" />
+
+  比较这两个来自 Apple Watch 的示例的语气。在第一个示例中，语气直截了当、直接，反映了情况的严重性。在第二个示例中，语气轻松且带有祝贺意味：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303144044238.png" alt="image-20260303144044238" style="zoom:50%;" />
+
+- 表达清晰。选择容易理解且能准确表达意思的词语。检查每个词，确保它确实有存在的必要。如果可以用更少的词，就这样做。拿不准时，大声读出你的文字。
+
+- 为所有人而写…选择简单、朴实的语言，兼顾可访问性和本地化，避免使用行话和性别化术语。
+
+#### Best Practices 
+
+- 考虑每个屏幕的用途。注意屏幕上元素的顺序，将最重要的信息放在最前面。对文本进行格式化，使其易于阅读。
+- 以行动为导向。使用**主动语态**和**清晰的标签**，帮助用户在应用中从一个步骤顺畅地过渡到下一个步骤，或从一个界面切换到另一个界面。
+- 在为按钮和链接添加标签时，几乎总是最好使用**动词**。优先考虑**清晰性**，避免让标签过于花哨或耍小聪明。例如，仅使用“Next”通常比“Let’s do this!”效果更好。对于链接，应避免使用“Click here”，而应改用**更具描述性的词语或短语**，例如“Learn more about UX Writing.”
+- 建立**语言模式**：
+  - 标题式大小写或句式大小写…标题式更正式，而句式大小写更随意。选择适合你应用的风格。
+  - 第一人称或第二人称…“我的收藏”或“你已保存的项目”，…选择第一人称或第二人称，并保持一致。
+  - 继续或下一步。
+- 在任何**空白屏幕**上提供清晰的**下一步指引**…如果不清楚接下来该做什么，空白屏幕可能会令人却步，因此要引导用户可以采取的操作，并尽可能提供**按钮或链接**供其执行。请记住，空状态通常是暂时的，因此不要显示随后可能会消失的重要信息。
+- 编写清晰的**错误信息**。最好始终帮助人们避免出错。当必须提供错误信息时，应尽可能将其显示在靠近问题发生的位置，避免指责，并清楚说明可以采取哪些措施来解决问题…像“oops!”或“uh-oh”这样的感叹词通常没有必要，而且可能听起来不真诚。
+- 保持**设置标签**清晰简洁。通过尽可能实用地为其命名，帮助人们轻松找到所需的设置。如果设置标签本身不够清楚，请添加说明。描述开启后会产生的效果，人们自然可以推断出相反的情况…如果需要引导某人前往某个设置，请提供直接链接或按钮，而不是尝试描述其位置。
+- 在文本字段中显示提示。
+
+## Patterns
+
+<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303152739999.png" alt="image-20260303152739999" style="zoom:39%;" />
+
+### Charting Data
+
+- 以**图表**形式呈现数据可以帮助你清晰且富有吸引力地传达信息。
+
+- 图表的价值不在“画得复杂”，而在于帮用户完成**与数据相关、对他们有意义的任务**。三类典型任务：
+
+  - **分析趋势**：用历史数据或预测数据，看“走势/变化方向”，比如最近 30 天步数是否在上升、股票是否在走弱。
+  - 看过程/系统的**当前状态**：某个指标会随时间变化，你想快速知道“现在到哪了/当前水平”，比如下载进度、心率、温度、设备电量随时间。
+  - 做**对比评估**：把不同对象、或同一对象在不同时间的表现放一起比较，帮助判断差异，比如 A/B 两个方案转化率、各城市销量、今年 vs 去年同月。
+
+  用图表是为了“让人更快做判断/决策”，而不是为了展示数据本身。
+
+#### Best Practices 
+
+- 当你想突出显示**数据集**中的**重要信息**时，请使用图表。
+- 保持图表简洁，让人们在需要时自行选择查看更多细节。避免试图在图表中尽可能塞入大量数据的诱惑。
+- Make every chart in your app **accessible**.
+
+#### Designing Effective Charts
+
+- 一般来说，优先使用常见的图表类型。
+
+- 通过在图表中添加**描述性文本**来帮助理解。描述性文本的**标题、副标题和注释**有助于强调图表中最重要的信息，并突出可采取行动的关键要点。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195001614.png" alt="image-20260303195001614" style="zoom:50%;" />
+
+- 将图表的**大小**与其**功能、主题和细节层级**相匹配。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195315646.png" alt="image-20260303195315646" style="zoom:50%;" />
+
+- 在多个图表之间保持**一致性**，仅在需要突出差异时才偏离。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195739019.png" alt="image-20260303195739019" style="zoom:50%;" />
+
+### 输入数据
+
+- 当你需要从人们那里获取信息时，设计一些方式，使他们能够**轻松**提供信息而**不出错**。
+- 输入信息可能是一个繁琐的过程，无论人们使用何种交互方式。通过以下方式改进体验：
+  - 尽可能预先收集信息，以尽量减少人们需要提供的数据量。
+  - 支持所有可用的输入方式，让人们可以选择最适合自己的方法。
+
+#### Best Practices 
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
