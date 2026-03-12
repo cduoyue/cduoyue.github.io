@@ -2093,6 +2093,8 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
   <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312151708837.png" alt="image-20260312151708837" style="zoom:39%;" />
 
+  <img src="/photos/image-20260312151708837.png" alt="image-20260312151708837" style="zoom:39%;" />
+
 - 在受支持设备上运行的 iOS 应用可以使用 NFC 扫描来读取附着在现实世界物体上的**电子标签**（electronic tag）中的数据。例如，人们可以扫描一个玩具以将其与电子游戏连接起来，购物者可以扫描店内标牌以获取优惠券，或者零售员工可以扫描商品以跟踪库存。
 
 #### In-App Tag Reading
