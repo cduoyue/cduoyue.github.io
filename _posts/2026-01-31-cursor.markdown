@@ -48,7 +48,7 @@ excerpt: "A basic programming tool"
 
   - Rule应用的控制：
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201194107798.png" alt="image-20260201194107798" style="zoom:50%;" />
+    <img src="/photos/image-20260201194107798.png" alt="image-20260201194107798" style="zoom:50%;" />
 
 - 有_**Checkpoints**_:
 
@@ -93,11 +93,11 @@ excerpt: "A basic programming tool"
 
   - Capabilities: hypothesis generation, log instrumentation, runtime analysis 
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201053025836.png" alt="image-20260201053025836" style="zoom:50%;" />
+    <img src="/photos/image-20260201053025836.png" alt="image-20260201053025836" style="zoom:50%;" />
 
   - Tools: 启用所有工具 + _**debug server**_
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201054118419.png" alt="image-20260201054118419" style="zoom:50%;" />
+    <img src="/photos/image-20260201054118419.png" alt="image-20260201054118419" style="zoom:50%;" />
 
 - _**Ask**_:
 
@@ -170,7 +170,7 @@ excerpt: "A basic programming tool"
 
 - **假报错**，需要通过终端创建一个_**buildServer.json**_文件:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260201193734925.png" alt="image-20260201193734925" style="zoom:50%;" />
+  <img src="/photos/image-20260201193734925.png" alt="image-20260201193734925" style="zoom:50%;" />
 
   进入目录后，可仅运行第三行。（Cursor 里的 Swift 语言服务SourceKit-LSP没拿到 Xcode 工程的编译参数/SDK/scheme，于是把很多符号当成“找不到”）（运行类似_**xcode-build-server config -project GratefulMoments.xcodeproj -scheme GratefulMoments**_）
 
