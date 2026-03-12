@@ -97,25 +97,25 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 不同平台的（文字）自定义类型尺寸的推荐默认值为：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228171525966.png" alt="image-20260228171525966" style="zoom:50%;" />
+  <img src="/photos/image-20260228171525966.png" alt="image-20260228171525966" style="zoom:50%;" />
 
 - 记住**字重**会影响文字阅读的容易程度。（应设计成可通过iPhone设置）
 
 - 文字/图标（前景）和背景**颜色**之间必须达到一定“**亮度差**”，否则很多人（低视力、强光环境、色弱等）会看不清。通常，应努力满足“颜色对比度最小标准”。两个流行的测量颜色对比度的标准是Web Content Accessibility Guidelines (WCAG) 和Accessible Perceptual Contrast Algorithm (APCA)。**Accessibility Inspector** uses the following values from WCAG Level AA as guidance in determining whether your app’s colors have an acceptable contrast: (找出表中对比度的计算公式)
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228173604021.png" alt="image-20260228173604021" style="zoom:50%;" />
+  <img src="/photos/image-20260228173604021.png" alt="image-20260228173604021" style="zoom:50%;" />
 
   iPhone的设置里有一个Increase Contrast选项，至少要确保打开它时你的app的对比度满足要求。
 
 - 尽量选择**系统定义的颜色**，这些颜色通常有它们自己的**accessible variants**。如图：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228205014898.png" alt="image-20260228205014898" style="zoom:50%;" />
+  <img src="/photos/image-20260228205014898.png" alt="image-20260228205014898" style="zoom:50%;" />
 
   左图显示systemRed是一种**动态颜色**，会随深浅背景改变；右图显示当打开**Increase Contrast**后，会变成无障碍变体。
 
 - 不要单独使用颜色来传递信息，防色盲。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228205757579.png" alt="image-20260228205757579" style="zoom:50%;" />
+  <img src="/photos/image-20260228205757579.png" alt="image-20260228205757579" style="zoom:50%;" />
 
 - 应用**VoiceOver**，为盲人。
 
@@ -125,11 +125,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 支持**基于文本的方式**来享受音频和视频。根据不同的情境，为人们提供不同的基于文本的方式来体验他们的媒体，并允许人们自定义该文本的视觉呈现方式：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228212348137.png" alt="image-20260228212348137" style="zoom:50%;" />
+  <img src="/photos/image-20260228212348137.png" alt="image-20260228212348137" style="zoom:50%;" />
 
 - Use **haptics** in addition to **audio cues**：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228212826601.png" alt="image-20260228212826601" style="zoom:50%;" />
+  <img src="/photos/image-20260228212826601.png" alt="image-20260228212826601" style="zoom:50%;" />
 
 #### Mobility
 
@@ -137,11 +137,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 提供足够大尺寸的控件，推荐：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228213753144.png" alt="image-20260228213753144" style="zoom:50%;" />
+  <img src="/photos/image-20260228213753144.png" alt="image-20260228213753144" style="zoom:50%;" />
 
 - Consider **spacing between controls** as important as size:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228215210653.png" alt="image-20260228215210653" style="zoom:50%;" />
+  <img src="/photos/image-20260228215210653.png" alt="image-20260228215210653" style="zoom:50%;" />
 
   通常，给有**bezel**的控件提供**12点**padding，给没有bezel的控件提供**24点**padding（2个没bezel的控件之间就是48点）。
 
@@ -149,7 +149,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Offer **alternatives** to gestures. Make sure your UI’s core functionality is accessible through more than one type of physical interaction：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260228223859220.png" alt="image-20260228223859220" style="zoom:50%;" />
+  <img src="/photos/image-20260228223859220.png" alt="image-20260228223859220" style="zoom:50%;" />
 
 - 应用系统的**Voice Control**。To ensure a smooth experience, label interface elements appropriately.
 
@@ -187,7 +187,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 考虑将图标设计基于实心、重叠的形状（立体感）：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301130654500.png" alt="image-20260301130654500" style="zoom:50%;" />
+  <img src="/photos/image-20260301130654500.png" alt="image-20260301130654500" style="zoom:50%;" />
 
 - 仅在对你的体验或品牌至关重要时才包含**文本**。图标中的文本不利于无障碍或本地化，通常过小难以阅读，还会使图标显得杂乱。
 
@@ -201,7 +201,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 你可以为每种外观变体设计应用图标变体，系统会自动生成你未提供的变体。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301132128871.png" alt="image-20260301132128871" style="zoom:39%;" />
+  <img src="/photos/image-20260301132128871.png" alt="image-20260301132128871" style="zoom:39%;" />
 
 - 设计深色和有色调的图标，使其与系统应用图标和小组件和谐搭配。即图标要适配**系统的视觉风格**，特别是深色模式和主体色调。
 
@@ -228,7 +228,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
   - 考虑一种由实心、填充、相互重叠的半透明形状组成的简化设计。
   - 让系统来处理应用遮罩、模糊和其他视觉效果。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301172510302.png" alt="image-20260301172510302" style="zoom:39%;" />
+  <img src="/photos/image-20260301172510302.png" alt="image-20260301172510302" style="zoom:39%;" />
 
 - 在设计（可用Sketch等软件）你的应用图标并导出图层之前，请遵循以下指南以获得最佳效果：
 
@@ -244,7 +244,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 打开Icon Composer: _**Xcode –> Open Developer Tool –> Icon Composer**_。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301175206103.png" alt="image-20260301175206103" style="zoom:50%;" />
+  <img src="/photos/image-20260301175206103.png" alt="image-20260301175206103" style="zoom:50%;" />
 
   You use the **sidebar** on the left to organize layers into groups, the **canvas** in the middle to preview variants, and the **inspectors** on the right to modify appearances.
 
@@ -252,7 +252,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Tinted:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301182351524.png" alt="image-20260301182351524" style="zoom:50%;" />
+  <img src="/photos/image-20260301182351524.png" alt="image-20260301182351524" style="zoom:50%;" />
 
 ### Branding
 
@@ -285,23 +285,23 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在 Liquid Glass 中谨慎使用颜色。为减少视觉干扰，应限制应用于材质本身以及材质上的符号或文本的颜色用量。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301213727854.png" alt="image-20260301213727854" style="zoom:39%;" />
+  <img src="/photos/image-20260301213727854.png" alt="image-20260301213727854" style="zoom:39%;" />
 
 - 常见的色彩空间（有时称为色域）包括 **sRGB** 和 **Display P3**。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301214416906.png" alt="image-20260301214416906" style="zoom:50%;" />
+  <img src="/photos/image-20260301214416906.png" alt="image-20260301214416906" style="zoom:50%;" />
 
 ### 深色模式
 
 - 深色模式是一种全系统外观设置，使用**深色调色板**，为低光环境提供舒适的观看体验。深色调色板指：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301215535188.png" alt="image-20260301215535188" style="zoom:50%;" />
+  <img src="/photos/image-20260301215535188.png" alt="image-20260301215535188" style="zoom:50%;" />
 
 - 深色模式时，**深色文字**可能难以辨识，打开Increase Contrast反而可能让对比度更低。
 
 - 采用能够适应当前外观的颜色：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301221238741.png" alt="image-20260301221238741" style="zoom:50%;" />
+  <img src="/photos/image-20260301221238741.png" alt="image-20260301221238741" style="zoom:50%;" />
 
   当你需要自定义颜色时，在 Xcode 中将一个颜色集资源添加到应用的资源目录中，并指定该颜色的明亮和暗色变体。避免使用硬编码的颜色值或无法自适应的颜色。
 
@@ -319,7 +319,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在你的应用中保持所有界面图标的**视觉一致性**…使用一致的尺寸、细节程度、描边粗细（或字重）以及透视效果。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260301230432902.png" alt="image-20260301230432902" style="zoom:50%;" />
+  <img src="/photos/image-20260301230432902.png" alt="image-20260301230432902" style="zoom:50%;" />
 
 - In general, match the weights of interface icons and adjacent text.
 
@@ -331,7 +331,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 交付位图时，需要提供@1x, @2x, @3x三个版本（文件名需附加@1x等后缀），缺少高像素版本会插值虚化；不要对位图进行放大，也会插值虚化。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302102753131.png" alt="image-20260302102753131" style="zoom:50%;" />
+  <img src="/photos/image-20260302102753131.png" alt="image-20260302102753131" style="zoom:50%;" />
 
 - 设计图像时，先设计**@1x版本**（尺寸最小），再放大导出@2x和@3x版本。在@1x画板上做图时，尺寸/坐标都用整数，这样做能保证放大后依然落在像素栅格上，线条不会因落在半像素而发糊。画可缩放矢量图时，把锚点和尺寸、圆角、描边宽度都设为整数pt，确保在@1x时与像素网格对齐。
 
@@ -359,13 +359,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Apple 会用一组“环境特征（**traits**）”来描述设备/系统当前的使用场景，而这些特征的变化会影响你的界面应该怎么排版、怎么显示。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302142816861.png" alt="image-20260302142816861" style="zoom:50%;" />
+  <img src="/photos/image-20260302142816861.png" alt="image-20260302142816861" style="zoom:50%;" />
 
 - 使用 **SwiftUI 或 Auto Layout** 可以帮助你确保界面能够动态适应这些特征以及其他上下文变化。
 
 - 你可以通过遵循系统定义的**安全区域、边距和参考线**，并指定**布局修饰符**来微调界面中视图的位置，从而帮助确保界面具有良好的适应性。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302145044737.png" alt="image-20260302145044737" style="zoom:50%;" />
+  <img src="/photos/image-20260302145044737.png" alt="image-20260302145044737" style="zoom:50%;" />
 
 - 在多台设备上预览你的应用，使用不同的屏幕方向、本地化设置和文本大小。
 
@@ -384,7 +384,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使用标准材质和效果（例如模糊、活力效果以及混合模式），来传达 Liquid Glass 下方内容的结构感。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302155549930.png" alt="image-20260302155549930" style="zoom:50%;" />
+  <img src="/photos/image-20260302155549930.png" alt="image-20260302155549930" style="zoom:50%;" />
 
 - 根据**语义含义和推荐用法**选择材质和效果。避免仅根据它在界面上呈现的表面颜色来选择材质或效果，因为系统设置可能会改变其外观和行为。相反，应将**材质或鲜活度样式**与**具体使用场景**相匹配。（即选择材质要看功能目的，不是看颜色效果）
 
@@ -396,7 +396,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 标签和填充都有多个活力等级（如主要、次要、第三级），分隔符只有一个活力等级。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302161514864.png" alt="image-20260302161514864" style="zoom:50%;" />
+  <img src="/photos/image-20260302161514864.png" alt="image-20260302161514864" style="zoom:50%;" />
 
 ### Motion（动效）
 
@@ -413,7 +413,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 当你提交新的或更新的应用时，必须提供有关你的**隐私实践**以及你收集的**与隐私相关数据的详细信息**，以便 App Store 能在你的产品页面上显示这些信息。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260302165117121.png" alt="image-20260302165117121" style="zoom:50%;" />
+  <img src="/photos/image-20260302165117121.png" alt="image-20260302165117121" style="zoom:50%;" />
 
 #### Best Practices 
 
@@ -454,7 +454,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 确认符号的渲染模式在所有上下文中都能良好工作…你可以使用**自动设置**来获取符号的**首选渲染模式**，但仍然建议检查结果，以确定在某些情况下使用不同的渲染模式是否能提高符号的可读性。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303104757838.png" alt="image-20260303104757838" style="zoom:50%;" />
+  <img src="/photos/image-20260303104757838.png" alt="image-20260303104757838" style="zoom:50%;" />
 
 #### 可变颜色
 
@@ -465,17 +465,17 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - **九**种符号字重——从超细到黑体——分别对应旧金山系统字体的字重。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303105800298.png" alt="image-20260303105800298" style="zoom:50%;" />
+  <img src="/photos/image-20260303105800298.png" alt="image-20260303105800298" style="zoom:50%;" />
 
 - 每个符号也提供**三**种缩放级别（新版 SF Symbols 没有 scales 选项，只能在代码中设定）：small、**medium**（默认）和 large。这些缩放级别是相对于 San Francisco 系统字体的大写字母高度来定义的。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303105954210.png" alt="image-20260303105954210" style="zoom:50%;" />
+  <img src="/photos/image-20260303105954210.png" alt="image-20260303105954210" style="zoom:50%;" />
 
 #### Design Variants
 
 - SF Symbols 定义了多种设计变体——例如 **fill、slash 和 enclosed**——可帮助你在保持界面视觉一致性和简洁性的同时，清晰传达**精确的状态和操作**。例如，你可以使用某个符号的 slash 变体来表示某个项目或操作不可用，或使用 fill 变体来表示已选中。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303110505304.png" alt="image-20260303110505304" style="zoom:50%;" />
+  <img src="/photos/image-20260303110505304.png" alt="image-20260303110505304" style="zoom:50%;" />
 
 - 符号变体支持多种设计目标：
 
@@ -496,13 +496,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 你的字体排版选择可以帮助你呈现清晰易读的文本、传达信息层级、突出重要内容，并表达你的品牌或风格。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303113212775.png" alt="image-20260303113212775" style="zoom:50%;" />
+  <img src="/photos/image-20260303113212775.png" alt="image-20260303113212775" style="zoom:50%;" />
 
 #### 确保可读性
 
 - 使用大多数人能轻松阅读的字体大小：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303114113824.png" alt="image-20260303114113824" style="zoom:50%;" />
+  <img src="/photos/image-20260303114113824.png" alt="image-20260303114113824" style="zoom:50%;" />
 
 - 一般来说，避免使用过细的字体粗细。
 
@@ -517,11 +517,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - San Francisco（**SF**）是一款**无衬线**（sans serif）字体家族，包括 **SF Pro**（iOS/iPadOS的系统字体）、SF Compact、SF Arabic、SF Armenian、SF Georgian、SF Hebrew 和 SF Mono 等变体。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303115434385.png" alt="image-20260303115434385" style="zoom:39%;" />
+  <img src="/photos/image-20260303115434385.png" alt="image-20260303115434385" style="zoom:39%;" />
 
 - 纽约（**NY**）是一款**衬线**字体家族，旨在能够单独使用，并与 SF 字体搭配良好。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303115615420.png" alt="image-20260303115615420" style="zoom:39%;" />
+  <img src="/photos/image-20260303115615420.png" alt="image-20260303115615420" style="zoom:39%;" />
 
 #### 支持Dynamic Type
 
@@ -533,15 +533,15 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 确定你应用的**语调**（voice）。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303143207839.png" alt="image-20260303143207839" style="zoom:50%;" />
+  <img src="/photos/image-20260303143207839.png" alt="image-20260303143207839" style="zoom:50%;" />
 
 - 使你的语气（tone）与语境相匹配。一旦你确立了应用的语气风格，就要根据具体情况调整语气。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303143808422.png" alt="image-20260303143808422" style="zoom:50%;" />
+  <img src="/photos/image-20260303143808422.png" alt="image-20260303143808422" style="zoom:50%;" />
 
   比较这两个来自 Apple Watch 的示例的语气。在第一个示例中，语气直截了当、直接，反映了情况的严重性。在第二个示例中，语气轻松且带有祝贺意味：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303144044238.png" alt="image-20260303144044238" style="zoom:50%;" />
+  <img src="/photos/image-20260303144044238.png" alt="image-20260303144044238" style="zoom:50%;" />
 
 - 表达清晰。选择容易理解且能准确表达意思的词语。检查每个词，确保它确实有存在的必要。如果可以用更少的词，就这样做。拿不准时，大声读出你的文字。
 
@@ -563,7 +563,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 ## Patterns
 
-<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303152739999.png" alt="image-20260303152739999" style="zoom:39%;" />
+<img src="/photos/image-20260303152739999.png" alt="image-20260303152739999" style="zoom:39%;" />
 
 ### Charting Data
 
@@ -589,15 +589,15 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 通过在图表中添加**描述性文本**来帮助理解。描述性文本的**标题、副标题和注释**有助于强调图表中最重要的信息，并突出可采取行动的关键要点。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195001614.png" alt="image-20260303195001614" style="zoom:50%;" />
+  <img src="/photos/image-20260303195001614.png" alt="image-20260303195001614" style="zoom:50%;" />
 
 - 将图表的**大小**与其**功能、主题和细节层级**相匹配。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195315646.png" alt="image-20260303195315646" style="zoom:50%;" />
+  <img src="/photos/image-20260303195315646.png" alt="image-20260303195315646" style="zoom:50%;" />
 
 - 在多个图表之间保持**一致性**，仅在需要突出差异时才偏离。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303195739019.png" alt="image-20260303195739019" style="zoom:50%;" />
+  <img src="/photos/image-20260303195739019.png" alt="image-20260303195739019" style="zoom:50%;" />
 
 ### 输入数据
 
@@ -618,7 +618,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 反馈有助于人们了解正在发生什么，发现他们接下来可以做什么，理解行动的结果，并避免错误。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303221123229.png" alt="image-20260303221123229" style="zoom:50%;" />
+  <img src="/photos/image-20260303221123229.png" alt="image-20260303221123229" style="zoom:50%;" />
 
 - 最有效的反馈通常会根据所传达信息的**重要性**来**匹配其呈现方式**。例如，以一种被动的方式展示状态信息通常效果很好，这样人们可以在需要时查看。相反，关于可能发生数据丢失的警告则需要打断人们的操作，以便他们有机会避免问题。
 
@@ -626,7 +626,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 尽量把“状态信息”（status）直接融入界面里，让用户不需要额外操作就能顺手看到“现在发生到哪一步/当前是什么状态”。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260303222324241.png" alt="image-20260303222324241" style="zoom:50%;" />
+  <img src="/photos/image-20260303222324241.png" alt="image-20260303222324241" style="zoom:50%;" />
 
 - 使用**警报**来传递关键（并且最好是可操作的）信息。
 
@@ -662,7 +662,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 当它不会给你的体验造成不必要的障碍时，账户可以成为人们访问其内容并跟踪个人信息的一种便捷方式。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260304133036066.png" alt="image-20260304133036066" style="zoom:50%;" />
+  <img src="/photos/image-20260304133036066.png" alt="image-20260304133036066" style="zoom:50%;" />
 
 - 如果你需要账户，请考虑使用“**通过 Apple 登录**”，为用户提供他们可以信任的一致登录体验，并且无需记住多个账户和身份验证方式，从而更加方便。
 
@@ -703,7 +703,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在每个系统定义的中断级别中，通知提醒可以以下列方式表现：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260304152225983.png" alt="image-20260304152225983" style="zoom:50%;" />
+  <img src="/photos/image-20260304152225983.png" alt="image-20260304152225983" style="zoom:50%;" />
 
 - 定时推送摘要（scheduled delivery）可以在设置 –> 通知中打开设置。
 
@@ -754,11 +754,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 提示（tip）是一种小型的临时视图，用于简要说明如何在你的应用中使用某个功能。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260304232917665.png" alt="image-20260304232917665" style="zoom:50%;" />
+  <img src="/photos/image-20260304232917665.png" alt="image-20260304232917665" style="zoom:50%;" />
 
 - 为你的应用用户界面使用最合适的提示类型。显示**内联提示**以避免遮挡重要信息…当你不想打断内容流程时，显示**弹出提示**。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260304233239708.png" alt="image-20260304233239708" style="zoom:50%;" />
+  <img src="/photos/image-20260304233239708.png" alt="image-20260304233239708" style="zoom:50%;" />
 
 - 为**简单功能**使用提示。提示最适合用于那些易于描述、并且人们只需几个简单步骤即可完成的功能。如果某个功能需要超过三个操作步骤，那么它可能对提示来说过于复杂。
 
@@ -812,7 +812,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 避免用与锻炼无关的信息分散人们在锻炼时的注意力…这里是一种许多 watchOS 锻炼应用（包括 Workout）使用的布局：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305011951131.png" alt="image-20260305011951131" style="zoom:50%;" />
+  <img src="/photos/image-20260305011951131.png" alt="image-20260305011951131" style="zoom:50%;" />
 
 - 提供易于查找和点击的锻炼控制。在让人们能够轻松暂停、继续和停止锻炼的同时，务必提供清晰的**反馈**，以表明会话何时开始或停止。
 
@@ -830,7 +830,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 将数据整理成图表，以清晰且具有视觉吸引力的方式传达信息。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305131227853.png" alt="image-20260305131227853" style="zoom:39%;" />
+  <img src="/photos/image-20260305131227853.png" alt="image-20260305131227853" style="zoom:39%;" />
 
 - SwiftUI 里原生做图表（柱状/折线/面积/散点等），主要就是 **Swift Charts**（代码里 **import Charts**，用 Chart { ... } + BarMark/LineMark 等）。
 
@@ -838,7 +838,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 图表由若干**图形元素**组成，这些元素描绘数据集中各项数值并传达关于它们的信息。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305132229953.png" alt="image-20260305132229953" style="zoom:50%;" />
+  <img src="/photos/image-20260305132229953.png" alt="image-20260305132229953" style="zoom:50%;" />
 
 - **标记**（mark）是数据值的可视化表示……你可以选择一种标记类型，例如条形、线或点。在图表中描绘单个数据值的一般任务称为**绘制**（plotting），而包含这些标记的区域称为**绘图区**（plot area）。
 
@@ -852,13 +852,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 建立一致的**视觉层级**，以帮助传达各个图表元素的相对重要性。通常，你会希望数据本身最为突出，同时让说明和坐标轴提供额外的背景信息，而不与数据本身相互竞争。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305134953154.png" alt="image-20260305134953154" style="zoom:50%;" />
+  <img src="/photos/image-20260305134953154.png" alt="image-20260305134953154" style="zoom:50%;" />
 
 - 在**紧凑**的环境中，应**最大化绘图区的宽度**，以便为人们提供足够的空间来舒适地查看图表。为了帮助重要数据在给定宽度内良好呈现，应确保纵轴上的标签在不失去清晰度的前提下尽可能简短。你也可以考虑在图表的其他区域（例如标题中）说明单位，并在不会遮挡重要信息的情况下，将较长的轴标签（如类别名称）放置在绘图区内部。（即窄屏时优先保证数据区宽度；把“长文字”从轴旁边挪走（挪到标题或图内），让图更容易看清。）
 
 - 让每个图表都具备无障碍访问能力…支持 **VoiceOver** 至关重要…除了提供用于描述图表各个组成部分的**无障碍标签**之外，你还可以通过使用音频图（**Audio Graphs**）来进一步增强 VoiceOver 的体验。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305140946984.png" alt="image-20260305140946984" style="zoom:50%;" />
+  <img src="/photos/image-20260305140946984.png" alt="image-20260305140946984" style="zoom:50%;" />
 
 - 在合适的时候让人们与数据进行交互，但不要要求必须通过交互才能显示关键信息。
 
@@ -868,11 +868,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI里的主要API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305142122681.png" alt="image-20260305142122681" style="zoom:50%;" />
+  <img src="/photos/image-20260305142122681.png" alt="image-20260305142122681" style="zoom:50%;" />
 
 - 在图像视图中，你可以拉伸（stretch）、按比例填充（scale to fill）、适应大小（size to fit），或将图像固定到特定位置。图像视图通常不是交互式的。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305151414579.png" alt="image-20260305151414579" style="zoom:50%;" />
+  <img src="/photos/image-20260305151414579.png" alt="image-20260305151414579" style="zoom:50%;" />
 
 ##### Best Practices 
 
@@ -890,13 +890,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI中文本视图主要的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305152812729.png" alt="image-20260305152812729" style="zoom:50%;" />
+  <img src="/photos/image-20260305152812729.png" alt="image-20260305152812729" style="zoom:50%;" />
 
 - 文本视图可以是任意高度，并且当内容超出视图范围时允许滚动。
 
 - 如果文本视图是可编辑的，当人们选择该视图时会出现键盘。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305153641247.png" alt="image-20260305153641247" style="zoom:39%;" />
+  <img src="/photos/image-20260305153641247.png" alt="image-20260305153641247" style="zoom:39%;" />
 
 ##### Best Practices 
 
@@ -908,13 +908,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - **Web 视图**会在你的应用内直接加载并显示丰富的网页内容，例如嵌入式 HTML 和网站。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305162458568.png" alt="image-20260305162458568" style="zoom:29%;" />
+  <img src="/photos/image-20260305162458568.png" alt="image-20260305162458568" style="zoom:29%;" />
 
   例如Mail app里的这封HTML格式邮件。
 
 - SwiftUI里Web视图的主要API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305162834448.png" alt="image-20260305162834448" style="zoom:50%;" />
+  <img src="/photos/image-20260305162834448.png" alt="image-20260305162834448" style="zoom:50%;" />
 
 ### Layout and Organization （布局和组织）
 
@@ -924,7 +924,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI里盒子的主要API是**GroupBox**：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305164516256.png" alt="image-20260305164516256" style="zoom:39%;" />
+  <img src="/photos/image-20260305164516256.png" alt="image-20260305164516256" style="zoom:39%;" />
 
 ##### Best Practices
 
@@ -932,7 +932,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 考虑使用**内边距和对齐方式**，在框内传达额外的分组关系。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305165251361.png" alt="image-20260305165251361" style="zoom:39%;" />
+  <img src="/photos/image-20260305165251361.png" alt="image-20260305165251361" style="zoom:39%;" />
 
 ##### Content
 
@@ -943,11 +943,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 集合用于管理一组有序的内容，并以可自定义且高度可视化的布局呈现它。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305212910940.png" alt="image-20260305212910940" style="zoom:39%;" />
+  <img src="/photos/image-20260305212910940.png" alt="image-20260305212910940" style="zoom:39%;" />
 
 - 集合在SwiftUI中对应的API是：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260305213013414.png" alt="image-20260305213013414" style="zoom:50%;" />
+  <img src="/photos/image-20260305213013414.png" alt="image-20260305213013414" style="zoom:50%;" />
 
 - 一般来说，集合非常适合展示基于图像的内容。
 
@@ -989,17 +989,17 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - **活动视图**——通常称为**共享表**——会呈现一系列人们可以在当前上下文中执行的任务。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306124345305.png" alt="image-20260306124345305" style="zoom:39%;" />
+  <img src="/photos/image-20260306124345305.png" alt="image-20260306124345305" style="zoom:39%;" />
 
 - SwiftUI中的API是**ShareLink**。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306124829404.png" alt="image-20260306124829404" style="zoom:39%;" />
+  <img src="/photos/image-20260306124829404.png" alt="image-20260306124829404" style="zoom:39%;" />
 
 - 人们通常会在查看页面或文档时选择“操作”按钮，或在选择某个项目之后，显示共享表。（即share sheet 总是**依附**于当前上下文或当前选择，而不是脱离内容独立出现）
 
 - 你可以提供**特定于应用的活动**，这些活动会出现在共享表中……默认情况下，系统会先列出特定于应用的操作，然后再列出可在多个应用或整个系统中使用的操作——例如“添加到文件”或“AirPlay”。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306130337273.png" alt="image-20260306130337273" style="zoom:50%;" />
+  <img src="/photos/image-20260306130337273.png" alt="image-20260306130337273" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1015,7 +1015,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 一般来说，一个按钮结合了三个属性，以清晰地传达其功能：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306150903577.png" alt="image-20260306150903577" style="zoom:50%;" />
+  <img src="/photos/image-20260306150903577.png" alt="image-20260306150903577" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1027,7 +1027,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - **系统按钮**提供多种样式，在支持自定义的同时，提供内置的交互状态、无障碍支持以及外观自适应。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306152557586.png" alt="image-20260306152557586" style="zoom:50%;" />
+  <img src="/photos/image-20260306152557586.png" alt="image-20260306152557586" style="zoom:50%;" />
 
 - 一般来说，对于视图中最可能执行的操作，应使用具有**醒目视觉样式**的按钮。为了吸引人们注意某个特定按钮，应使用醒目的按钮样式，这样系统就可以为按钮的背景应用**强调色**……每个视图中醒目的按钮数量应保持在**一到两个**。呈现过多醒目的按钮会增加认知负担，使人们在做出选择前需要花更多时间权衡各种选项。
 
@@ -1052,7 +1052,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI中上下文菜单的主要API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306160436129.png" alt="image-20260306160436129" style="zoom:39%;" />
+  <img src="/photos/image-20260306160436129.png" alt="image-20260306160436129" style="zoom:39%;" />
 
 ##### Best Practices
 
@@ -1072,13 +1072,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 为某个项目提供上下文菜单或**编辑菜单**中的一种，但不要同时提供两者。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306184155356.png" alt="image-20260306184155356" style="zoom:50%;" />
+  <img src="/photos/image-20260306184155356.png" alt="image-20260306184155356" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306184206398.png" alt="image-20260306184206398" style="zoom:50%;" />
+  <img src="/photos/image-20260306184206398.png" alt="image-20260306184206398" style="zoom:50%;" />
 
 - 优先提供**图形化预览**，以明确上下文菜单命令的目标。例如，当人们在“备忘录”或“邮件”中的列表项上显示上下文菜单时，预览会展示实际内容的精简版本，帮助人们确认他们正在操作的是自己想要的项目。图形化预览对应的API是：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306185328961.png" alt="image-20260306185328961" style="zoom:50%;" />
+  <img src="/photos/image-20260306185328961.png" alt="image-20260306185328961" style="zoom:50%;" />
 
 #### Edit Menus
 
@@ -1108,7 +1108,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 菜单对应SwiftUI中的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306195050587.png" alt="image-20260306195050587" style="zoom:50%;" />
+  <img src="/photos/image-20260306195050587.png" alt="image-20260306195050587" style="zoom:50%;" />
 
 ##### Labels
 
@@ -1122,7 +1122,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使用单个图标来引出一组相似的项目。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306212645053.png" alt="image-20260306212645053" style="zoom:50%;" />
+  <img src="/photos/image-20260306212645053.png" alt="image-20260306212645053" style="zoom:50%;" />
 
 ##### Organizations
 
@@ -1139,13 +1139,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 弹出按钮显示一个包含**互斥选项**的菜单。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306214133520.png" alt="image-20260306214133520" style="zoom:39%;" />
+  <img src="/photos/image-20260306214133520.png" alt="image-20260306214133520" style="zoom:39%;" />
 
 - SwiftUI中弹出按钮对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306215203299.png" alt="image-20260306215203299" style="zoom:50%;" />
+  <img src="/photos/image-20260306215203299.png" alt="image-20260306215203299" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306215218793.png" alt="image-20260306215218793" style="zoom:50%;" />
+  <img src="/photos/image-20260306215218793.png" alt="image-20260306215218793" style="zoom:50%;" />
 
 - 使用**弹出按钮**来呈现一个由互斥选项或状态组成的扁平列表。弹出按钮可帮助用户做出会**影响其内容或周围视图**的选择。如果你需要以下功能，请改用**下拉按钮**：
 
@@ -1159,7 +1159,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 下拉按钮 = 用**按钮**展开一组**相关动作**的菜单。它的SwiftUI里对应的API也是Menu：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306221142378.png" alt="image-20260306221142378" style="zoom:50%;" />
+  <img src="/photos/image-20260306221142378.png" alt="image-20260306221142378" style="zoom:50%;" />
 
 - 在人们在下拉按钮的菜单中选择一个项目后，菜单会关闭，应用程序会执行所选的操作。
 
@@ -1176,11 +1176,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 工具栏由一个或多个命令/控件集合组成，水平排列在视图的顶部或底部边缘，并按逻辑分组为不同的部分。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306224806918.png" alt="image-20260306224806918" style="zoom:39%;" />
+  <img src="/photos/image-20260306224806918.png" alt="image-20260306224806918" style="zoom:39%;" />
 
 - 工具栏在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306225519828.png" alt="image-20260306225519828" style="zoom:50%;" />
+  <img src="/photos/image-20260306225519828.png" alt="image-20260306225519828" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1192,7 +1192,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在 iOS 中，专用于导航的工具栏有时被称为**导航栏**。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110240048.png" alt="image-20260307110240048" style="zoom:50%;" />
+  <img src="/photos/image-20260307110240048.png" alt="image-20260307110240048" style="zoom:50%;" />
 
 ##### Actions
 
@@ -1200,15 +1200,15 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 确保每个控件的含义清晰。不要让用户去猜测或通过试验来弄清工具栏项目的作用。相比文本，更倾向于为项目使用简单、易识别的**符号**；但像**编辑**这类难以用符号很好表示的操作除外。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110815245.png" alt="image-20260307110815245" style="zoom:50%;" />
+  <img src="/photos/image-20260307110815245.png" alt="image-20260307110815245" style="zoom:50%;" />
 
 - 优先使用系统提供的无边框符号。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110909287.png" alt="image-20260307110909287" style="zoom:50%;" />
+  <img src="/photos/image-20260307110909287.png" alt="image-20260307110909287" style="zoom:50%;" />
 
 - 对于诸如 Done 或 Submit 等关键操作，请使用 .prominent 样式。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307111004782.png" alt="image-20260307111004782" style="zoom:50%;" />
+  <img src="/photos/image-20260307111004782.png" alt="image-20260307111004782" style="zoom:50%;" />
 
 ##### Item Groupings
 
@@ -1220,7 +1220,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使带有文本标签的操作保持分开。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307112005820.png" alt="image-20260307112005820" style="zoom:50%;" />
+  <img src="/photos/image-20260307112005820.png" alt="image-20260307112005820" style="zoom:50%;" />
 
 ### Navigation and Search
 
@@ -1230,11 +1230,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 搜索字段在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307113206005.png" alt="image-20260307113206005" style="zoom:50%;" />
+  <img src="/photos/image-20260307113206005.png" alt="image-20260307113206005" style="zoom:50%;" />
 
 - 搜索字段可以使用**范围控制**（scope control, 一个放在搜索附近的**分段选择器**）以及**令牌**（token, 不是普通文本，而是被系统显示成一个个独立的小块，用户可以点它、删它、改它。等于给搜索再附加具体**过滤条件**）来帮助过滤并细化其搜索范围。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307120109977.png" alt="image-20260307120109977" style="zoom:39%;" />
+  <img src="/photos/image-20260307120109977.png" alt="image-20260307120109977" style="zoom:39%;" />
 
 ##### Best Practices
 
@@ -1247,7 +1247,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 工具栏中的搜索字段：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307120641232.png" alt="image-20260307120641232" style="zoom:39%;" />
+  <img src="/photos/image-20260307120641232.png" alt="image-20260307120641232" style="zoom:39%;" />
 
   如果有空间，把搜索放在**底部**……当搜索是优先事项时，在任何情况下把搜索放在底部都很有用，因为这样可以让搜索体验更容易触达……当需要让步于屏幕底部的内容，或者没有底部工具栏时，把搜索放在顶部。
 
@@ -1257,7 +1257,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 标签栏在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307121507225.png" alt="image-20260307121507225" style="zoom:50%;" />
+  <img src="/photos/image-20260307121507225.png" alt="image-20260307121507225" style="zoom:50%;" />
 
 - 标签栏帮助人们理解应用所提供的不同类型的信息或功能。它们还允许人们在不同视图部分之间快速切换，同时保留每个部分中的当前导航状态。
 
@@ -1273,13 +1273,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使用徽章来指示有关键性信息可用。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307122634853.png" alt="image-20260307122634853" style="zoom:50%;" />
+  <img src="/photos/image-20260307122634853.png" alt="image-20260307122634853" style="zoom:50%;" />
 
 ##### Platform Considerations
 
 - 对于带有附属组件的标签栏（例如“音乐”中的 MiniPlayer），当用户向下滚动时，你可以选择将标签栏最小化，并将该附属组件与其内联。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307123124215.png" alt="image-20260307123124215" style="zoom:50%;" />
+  <img src="/photos/image-20260307123124215.png" alt="image-20260307123124215" style="zoom:50%;" />
 
 - 标签栏可以在末尾包含一个独立的搜索项。
 
@@ -1289,13 +1289,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 操作表是一个**模态视图**，用于呈现与用户发起的某个操作相关的选项。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125407986.png" alt="image-20260307125407986" style="zoom:39%;" />
+  <img src="/photos/image-20260307125407986.png" alt="image-20260307125407986" style="zoom:39%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125130148.png" alt="image-20260307125130148" style="zoom:50%;" />
+  <img src="/photos/image-20260307125130148.png" alt="image-20260307125130148" style="zoom:50%;" />
 
 - 操作表在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125740533.png" alt="image-20260307125740533" style="zoom:50%;" />
+  <img src="/photos/image-20260307125740533.png" alt="image-20260307125740533" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1307,13 +1307,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 警告会向人们提供**立即**需要的**关键**信息。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307150247755.png" alt="image-20260307150247755" style="zoom:39%;" />
+  <img src="/photos/image-20260307150247755.png" alt="image-20260307150247755" style="zoom:39%;" />
 
   例如，警告可以告诉人们存在的问题，在他们的操作可能会破坏数据时提醒他们，并让他们有机会确认一笔购买或他们发起的其他重要操作。
 
 - Alert在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307150859988.png" alt="image-20260307150859988" style="zoom:50%;" />
+  <img src="/photos/image-20260307150859988.png" alt="image-20260307150859988" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1341,7 +1341,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 页面控件在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307154339278.png" alt="image-20260307154339278" style="zoom:50%;" />
+  <img src="/photos/image-20260307154339278.png" alt="image-20260307154339278" style="zoom:50%;" />
 
 - 页面控件可以包含一种半透明的圆角矩形背景外观，用于为指示器提供视觉对比。你可以选择以下背景样式之一：
 
@@ -1355,7 +1355,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 滚动视图在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307155814743.png" alt="image-20260307155814743" style="zoom:50%;" />
+  <img src="/photos/image-20260307155814743.png" alt="image-20260307155814743" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1367,13 +1367,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Sheet 可帮助人们执行一个与其当前上下文密切相关的、范围限定的任务。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307160701159.png" alt="image-20260307160701159" style="zoom:39%;" />
+  <img src="/photos/image-20260307160701159.png" alt="image-20260307160701159" style="zoom:39%;" />
 
 - 默认情况下，sheet 是**模态**的，它会呈现一种有针对性的体验，在用户关闭该 sheet 之前，阻止他们与父视图进行交互。
 
 - sheet在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307164423677.png" alt="image-20260307164423677" style="zoom:50%;" />
+  <img src="/photos/image-20260307164423677.png" alt="image-20260307164423677" style="zoom:50%;" />
 
 - 模态表单适用于向用户**请求特定信息**，或呈现一个**简单任务**，让他们在返回父视图之前完成。
 
@@ -1387,7 +1387,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 非模态表单API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307165832059.png" alt="image-20260307165832059" style="zoom:50%;" />
+  <img src="/photos/image-20260307165832059.png" alt="image-20260307165832059" style="zoom:50%;" />
 
 ### Selection and Input
 
@@ -1399,9 +1399,9 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 颜色井在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307171244155.png" alt="image-20260307171244155" style="zoom:50%;" />
+  <img src="/photos/image-20260307171244155.png" alt="image-20260307171244155" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307171304076.png" alt="image-20260307171304076" style="zoom:39%;" />
+  <img src="/photos/image-20260307171304076.png" alt="image-20260307171304076" style="zoom:39%;" />
 
 ##### Best Practices
 
@@ -1413,7 +1413,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 分段控件在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307172647273.png" alt="image-20260307172647273" style="zoom:50%;" />
+  <img src="/photos/image-20260307172647273.png" alt="image-20260307172647273" style="zoom:50%;" />
 
 - 像按钮一样，分段可以包含文本或图像。
 
@@ -1421,7 +1421,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 分段控件可以提供单个选择或多个选择。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307172950226.png" alt="image-20260307172950226" style="zoom:50%;" />
+  <img src="/photos/image-20260307172950226.png" alt="image-20260307172950226" style="zoom:50%;" />
 
 - 使用分段控件来提供彼此紧密相关的选项，这些选项会影响对象、状态或视图。
 
@@ -1437,11 +1437,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 滑块是一条带有**控制柄**（称为**拇指**）的水平轨道，人们可以在最小值和最大值之间进行调整。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307173949905.png" alt="image-20260307173949905" style="zoom:39%;" />
+  <img src="/photos/image-20260307173949905.png" alt="image-20260307173949905" style="zoom:39%;" />
 
 - Slider在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307174330753.png" alt="image-20260307174330753" style="zoom:50%;" />
+  <img src="/photos/image-20260307174330753.png" alt="image-20260307174330753" style="zoom:50%;" />
 
 ##### Best Practices 
 
@@ -1449,7 +1449,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 考虑为滑块配备相应的文本字段和步进器作为补充。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307174559976.png" alt="image-20260307174559976" style="zoom:50%;" />
+  <img src="/photos/image-20260307174559976.png" alt="image-20260307174559976" style="zoom:50%;" />
 
 #### Steppers（步进器）
 
@@ -1457,7 +1457,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Stepper在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307215944784.png" alt="image-20260307215944784" style="zoom:50%;" />
+  <img src="/photos/image-20260307215944784.png" alt="image-20260307215944784" style="zoom:50%;" />
 
 #### Text Field
 
@@ -1465,7 +1465,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 文本字段在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307221451772.png" alt="image-20260307221451772" style="zoom:50%;" />
+  <img src="/photos/image-20260307221451772.png" alt="image-20260307221451772" style="zoom:50%;" />
 
 ##### Best Practices 
 
@@ -1479,11 +1479,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使用**数字格式化器**来帮助处理数值数据。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307222415696.png" alt="image-20260307222415696" style="zoom:39%;" />
+  <img src="/photos/image-20260307222415696.png" alt="image-20260307222415696" style="zoom:39%;" />
 
 - 根据字段的需要调整换行。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307222741553.png" alt="image-20260307222741553" style="zoom:50%;" />
+  <img src="/photos/image-20260307222741553.png" alt="image-20260307222741553" style="zoom:50%;" />
 
 - 显示合适的键盘类型。
 
@@ -1498,7 +1498,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Toggle在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307224338604.png" alt="image-20260307224338604" style="zoom:50%;" />
+  <img src="/photos/image-20260307224338604.png" alt="image-20260307224338604" style="zoom:50%;" />
 
 
 
@@ -1513,7 +1513,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 控制虚拟键盘类型等行为的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308121106423.png" alt="image-20260308121106423" style="zoom:50%;" />
+  <img src="/photos/image-20260308121106423.png" alt="image-20260308121106423" style="zoom:50%;" />
 
   textContentType告诉系统内容语义后，系统可以更聪明地辅助输入，比如自动填充验证码。
 
@@ -1525,7 +1525,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 使用**键盘布局指南**（keyboard layout guide），让键盘感觉像是界面的一个集成部分。使用布局指南还能帮助你在虚拟键盘显示在屏幕上时，保持界面中的重要部分可见。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308123415163.png" alt="image-20260308123415163" style="zoom:50%;" />
+  <img src="/photos/image-20260308123415163.png" alt="image-20260308123415163" style="zoom:50%;" />
 
 ### Status
 
@@ -1535,7 +1535,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI界面中显示活动圆环的代码：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308131806622.png" alt="image-20260308131806622" style="zoom:39%;" />
+  <img src="/photos/image-20260308131806622.png" alt="image-20260308131806622" style="zoom:39%;" />
 
 ##### Best Practices 
 
@@ -1549,7 +1549,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Ring colors:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308132633270.png" alt="image-20260308132633270" style="zoom:50%;" />
+  <img src="/photos/image-20260308132633270.png" alt="image-20260308132633270" style="zoom:50%;" />
 
 - 保持活动圆环的**边距**。活动圆环元素必须包含最小外边距，该外边距不得小于**圆环之间的距离**。绝不允许其他元素裁剪、遮挡或侵占该边距或圆环本身。（目的是确保活动圆环周围有足够的**呼吸空间**）
 
@@ -1557,13 +1557,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 仪表在一系列数值范围内显示一个特定的数值。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308133646570.png" alt="image-20260308133646570" style="zoom:39%;" />
+  <img src="/photos/image-20260308133646570.png" alt="image-20260308133646570" style="zoom:39%;" />
 
   仪表还能通过**文字和颜色**来标注整个范围的含义。
 
 - 仪表在SwiftUI中对应的API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308140737577.png" alt="image-20260308140737577" style="zoom:50%;" />
+  <img src="/photos/image-20260308140737577.png" alt="image-20260308140737577" style="zoom:50%;" />
 
 - 使用**容量样式**的仪表会显示一个填充，该填充在路径上数值所在的位置停止。
 
@@ -1578,7 +1578,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 进度指示器在SwiftUI中对应的API是：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308161630038.png" alt="image-20260308161630038" style="zoom:39%;" />
+  <img src="/photos/image-20260308161630038.png" alt="image-20260308161630038" style="zoom:39%;" />
 
 ##### Best Practices 
 
@@ -1590,11 +1590,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - **刷新控件**（refresh control）让人们可以立即重新加载内容（通常是在表格视图中），而无需等待下一次自动内容更新发生。刷新控件是一种特殊类型的活动指示器，默认是隐藏的，当人们向下拖动他们想要重新加载的视图时才会显示出来。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308162935847.png" alt="image-20260308162935847" style="zoom:39%;" />
+  <img src="/photos/image-20260308162935847.png" alt="image-20260308162935847" style="zoom:39%;" />
 
   API：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308162956205.png" alt="image-20260308162956205" style="zoom:50%;" />
+  <img src="/photos/image-20260308162956205.png" alt="image-20260308162956205" style="zoom:50%;" />
 
 #### Rating Indicators
 
@@ -1602,7 +1602,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - iOS中评分指示器没有原生API，通常如下实现：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308164206177.png" alt="image-20260308164206177" style="zoom:50%;" />
+  <img src="/photos/image-20260308164206177.png" alt="image-20260308164206177" style="zoom:50%;" />
 
 - 评分指示器尺寸可以人为指定，但不应随可用宽度弹性自适应。
 
@@ -1618,7 +1618,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 一旦有人开始使用你的应用，其 App Shortcuts 就可以**反映他们的选择**，例如 FaceTime 用于呼叫**最近联系人**的那些快捷操作。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308174812676.png" alt="image-20260308174812676" style="zoom:39%;" />
+  <img src="/photos/image-20260308174812676.png" alt="image-20260308174812676" style="zoom:39%;" />
 
 - App Shortcuts 使用 **App Intents** 来定义应用内的操作，使这些操作可供系统使用。
 
@@ -1659,7 +1659,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 仔细考虑何时更新数据… 你每天只能有限次数地更新时间线，而且系统为每个应用存储的时间线条目数量也是有限的，因此你需要选择能提升数据实用性的时间点。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309112441519.png" alt="image-20260309112441519" style="zoom:50%;" />
+  <img src="/photos/image-20260309112441519.png" alt="image-20260309112441519" style="zoom:50%;" />
 
 #### Controls（控制项）
 
@@ -1669,13 +1669,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Control在SwiftUI中的实现是：用 **WidgetKit** 的 **ControlWidget 系列 API + App Intents**。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309161549709.png" alt="image-20260309161549709" style="zoom:50%;" />
+  <img src="/photos/image-20260309161549709.png" alt="image-20260309161549709" style="zoom:50%;" />
 
 - 从 iOS 18 和 iPadOS 18 开始，控制项是一种**按钮或开关**，可为用户快速访问你的应用功能提供入口。
 
 - 控件包含一个符号图像、一个标题，以及（可选的）一个值。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309155620090.png" alt="image-20260309155620090" style="zoom:50%;" />
+  <img src="/photos/image-20260309155620090.png" alt="image-20260309155620090" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1687,11 +1687,11 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - iPhone 的**音乐播放体验**在表现上很像实时活动，但开发实现上通常应理解为系统的 **Now Playing** 体验，不要直接等同于你自己用 **ActivityKit** 做的 Live Activity。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309163023399.png" alt="image-20260309163023399" style="zoom:50%;" />
+  <img src="/photos/image-20260309163023399.png" alt="image-20260309163023399" style="zoom:50%;" />
 
 - 实时活动会显示来自你应用的最新信息，让人们能够一眼查看某个活动、事件或任务的进度。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309163704794.png" alt="image-20260309163704794" style="zoom:39%;" />
+  <img src="/photos/image-20260309163704794.png" alt="image-20260309163704794" style="zoom:39%;" />
 
 - 从 watchOS 11 和 iOS 18 开始，实时活动也会出现在 Apple Watch 的**智能叠放**（Smart Stack）中。
 
@@ -1705,9 +1705,9 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在 SwiftUI 里，发送通知本身主要不是靠某个 SwiftUI 视图 API，而是靠 **UserNotifications** 框架。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309233652160.png" alt="image-20260309233652160" style="zoom:50%;" />
+  <img src="/photos/image-20260309233652160.png" alt="image-20260309233652160" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309233704538.png" alt="image-20260309233704538" style="zoom:50%;" />
+  <img src="/photos/image-20260309233704538.png" alt="image-20260309233704538" style="zoom:50%;" />
 
 ##### Best Practices 
 
@@ -1739,7 +1739,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - SwiftUI 里实现小组件，是基于 **WidgetKit**：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310004647533.png" alt="image-20260310004647533" style="zoom:50%;" />
+  <img src="/photos/image-20260310004647533.png" alt="image-20260310004647533" style="zoom:50%;" />
 
 ##### Best Practices
 
@@ -1787,7 +1787,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - Design placeholder content that helps people recognize your widget.
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310124654194.png" alt="image-20260310124654194" style="zoom:39%;" />
+  <img src="/photos/image-20260310124654194.png" alt="image-20260310124654194" style="zoom:39%;" />
 
 - Write a succinct widget description.
 
@@ -1816,17 +1816,17 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在滑块控制值中包含**单位或符号**，以提供上下文。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310151742309.png" alt="image-20260310151742309" style="zoom:39%;" />
+  <img src="/photos/image-20260310151742309.png" alt="image-20260310151742309" style="zoom:39%;" />
 
 - 尽量减少取景器中的干扰。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310151936254.png" alt="image-20260310151936254" style="zoom:39%;" />
+  <img src="/photos/image-20260310151936254.png" alt="image-20260310151936254" style="zoom:39%;" />
 
 - 考虑如何排列你的控件。将**常用控件**放在**中间位置**以便快速访问，并在两侧放置使用较少的控件。当用户轻按相机控制以再次打开叠加层时，系统会记住他们上一次使用的控件。
 
 - 允许人们使用相机控制从任何地方启动你的体验。创建一个**锁定相机捕捉扩展**，使人们能够配置相机控制，从锁定的设备、主屏幕或其他应用内启动你应用的相机体验。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310153329945.png" alt="image-20260310153329945" style="zoom:39%;" />
+  <img src="/photos/image-20260310153329945.png" alt="image-20260310153329945" style="zoom:39%;" />
 
 ### Gestures
 
@@ -1861,13 +1861,13 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 提供**尽可能高分辨率**的内容。你的 HTTP Live Streaming（HLS）播放列表需要包含所有可用分辨率的完整范围，以便人们能够以适合其所使用设备的分辨率体验你的内容（AVFoundation 会根据设备自动选择分辨率）。如果你没有包含一系列分辨率，当人们将内容串流到可以以更高分辨率播放的设备时，你的内容看起来就会是低质量的。例如，在 iPhone 上以 720p 看起来很棒的内容，当人们使用 AirPlay 将其流式传输到 4K 电视时，就会显得质量较低。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310232559324.png" alt="image-20260310232559324" style="zoom:39%;" />
+  <img src="/photos/image-20260310232559324.png" alt="image-20260310232559324" style="zoom:39%;" />
 
 - 支持 AirPlay 串流和**镜像**。支持这两种功能可以为用户提供最大的灵活性。
 
 - 支持**远程控制事件**（remote control events）。这样一来，人们就可以在锁定屏幕上选择播放、暂停和快进等操作，也可以通过与 Siri 或 HomePod 的交互来进行控制。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310235252423.png" alt="image-20260310235252423" style="zoom:39%;" />
+  <img src="/photos/image-20260310235252423.png" alt="image-20260310235252423" style="zoom:39%;" />
 
 - 当你的应用进入后台或设备锁定时，不要停止播放。
 
@@ -1879,7 +1879,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - CarPlay 让人们可以通过汽车内置显示屏获取路线、拨打电话、发送和接收消息、收听音乐等，同时始终专注于道路。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311144530150.png" alt="image-20260311144530150" style="zoom:39%;" />
+  <img src="/photos/image-20260311144530150.png" alt="image-20260311144530150" style="zoom:39%;" />
 
 - CarPlay 的设计目的是让驾驶员在**驾驶时使用**。在设计你的 CarPlay 应用时，请牢记这一使用场景，提供能够帮助人们**快速完成任务**且只需**最少交互**的功能。
 
@@ -1899,7 +1899,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在必要时自动调整音频电平，但不要改变整体音量。尽管你的应用可以调整相对、独立的音量级别以实现良好的音频混音，但人们需要控制最终的输出音量。（即你可以管混音，但不能抢占用户的音量控制权）
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311164806718.png" alt="image-20260311164806718" style="zoom:50%;" />
+  <img src="/photos/image-20260311164806718.png" alt="image-20260311164806718" style="zoom:50%;" />
 
 #### Layout
 
@@ -1909,7 +1909,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 在整个应用中保持整体外观的一致性。通常，应确保具有相似功能的元素看起来也相似。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311170719453.png" alt="image-20260311170719453" style="zoom:39%;" />
+  <img src="/photos/image-20260311170719453.png" alt="image-20260311170719453" style="zoom:39%;" />
 
 - 确保主要内容突出且具有可操作性。较大的项目通常比小的更显重要，也更容易被人点击。通常，应将最重要的内容和控件放在屏幕的上半部分。
 
@@ -1917,7 +1917,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 颜色可以指示交互性、赋予活力，并提供视觉连续性。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311195759704.png" alt="image-20260311195759704" style="zoom:50%;" />
+  <img src="/photos/image-20260311195759704.png" alt="image-20260311195759704" style="zoom:50%;" />
 
 - 一般来说，优先选择与应用程序标志相协调的**有限配色方案**。对颜色的细微运用是传达品牌形象的绝佳方式。
 
@@ -1942,7 +1942,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - HealthKit 是 iOS、iPadOS 和 watchOS 中健康与健身数据的中央存储库。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311204121693.png" alt="image-20260311204121693" style="zoom:39%;" />
+  <img src="/photos/image-20260311204121693.png" alt="image-20260311204121693" style="zoom:39%;" />
 
 - 当你在**应用中支持 HealthKit** 时，你可以请求用户授权以访问和更新他们的健康信息。
 
@@ -1970,23 +1970,23 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - iCloud 是一项服务，让人们可以从任何设备无缝访问他们关心的内容——照片、视频、文档等——而无需进行显式同步。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311212928019.png" alt="image-20260311212928019" style="zoom:39%;" />
+  <img src="/photos/image-20260311212928019.png" alt="image-20260311212928019" style="zoom:39%;" />
 
 #### Best Practices 
 
 - 让用户能够轻松在你的应用中使用 iCloud。人们会在“设置”中打开 iCloud，并期望应用能够自动与其配合使用。如果你认为用户可能希望选择是否在你的应用中使用 iCloud，可以在应用首次打开时显示一个简单的选项，让用户在为所有数据使用 iCloud 或完全不使用之间进行选择。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311214241767.png" alt="image-20260311214241767" style="zoom:50%;" />
+  <img src="/photos/image-20260311214241767.png" alt="image-20260311214241767" style="zoom:50%;" />
 
 - 避免询问要将哪些文档保存在 iCloud 中。大多数人希望他们的所有内容都能在 iCloud 中可用，并且不想管理单个文档的存储。请考虑你的应用如何处理和展示内容，并尽量自动执行更多文件管理任务。
 
 - 尽可能保持内容为最新。在支持 iCloud 的应用中，用户最好始终能够访问到最新的内容。然而，你需要在这种体验与设备存储和带宽限制之间取得平衡。如果你的应用处理的是非常大的文档，可能更适合让用户自行控制何时下载更新的内容。如果你的应用属于这种情况，应设计一种方式来提示 iCloud 中有文档的较新版本可用。当文档正在更新时，如果下载时间超过几秒，应提供细微的反馈。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311215405722.png" alt="image-20260311215405722" style="zoom:50%;" />
+  <img src="/photos/image-20260311215405722.png" alt="image-20260311215405722" style="zoom:50%;" />
 
 - 尊重 iCloud 存储空间。iCloud 是一种有限资源，人们为此付费。使用 iCloud 存储人们创建并能理解的信息，避免将其用于应用资源或可重新生成的内容。即使你的应用没有实现 iCloud 支持，也要记住 iCloud 备份会包含每个应用 Documents 文件夹中的内容。为了避免占用过多空间，请谨慎选择放入 Documents 文件夹中的内容。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311220025869.png" alt="image-20260311220025869" style="zoom:50%;" />
+  <img src="/photos/image-20260311220025869.png" alt="image-20260311220025869" style="zoom:50%;" />
 
 - 确保当 iCloud 不可用时，你的应用能够正常、适当地运行。
 
@@ -2010,7 +2010,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 提供多种内容选择、服务级别和时长。人们会欣赏这种灵活性，从而能够选择最符合其需求的订阅方案。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311230014867.png" alt="image-20260311230014867" style="zoom:50%;" />
+  <img src="/photos/image-20260311230014867.png" alt="image-20260311230014867" style="zoom:50%;" />
 
 - 在合适的时机提示人们订阅，例如当他们接近每月免费内容的使用上限时。
 
@@ -2039,7 +2039,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
   - **默认样式**呈现的是一个**颜色完全饱和**的地图版本，对于没有太多自定义元素的大多数标准地图应用来说，这是一个不错的选择。
   - **Muted 样式**呈现的是地图的**低饱和度**版本。如果你有大量信息丰富的内容需要在地图上突出显示，这种样式非常适合。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312001306285.png" alt="image-20260312001306285" style="zoom:39%;" />
+  <img src="/photos/image-20260312001306285.png" alt="image-20260312001306285" style="zoom:39%;" />
 
 - 帮助人们在你的地图中**找到地点**。考虑提供**搜索**功能，并结合**按类别筛选**位置的方式。例如，购物中心地图的搜索字段可以包含筛选器，使人们能够轻松找到常见的商店类型，如服装、家居用品、电子产品、珠宝和玩具。
 
@@ -2047,7 +2047,7 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 将彼此重叠的兴趣点进行**聚类**（cluster），以提升地图的可读性。一个聚类使用单个图钉来表示彼此距离很近的多个兴趣点。当人们在地图上放大时，聚类会逐步展开，从而逐渐显示各个单独的兴趣点。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312002919654.png" alt="image-20260312002919654" style="zoom:39%;" />
+  <img src="/photos/image-20260312002919654.png" alt="image-20260312002919654" style="zoom:39%;" />
 
 #### Custom Infomation
 
@@ -2067,19 +2067,19 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
   - **标注样式**（callout style）会在所选地点旁以弹出样式显示一个地点卡片……完整标注（full callout） & 紧凑标注（compact callout）：
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135424632.png" alt="image-20260312135424632" style="zoom:39%;" />
+    <img src="/photos/image-20260312135424632.png" alt="image-20260312135424632" style="zoom:39%;" />
 
   - **说明文字样式**（caption style）会显示一个“在苹果地图中打开”的链接。
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135852140.png" alt="image-20260312135852140" style="zoom:39%;" />
+    <img src="/photos/image-20260312135852140.png" alt="image-20260312135852140" style="zoom:39%;" />
 
   - **Sheet 样式**会在 Sheet 中显示一个地点卡片。
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135947886.png" alt="image-20260312135947886" style="zoom:39%;" />
+    <img src="/photos/image-20260312135947886.png" alt="image-20260312135947886" style="zoom:39%;" />
 
 - iOS中的完整标注样式（显示为sheet）：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312140208318.png" alt="image-20260312140208318" style="zoom:39%;" />
+  <img src="/photos/image-20260312140208318.png" alt="image-20260312140208318" style="zoom:39%;" />
 
 - 在选择样式时，请考虑地图的呈现方式。完整的 callout 样式地点卡片为用户提供最丰富的体验，能够在地图中直接向他们展示有关某个地点的最多信息。不过，请务必选择与地图上下文相匹配的地点卡片样式。例如，如果你的应用显示的是一个包含许多标注的小型地图，可以考虑使用紧凑型 callout 样式，以节省空间的方式展示地点信息，同时保持你在地图中指定的其他地点的上下文。
 
@@ -2091,8 +2091,6 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 - 近场通信允许彼此相距**几厘米以内**的设备以**无线**方式交换信息。
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312151708837.png" alt="image-20260312151708837" style="zoom:39%;" />
-
   <img src="/photos/image-20260312151708837.png" alt="image-20260312151708837" style="zoom:39%;" />
 
 - 在受支持设备上运行的 iOS 应用可以使用 NFC 扫描来读取附着在现实世界物体上的**电子标签**（electronic tag）中的数据。例如，人们可以扫描一个玩具以将其与电子游戏连接起来，购物者可以扫描店内标牌以获取优惠券，或者零售员工可以扫描商品以跟踪库存。
@@ -2100,8 +2098,6 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 #### In-App Tag Reading
 
 - 当应用处于活动状态时，可以支持单对象或多对象扫描，并在人们即将扫描某物时显示扫描界面。
-
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312153910893.png" alt="image-20260312153910893" style="zoom:39%;" />
 
   <img src="/photos/image-20260312153910893.png" alt="image-20260312153910893" style="zoom:39%;" />
 
