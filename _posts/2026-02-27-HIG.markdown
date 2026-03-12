@@ -1172,9 +1172,947 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
 #### Toolbars
 
-- 
+- 工具栏为常用命令、控件、导航和搜索提供了便捷的访问方式。（即工具栏是放置**高频功能**的**快捷区域**）
+
+- 工具栏由一个或多个命令/控件集合组成，水平排列在视图的顶部或底部边缘，并按逻辑分组为不同的部分。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306224806918.png" alt="image-20260306224806918" style="zoom:39%;" />
+
+- 工具栏在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260306225519828.png" alt="image-20260306225519828" style="zoom:50%;" />
+
+##### Best Practices
+
+- 有意识地选择项目以**避免过度拥挤**。用户需要能够区分并激活每个项目，因此不要在工具栏中放置过多项目。为适应可变的视图宽度，应定义当工具栏变窄时哪些项目会移动到**溢出菜单**中。
+- 减少使用工具栏背景和带色调的控件。
+- 避免在工具栏中使用分段控件。分段控件允许人们切换上下文，而工具栏中的操作是针对当前视图的。
+
+##### Navigation
+
+- 在 iOS 中，专用于导航的工具栏有时被称为**导航栏**。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110240048.png" alt="image-20260307110240048" style="zoom:50%;" />
+
+##### Actions
+
+- 提供支持人们执行主要任务的操作。
+
+- 确保每个控件的含义清晰。不要让用户去猜测或通过试验来弄清工具栏项目的作用。相比文本，更倾向于为项目使用简单、易识别的**符号**；但像**编辑**这类难以用符号很好表示的操作除外。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110815245.png" alt="image-20260307110815245" style="zoom:50%;" />
+
+- 优先使用系统提供的无边框符号。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307110909287.png" alt="image-20260307110909287" style="zoom:50%;" />
+
+- 对于诸如 Done 或 Submit 等关键操作，请使用 .prominent 样式。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307111004782.png" alt="image-20260307111004782" style="zoom:50%;" />
+
+##### Item Groupings
+
+- 按功能和使用频率将工具栏项目进行逻辑分组。
+
+- 将导航控制和诸如 Done、Close 或 Save 等关键操作分组放置在专门、熟悉且在视觉上明显区分的区域中。
+
+- 将组的数量最小化……通常，目标是最多**三个**。
+
+- 使带有文本标签的操作保持分开。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307112005820.png" alt="image-20260307112005820" style="zoom:50%;" />
+
+### Navigation and Search
+
+#### Search Fields
+
+- 搜索字段允许人们输入特定术语，在一组内容中进行搜索。
+
+- 搜索字段在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307113206005.png" alt="image-20260307113206005" style="zoom:50%;" />
+
+- 搜索字段可以使用**范围控制**（scope control, 一个放在搜索附近的**分段选择器**）以及**令牌**（token, 不是普通文本，而是被系统显示成一个个独立的小块，用户可以点它、删它、改它。等于给搜索再附加具体**过滤条件**）来帮助过滤并细化其搜索范围。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307120109977.png" alt="image-20260307120109977" style="zoom:39%;" />
+
+##### Best Practices
+
+- 显示占位文本，说明人们可以搜索的信息类型。
+- 如果可能，当有人输入时立即开始搜索。
+- 在搜索开始之前，或在用户输入时，考虑显示建议的搜索词。
+- 搜索结果要又准又清晰，先给最可能需要的，再通过分类帮助用户快速找到目标。
+
+##### Platform Considerations
+
+- 工具栏中的搜索字段：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307120641232.png" alt="image-20260307120641232" style="zoom:39%;" />
+
+  如果有空间，把搜索放在**底部**……当搜索是优先事项时，在任何情况下把搜索放在底部都很有用，因为这样可以让搜索体验更容易触达……当需要让步于屏幕底部的内容，或者没有底部工具栏时，把搜索放在顶部。
+
+#### Tab Bars
+
+- 标签栏可让用户在应用的顶级部分之间导航。
+
+- 标签栏在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307121507225.png" alt="image-20260307121507225" style="zoom:50%;" />
+
+- 标签栏帮助人们理解应用所提供的不同类型的信息或功能。它们还允许人们在不同视图部分之间快速切换，同时保留每个部分中的当前导航状态。
+
+##### Best Practices
+
+- 使用适当数量的标签页……请记住，通常在**较少**的标签页之间导航会更容易。
+
+- 即使其内容不可用，也不要禁用或隐藏标签栏按钮。在某些情况下有标签栏按钮而在其他情况下没有，会让你的应用界面看起来不稳定且不可预测。如果某个部分是空的，请解释为什么其内容不可用。
+
+- 包含标签页标题以帮助导航。标签页标题会出现在标签栏图标的下方或旁边，并且可以通过清楚地描述该标签页所包含的内容类型或功能来辅助导航。尽可能使用单个词语。
+
+- 考虑使用 **SF Symbols** 来提供**熟悉且可缩放**的标签栏图标。
+
+- 使用徽章来指示有关键性信息可用。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307122634853.png" alt="image-20260307122634853" style="zoom:50%;" />
+
+##### Platform Considerations
+
+- 对于带有附属组件的标签栏（例如“音乐”中的 MiniPlayer），当用户向下滚动时，你可以选择将标签栏最小化，并将该附属组件与其内联。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307123124215.png" alt="image-20260307123124215" style="zoom:50%;" />
+
+- 标签栏可以在末尾包含一个独立的搜索项。
+
+### Presentation（呈现方式）
+
+#### Action Sheets （操作表）
+
+- 操作表是一个**模态视图**，用于呈现与用户发起的某个操作相关的选项。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125407986.png" alt="image-20260307125407986" style="zoom:39%;" />
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125130148.png" alt="image-20260307125130148" style="zoom:50%;" />
+
+- 操作表在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307125740533.png" alt="image-20260307125740533" style="zoom:50%;" />
+
+##### Best Practices
+
+- 使用操作表——而不是**警告框**（alert）——来提供与某个**有意**操作相关的选择……虽然警告框也可以帮助人们确认或取消具有破坏性后果的操作，但它并不会提供与该操作相关的额外选择。更重要的是，警告框通常是**出乎意料**的，一般用于告知人们当前情况中的**问题或变化**，这些情况可能需要他们采取行动。
+- **谨慎**使用操作表。操作表为人们提供重要的信息和选项，但也会因此打断当前任务。为了鼓励人们关注操作表，应避免在非必要时使用它们。
+- 让具有破坏性的选择在视觉上更加突出。对执行破坏性操作的按钮使用破坏性样式，并将这些按钮放在操作表的顶部，因为在那里它们通常最容易被注意到。
+
+#### Alerts（警告框）
+
+- 警告会向人们提供**立即**需要的**关键**信息。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307150247755.png" alt="image-20260307150247755" style="zoom:39%;" />
+
+  例如，警告可以告诉人们存在的问题，在他们的操作可能会破坏数据时提醒他们，并让他们有机会确认一笔购买或他们发起的其他重要操作。
+
+- Alert在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307150859988.png" alt="image-20260307150859988" style="zoom:50%;" />
+
+##### Best Practices
+
+- 谨慎使用警告……通过确保每个警告只提供必要的信息和有用的操作，来鼓励人们关注你的警告。
+- 避免仅为了提供信息而使用警告。人们并不喜欢被这种仅提供信息但无法采取行动的警告打断。
+- 避免为常见且可撤销的操作显示警告，即使这些操作具有破坏性。
+
+##### Content
+
+- 在所有平台上，警告都会显示一个标题、可选的说明性文本，以及最多**三个**按钮。
+- 在所有警报文案中，保持**直接**，并使用**中性、亲切**的语气。警告通常描述问题和严重情况，因此要避免含糊其辞或带有指责意味，也不要掩盖问题的严重性。
+- 仅在能增加价值时才包含信息性文本（即描述）。
+
+##### Buttons
+
+- 创建简洁且有逻辑的**按钮标题**。目标是一到两个词的标题，描述选择按钮后的结果。优先使用与警告文本直接相关的**动词或动词短语**——例如，“查看全部”、“回复”或“忽略”。仅在**信息类警告**中，可以使用“**OK**”表示接受，避免使用“是”和“否”。始终使用“**取消**”为取消警告操作的按钮命名。与所有按钮标题一样，使用标题式大小写且不要以标点结尾。
+- 除非警告纯粹是信息提示，否则应避免将“OK”用作默认按钮标题……例如，“OK”到底表示“好的，我要完成此操作”，还是“好的，我现在理解我的操作可能导致的负面结果”？像**“抹掉”、“转换”、“清除”或“删除”**这样更具体的按钮标题能帮助人们理解他们正在执行的操作。
+- 把按钮放在人们期望的位置。通常，在一排按钮中，将人们最可能选择的按钮放在尾随一侧，或在一组纵向排列的按钮中放在顶部……取消按钮通常位于一排按钮的前导一侧，或一组按钮的底部。
+- 使用破坏性样式来标识一个按钮，该按钮会执行用户并非有意选择的破坏性操作。
+- 如果存在破坏性操作，请包含一个“取消”按钮，为用户提供一个清晰、安全的方式来避免执行该操作。
+
+#### Page Controls （页面控件）
+
+- 页面控件显示一行指示图像，其中每个图像代表平面列表中的一个页面。
+
+- 页面控件在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307154339278.png" alt="image-20260307154339278" style="zoom:50%;" />
+
+- 页面控件可以包含一种半透明的圆角矩形背景外观，用于为指示器提供视觉对比。你可以选择以下背景样式之一：
+
+  - Automatic — 仅在人们与控件交互时显示背景。当页面控件不是 UI 中的主要导航元素时使用此样式。  
+  - Prominent — 始终显示背景。仅当该控件是屏幕中的主要导航控件时使用此样式。  
+  - Minimal — 从不显示背景。当你只想显示当前页面在列表中的位置，并且不需要在滑动浏览时提供视觉反馈时使用此样式。
+
+#### Scroll Views（滚动视图）
+
+- 滚动视图允许人们通过垂直或水平移动内容来查看超出视图边界的内容。
+
+- 滚动视图在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307155814743.png" alt="image-20260307155814743" style="zoom:50%;" />
+
+##### Best Practices
+
+- 当内容可以滚动时要让这一点显而易见……例如，在视图边缘**显示部分内容**可以表明该方向还有更多内容。
+- 如果适合你的内容，可以考虑支持按页滚动。
+- 当滚动视图处于逐页模式时，考虑显示页面控件。
+
+#### Sheets（表单）
+
+- Sheet 可帮助人们执行一个与其当前上下文密切相关的、范围限定的任务。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307160701159.png" alt="image-20260307160701159" style="zoom:39%;" />
+
+- 默认情况下，sheet 是**模态**的，它会呈现一种有针对性的体验，在用户关闭该 sheet 之前，阻止他们与父视图进行交互。
+
+- sheet在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307164423677.png" alt="image-20260307164423677" style="zoom:50%;" />
+
+- 模态表单适用于向用户**请求特定信息**，或呈现一个**简单任务**，让他们在返回父视图之前完成。
+
+##### Best Practices
+
+- 使用表格来呈现简单的内容或任务。
+
+- 对于复杂或较长的用户流程，请考虑使用 Sheets 的替代方案。
+
+- 在主界面一次只显示一个表单。
+
+- 非模态表单API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307165832059.png" alt="image-20260307165832059" style="zoom:50%;" />
+
+### Selection and Input
+
+#### Color Wells
+
+- 颜色井允许用户调整文本、形状、参考线以及其他屏幕元素的颜色。
+
+- 当人们点击或轻点颜色井时，它会显示一个颜色选择器。这个颜色选择器可以是系统提供的，也可以是你自己设计的自定义界面。
+
+- 颜色井在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307171244155.png" alt="image-20260307171244155" style="zoom:50%;" />
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307171304076.png" alt="image-20260307171304076" style="zoom:39%;" />
+
+##### Best Practices
+
+- 使用系统提供的颜色选择器，以获得熟悉的体验。
+
+#### Segmented Control（分段控件）
+
+- 分段控件是线性排列的两个或多个分段组成的一组控件，其中每个分段都充当一个按钮。
+
+- 分段控件在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307172647273.png" alt="image-20260307172647273" style="zoom:50%;" />
+
+- 像按钮一样，分段可以包含文本或图像。
+
+##### Best Practices
+
+- 分段控件可以提供单个选择或多个选择。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307172950226.png" alt="image-20260307172950226" style="zoom:50%;" />
+
+- 使用分段控件来提供彼此紧密相关的选项，这些选项会影响对象、状态或视图。
+
+- 避免在控件中放入过多分段……在 iPhone 上大约不要超过**五个**分段。
+
+##### Content
+
+- 在单个分段控件中，优先只使用文本或只使用图像——不要两者混用。
+- 尽可能在每个分段中使用**大小相近的内容**。因为所有分段通常具有相同的宽度，如果内容填满了一些分段而没有填满其他分段，看起来会不好看。
+- 使用名词或名词短语作为分段标签。
+
+#### Sliders（滑块）
+
+- 滑块是一条带有**控制柄**（称为**拇指**）的水平轨道，人们可以在最小值和最大值之间进行调整。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307173949905.png" alt="image-20260307173949905" style="zoom:39%;" />
+
+- Slider在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307174330753.png" alt="image-20260307174330753" style="zoom:50%;" />
+
+##### Best Practices 
+
+- 如果滑块的外观能带来价值，则对其进行自定义。
+
+- 考虑为滑块配备相应的文本字段和步进器作为补充。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307174559976.png" alt="image-20260307174559976" style="zoom:50%;" />
+
+#### Steppers（步进器）
+
+- 步进器是一种由两个部分组成的控件，人们用它来增加或减少一个递增值。
+
+- Stepper在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307215944784.png" alt="image-20260307215944784" style="zoom:50%;" />
+
+#### Text Field
+
+- 文本字段是一个矩形区域，人们可以在其中输入或编辑小而特定的文本内容。
+
+- 文本字段在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307221451772.png" alt="image-20260307221451772" style="zoom:50%;" />
+
+##### Best Practices 
+
+- 在文本字段中显示**提示**，以帮助传达其用途…同时也可以包含一个单独的**标签**来描述该字段，以提醒人们它的用途。
+
+- 使用**安全文本字段**来隐藏私人数据。当你的应用请求敏感数据（例如密码）时，始终使用安全文本字段。
+
+- 在可能的情况下，使文本字段的大小与预期文本数量相匹配。文本字段的大小可以帮助人们从视觉上估计需要提供的信息量。
+
+- 在合理的情况下验证字段。
+
+- 使用**数字格式化器**来帮助处理数值数据。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307222415696.png" alt="image-20260307222415696" style="zoom:39%;" />
+
+- 根据字段的需要调整换行。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307222741553.png" alt="image-20260307222741553" style="zoom:50%;" />
+
+- 显示合适的键盘类型。
+
+##### Platform Consideration
+
+- 在文本字段的末尾显示一个“**清除**”按钮，以帮助人们删除他们的输入。
+- 使用**图像和按钮**在文本字段中提供清晰度和功能性。你可以在文本字段的两端显示自定义图像，或者添加系统提供的按钮，例如“书签”按钮。通常，在文本字段的前导端用于指示字段的用途，而在尾随端用于提供附加功能，例如添加书签。
+
+#### Toggles（切换开关）
+
+- 切换开关让人们可以在一对相对的状态之间进行选择，例如开启和关闭，并使用不同的外观来指示每种状态。
+
+- Toggle在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260307224338604.png" alt="image-20260307224338604" style="zoom:50%;" />
 
 
+
+##### Best Practices 
+
+- 使用切换开关来帮助人们在两个会影响内容或视图**状态的对立值**之间进行选择。切换开关始终让人们管理某个事物的状态，因此如果你需要支持其他类型的操作——例如从项目列表中进行选择——请使用不同的组件，比如弹出按钮。
+- 清楚地标识该切换开关所影响的**设置、视图或内容**。
+
+#### Virtual Keyboard 
+
+- 在没有物理键盘的设备上，系统会提供多种类型的虚拟键盘，供人们用来输入数据。
+
+- 控制虚拟键盘类型等行为的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308121106423.png" alt="image-20260308121106423" style="zoom:50%;" />
+
+  textContentType告诉系统内容语义后，系统可以更聪明地辅助输入，比如自动填充验证码。
+
+- 虚拟键盘不支持键盘快捷键。
+
+##### Best Practices
+
+- 如果有助于让文本输入体验更清晰，可以考虑自定义 **Return 键类型**。Return 键类型基于你选择的键盘类型，但如果在你的应用中更合理，你也可以更改它。（即回车键文字可以改为“搜索”、“发送”等更贴切的文字）
+
+- 使用**键盘布局指南**（keyboard layout guide），让键盘感觉像是界面的一个集成部分。使用布局指南还能帮助你在虚拟键盘显示在屏幕上时，保持界面中的重要部分可见。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308123415163.png" alt="image-20260308123415163" style="zoom:50%;" />
+
+### Status
+
+#### Activity Rings
+
+- 活动圆环显示个人在“移动（Move）”、“锻炼（Exercise）”和“站立（Stand）”目标方面的每日进度。
+
+- SwiftUI界面中显示活动圆环的代码：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308131806622.png" alt="image-20260308131806622" style="zoom:39%;" />
+
+##### Best Practices 
+
+- 无论在何处显示活动圆环，都要始终保持其**视觉外观一致**。遵循以下指南以提供一致的体验：
+
+  - 切勿更改圆环的**颜色**；例如，不要使用滤镜或修改不透明度。
+  - 始终在**黑色背景**上显示活动圆环。
+  - 优先将圆环和背景包裹在一个圆形内。为此，调整外层视图的**圆角半径**，而不是应用圆形遮罩。
+  - 始终按**比例缩放**这些环，使它们看起来不会显得脱节或不协调。
+  - 在必要时，设计周围界面以**与圆环相融合**；绝不要改变圆环来与周围界面相融合。
+
+- Ring colors:
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308132633270.png" alt="image-20260308132633270" style="zoom:50%;" />
+
+- 保持活动圆环的**边距**。活动圆环元素必须包含最小外边距，该外边距不得小于**圆环之间的距离**。绝不允许其他元素裁剪、遮挡或侵占该边距或圆环本身。（目的是确保活动圆环周围有足够的**呼吸空间**）
+
+#### Gauges（仪表）
+
+- 仪表在一系列数值范围内显示一个特定的数值。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308133646570.png" alt="image-20260308133646570" style="zoom:39%;" />
+
+  仪表还能通过**文字和颜色**来标注整个范围的含义。
+
+- 仪表在SwiftUI中对应的API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308140737577.png" alt="image-20260308140737577" style="zoom:50%;" />
+
+- 使用**容量样式**的仪表会显示一个填充，该填充在路径上数值所在的位置停止。
+
+#### Progress Indicators
+
+- 进度指示器可以让用户知道，当应用加载内容或执行耗时操作时，并没有卡住。
+
+- 因为**操作的持续时间**要么是已知的，要么是未知的，所以有两种类型的进度指示器：
+
+  - 确定性的，用于具有明确定义持续时间的任务，例如文件转换。
+  - 不确定的，用于不可量化的任务，例如加载或同步复杂数据。
+
+- 进度指示器在SwiftUI中对应的API是：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308161630038.png" alt="image-20260308161630038" style="zoom:39%;" />
+
+##### Best Practices 
+
+- 尽可能使用确定型进度指示器…… 确定型进度指示器可以帮助人们决定在等待任务完成时是否去做其他事情、在不同时间重新启动任务，或放弃该任务。
+- 在确定型进度指示器中报告进度时，应尽可能**准确**。可以考虑让进度推进的速度更加**均匀**，以帮助人们对任务完成所需时间建立信心。如果在五秒内显示已完成 90%，而最后 10% 却需要 5 分钟，这会让人怀疑你的应用是否仍在运行，甚至会让人感觉具有欺骗性。
+- 保持进度指示器持续**移动**，这样人们就知道某些事情仍在继续发生。人们往往会把静止的指示器与停滞的过程或卡住的应用程序联系起来。如果某个过程由于某种原因停滞，请**提供反馈**，帮助人们理解问题以及他们可以如何处理。
+
+##### Platform Considerations
+
+- **刷新控件**（refresh control）让人们可以立即重新加载内容（通常是在表格视图中），而无需等待下一次自动内容更新发生。刷新控件是一种特殊类型的活动指示器，默认是隐藏的，当人们向下拖动他们想要重新加载的视图时才会显示出来。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308162935847.png" alt="image-20260308162935847" style="zoom:39%;" />
+
+  API：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308162956205.png" alt="image-20260308162956205" style="zoom:50%;" />
+
+#### Rating Indicators
+
+- **评分指示器**使用一系列水平排列的图形符号——默认是星形——来表示一个排名等级。
+
+- iOS中评分指示器没有原生API，通常如下实现：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308164206177.png" alt="image-20260308164206177" style="zoom:50%;" />
+
+- 评分指示器尺寸可以人为指定，但不应随可用宽度弹性自适应。
+
+### System Experiences
+
+#### App Shortcuts（应用快捷方式）
+
+- **应用快捷方式**（App Shortcut）可让用户在整个系统中访问你应用的关键功能或内容。（App Shortcut = 系统能看见并触发的 app action 包装）
+
+- 人们可以使用诸如 **Siri、Spotlight、控制中心和快捷指令应用**等功能来启动 App Shortcuts；也可以使用硬件功能，例如 iPhone 或 Apple Watch 上的**操作按钮**（Action Button）。
+
+- 因为 App Shortcuts 是你应用的一部分，所以在安装完成后即可立即使用。
+
+- 一旦有人开始使用你的应用，其 App Shortcuts 就可以**反映他们的选择**，例如 FaceTime 用于呼叫**最近联系人**的那些快捷操作。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260308174812676.png" alt="image-20260308174812676" style="zoom:39%;" />
+
+- App Shortcuts 使用 **App Intents** 来定义应用内的操作，使这些操作可供系统使用。
+
+- 每个应用最多可以包含 **10** 个 App Shortcuts。
+
+##### Best Practices
+
+- 为你的应用最常见且最重要的任务提供 App Shortcuts。人们无需离开当前上下文即可完成的简单任务（比如打开音乐）效果最佳，但如果能帮助人们更轻松地完成多步骤任务，也可以打开你的应用。
+- 保持语音交互简单。
+
+##### Editorial guidelines （编辑指南）
+
+- 提供简短、易记的激活短语（**activation phrases**）及其自然变体。
+- 在提及 App Shortcuts 或 Shortcuts 应用时，始终使用标题大小写，并确保 Shortcuts 为复数形式。
+- 当指代单个快捷方式（而不是 App Shortcuts 或 Shortcuts 应用）时，使用小写。
+
+##### Platform Consideration
+
+- 当人们搜索你的应用时，App Shortcuts 可以出现在 Spotlight 的 Top Hit 区域，或下方的 Shortcuts 区域。每个 App Shortcut 都包含一个来自 SF Symbols 的符号（由你选择，用于表示其功能），或者包含一个该快捷方式直接链接到的项目的预览图像。
+
+#### Complications（复杂功能）
+
+- complication 不是手表表盘自己生成的业务内容，而是某个 app 提供给表盘显示的**快捷信息入口**。
+- 人们通常更喜欢提供多个且功能强大的复杂功能的应用，因为即使他们没有打开应用，也能快速查看他们关心的数据。
+- 建议优先使用 **WidgetKit** 为 watchOS 9 及更高版本开发表盘复杂功能。
+
+##### Best Practices
+
+- 识别人们希望一眼就能查看的**关键、动态内容**……静态表盘复杂功能较不可能保留在表盘的显眼位置。
+
+- 在可能的情况下支持所有复杂功能**系列**（小、中、大、圆形等），支持更多系列意味着可以在更多表盘上使用。
+
+- 考虑为每个系列创建**多个**复杂功能。支持多个复杂功能可以让你利用可共享的表盘，并让人们配置一个**以他们喜爱的应用为中心的表盘**……这个应用还可以提供一个**可共享的表盘**，预先配置好包含其游泳、自行车和跑步的复杂功能，并使用其自定义的图像和颜色。
+
+- 为你支持的每个复杂功能定义不同的**深度链接**。
+
+- 牢记隐私… 确保你帮助人们防止潜在的敏感信息被他人看到。
+
+- 仔细考虑何时更新数据… 你每天只能有限次数地更新时间线，而且系统为每个应用存储的时间线条目数量也是有限的，因此你需要选择能提升数据实用性的时间点。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309112441519.png" alt="image-20260309112441519" style="zoom:50%;" />
+
+#### Controls（控制项）
+
+- 在 iOS 和 iPadOS 中，控制项可让用户从**控制中心、锁定屏幕或操作按钮**快速访问你应用的某个功能。
+
+- Action Button 可绑定 = **系统预设动作 + Controls + Shortcuts**。
+
+- Control在SwiftUI中的实现是：用 **WidgetKit** 的 **ControlWidget 系列 API + App Intents**。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309161549709.png" alt="image-20260309161549709" style="zoom:50%;" />
+
+- 从 iOS 18 和 iPadOS 18 开始，控制项是一种**按钮或开关**，可为用户快速访问你的应用功能提供入口。
+
+- 控件包含一个符号图像、一个标题，以及（可选的）一个值。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309155620090.png" alt="image-20260309155620090" style="zoom:50%;" />
+
+##### Best Practices
+
+- 选择一个能够暗示控件行为的**描述性符号**……对于**切换开关**类控件，为**开启和关闭**两种状态都提供符号。
+- 选择一种与您的应用品牌相匹配的**着色颜色**（tint color）。
+- 对**影响安全的操作**要求进行**身份验证**。例如，要求人们解锁他们的设备，才能访问用于锁定或解锁自家门或启动汽车的控制功能。
+
+#### Live Activity（实时活动）
+
+- iPhone 的**音乐播放体验**在表现上很像实时活动，但开发实现上通常应理解为系统的 **Now Playing** 体验，不要直接等同于你自己用 **ActivityKit** 做的 Live Activity。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309163023399.png" alt="image-20260309163023399" style="zoom:50%;" />
+
+- 实时活动会显示来自你应用的最新信息，让人们能够一眼查看某个活动、事件或任务的进度。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309163704794.png" alt="image-20260309163704794" style="zoom:39%;" />
+
+- 从 watchOS 11 和 iOS 18 开始，实时活动也会出现在 Apple Watch 的**智能叠放**（Smart Stack）中。
+
+- 除了频繁更新显示的数据外，它们还提供了一种让人们与这些信息进行**交互**的方式。
+
+- _**Information updated, wait reading….**_
+
+#### Notifications
+
+- 通知为人们提供及时且高价值的信息，让他们一目了然。
+
+- 在 SwiftUI 里，发送通知本身主要不是靠某个 SwiftUI 视图 API，而是靠 **UserNotifications** 框架。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309233652160.png" alt="image-20260309233652160" style="zoom:50%;" />
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260309233704538.png" alt="image-20260309233704538" style="zoom:50%;" />
+
+##### Best Practices 
+
+- 在通知中避免包含敏感、个人或机密信息。
+
+##### Content
+
+- 当通知包含**标题**时，系统会将其显示在最显眼的顶部位置。在非通信类通知中，如果你没有提供标题，系统会显示你的应用名称。
+- 如果为通知内容提供上下文，请创建一个简短标题……使用标题式大小写且不要在结尾添加标点符号
+- 编写简洁、易读的通知内容。使用完整句子、句首字母大写和正确的标点，不要截断你的消息——系统会在必要时自动执行此操作。
+
+##### Badges
+
+- 仅使用徽章来向用户显示他们有多少未读通知。
+- 保持徽章为最新状态。
+
+#### Status Bars
+
+##### Best Practices
+
+- 在状态栏下方遮挡内容。默认情况下，状态栏的背景是透明的，允许其下方的内容透出……请务必保持状态栏的可读性，并且不要暗示其后方的内容是可交互的。实现这一点有几种常见的方法：
+  - 使用一个会自动显示状态栏背景的顶部工具栏。
+  - 在状态栏后面显示自定义图像，例如渐变或纯色。
+  - 在状态栏后面放置一个模糊视图。
+
+#### Widgets
+
+- 小组件会从你的应用中提取并显示**少量及时且相关**的信息，使人们能够在其他场景中一目了然地查看这些内容。
+
+- SwiftUI 里实现小组件，是基于 **WidgetKit**：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310004647533.png" alt="image-20260310004647533" style="zoom:50%;" />
+
+##### Best Practices
+
+- 寻找一个与**应用主要用途**明显相关的**简单想法**。设计过程的第一步是为你的小组件选择一个单一的想法。在整个过程中，使用这个想法来帮助你只在小组件中包含最相关的内容和功能。
+- 当这样做能增加价值时，提供多种尺寸的小组件……与其在所有尺寸上都提供小组件，不如更重要的是创建一个在**最适合**显示你想展示内容的**尺寸**上的小组件。
+- 目标是创建一个小组件，让人们能够快速访问他们想要的内容。人们会欣赏那些能够展示有意义内容，并提供有用操作以及**指向应用关键区域的深度链接**的小组件。
+- 优先选择在一天中不断变化的动态信息。
+- 寻找机会带来惊喜与愉悦。
+
+##### 更新小组件内容
+
+- 使用**动画过渡**来吸引人们注意**数据更新**……使用标准和自定义动画，持续时间最长可达两秒，让人们知道何时有新信息可用，或何时内容以不同方式显示。
+
+##### Adding Interactivity
+
+- 提供**简单且相关**的功能，并将复杂性保留在你的应用中。实用的小组件应提供一种轻松的方式来完成与其内容直接相关的任务或操作。
+- 确保小组件交互能在正确的位置打开你的应用。使用**深度链接**直接进入与小组件内容相关的详情和操作，不要让用户在应用中再导航到相关区域。
+- 在保持一目了然且不显杂乱的同时提供交互性。
+
+##### Choosing Margins and Padding
+
+- Widget 可以先按**较大**的参考尺寸设计，系统会把它**缩小适配**到更小设备或最终显示尺寸，所以你的布局要有**缩放余地**。
+- 通常，使用**标准边距**以确保可读性。为小组件使用标准边距宽度——大多数小组件为 **16 点**——以避免边缘过于拥挤并造成杂乱的外观。如果需要使用更紧凑的边距——例如为图形、按钮或背景形状创建内容分组——将边距设置为 **11 点**也可以取得良好的效果。
+
+##### Displaying Text in Widgets
+
+- 优先使用系统字体、文本样式和 SF Symbols。
+- In general, display text using fonts at **11 points** or larger. 
+- 避免将文本栅格化。始终使用文本元素和样式，以确保文本能够良好缩放，并允许 VoiceOver 朗读你的内容。
+
+##### Using Color
+
+- 使用颜色来提升小组件的外观，但不要与其内容相互竞争。美丽的颜色能够吸引目光，但最好不要妨碍人们在一瞥之间获取小组件的信息。
+- widget 里可以放**全彩图**，但要少用，只在它确实承载核心内容时使用，否则会破坏系统统一感。
+
+##### Rending Modes
+
+- Support light and dark appearances.
+- 做 widget 时，要把内容分成“重点内容（**accented group**）”和“普通内容（**primary group**）”两层，这样系统在 accented/tinted 模式下才能正确地建立视觉层级。
+- 提供足够的对比度来确保可读性。
+
+##### Previews and Placeholders
+
+- Design a **realistic** preview to display in the widget gallery…你可以在小组件预览中显示真实数据，但如果数据生成或加载时间过长，则改为显示逼真的模拟数据。
+
+- Design placeholder content that helps people recognize your widget.
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310124654194.png" alt="image-20260310124654194" style="zoom:39%;" />
+
+- Write a succinct widget description.
+
+- Consider coloring the Add button.
+
+## Inputs
+
+- 了解人们用来**控制你的应用**并**输入数据**的各种方法。
+
+### Action Button
+
+- 操作按钮让人们可以快速访问他们最喜欢的功能。
+
+#### Best Practices 
+
+- 对于你支持的每个操作，写一个简短的**标签**，能够简洁地描述它。当人们访问“设置”来配置操作按钮的行为时，会看到你的标签。创建标签时使用标题式大小写，以**动词**开头，使用现在时，并排除冠词和介词。保持标签尽可能简短，最多**三个**词。
+- 让用户在不离开其当前上下文的情况下使用你的操作。在可能的情况下，利用像**实时活动**和**自定义片段**等轻量级多任务能力，在不打开你的应用的情况下提供功能。
+
+### Camera Control （相机控制）
+
+- 相机控制提供对你应用相机体验的直接访问。
+
+#### Best Practices 
+
+- 使用 **SF Symbols** 来表示（拍照）控件功能。系统不支持自定义符号；请从 SF Symbols 中选择一个能够清晰表达控件行为的符号。
+
+- 在滑块控制值中包含**单位或符号**，以提供上下文。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310151742309.png" alt="image-20260310151742309" style="zoom:39%;" />
+
+- 尽量减少取景器中的干扰。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310151936254.png" alt="image-20260310151936254" style="zoom:39%;" />
+
+- 考虑如何排列你的控件。将**常用控件**放在**中间位置**以便快速访问，并在两侧放置使用较少的控件。当用户轻按相机控制以再次打开叠加层时，系统会记住他们上一次使用的控件。
+
+- 允许人们使用相机控制从任何地方启动你的体验。创建一个**锁定相机捕捉扩展**，使人们能够配置相机控制，从锁定的设备、主屏幕或其他应用内启动你应用的相机体验。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310153329945.png" alt="image-20260310153329945" style="zoom:39%;" />
+
+### Gestures
+
+- 手势是一个人用来直接影响应用中某个对象的物理动作。
+
+#### Best Practices
+
+- 为人们提供不止一种与您的应用互动的方式……不要假设人们可以使用某个特定手势来完成某项任务。
+- 一般来说，应以**符合人们期望**的方式来响应手势……避免使用像轻点或滑动这样熟悉的手势去执行仅属于你应用的独特操作；同样，也要避免创建一种独特的手势来执行标准操作。
+- 尽可能**快速地响应手势**。有效的手势可以增强直接操作的体验，并提供**即时反馈**。当用户在你的应用中执行手势时，提供反馈以帮助他们预测其结果，并在必要时传达完成该操作所需的移动范围和类型。
+
+### Gyroscope and Accelerometer （陀螺仪和加速计）
+
+- 设备上的陀螺仪和加速度计可以提供有关设备在物理世界中运动的数据。
+
+#### Best Practices
+
+- 仅在为人们提供切实益处时才使用运动数据。例如，一个健身应用可能会使用这些数据来提供有关人们活动情况和整体健康状况的反馈。
+- 如果你的体验需要访问设备的运动数据，你必须提供**文案**来解释原因。你的 App 第一次尝试访问此类数据时，系统会在权限请求中包含你的文案，用户可以在其中授予或拒绝访问。
+
+## Technologies
+
+- 探索你可以集成到应用中的 **Apple 技术、功能和服务**。
+
+### AirPlay
+
+- AirPlay 让人们可以将媒体内容从 iOS、iPadOS、macOS 和 tvOS 设备无线串流到 Apple TV、HomePod，以及支持 AirPlay 的电视和扬声器。
+
+#### Best Practices
+
+- Prefer the system-provided media player.
+
+- 提供**尽可能高分辨率**的内容。你的 HTTP Live Streaming（HLS）播放列表需要包含所有可用分辨率的完整范围，以便人们能够以适合其所使用设备的分辨率体验你的内容（AVFoundation 会根据设备自动选择分辨率）。如果你没有包含一系列分辨率，当人们将内容串流到可以以更高分辨率播放的设备时，你的内容看起来就会是低质量的。例如，在 iPhone 上以 720p 看起来很棒的内容，当人们使用 AirPlay 将其流式传输到 4K 电视时，就会显得质量较低。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310232559324.png" alt="image-20260310232559324" style="zoom:39%;" />
+
+- 支持 AirPlay 串流和**镜像**。支持这两种功能可以为用户提供最大的灵活性。
+
+- 支持**远程控制事件**（remote control events）。这样一来，人们就可以在锁定屏幕上选择播放、暂停和快进等操作，也可以通过与 Siri 或 HomePod 的交互来进行控制。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260310235252423.png" alt="image-20260310235252423" style="zoom:39%;" />
+
+- 当你的应用进入后台或设备锁定时，不要停止播放。
+
+- 除非你的应用开始播放沉浸式内容，否则不要中断其他应用的播放。例如，如果你的应用在启动时播放视频或自动播放内嵌视频，应仅在本地设备上播放这些内容，同时允许当前的播放继续进行。（即不要启动应用就打断Apple Music，也别顶掉正在AirPlay的内容：））
+
+- 让用户在播放期间使用你应用的其他部分。当 AirPlay 处于激活状态时，你的应用需要保持可用。如果用户离开播放界面，请确保应用内的其他视频不会开始播放并打断正在流式传输的内容。
+
+### CarPlay
+
+- CarPlay 让人们可以通过汽车内置显示屏获取路线、拨打电话、发送和接收消息、收听音乐等，同时始终专注于道路。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311144530150.png" alt="image-20260311144530150" style="zoom:39%;" />
+
+- CarPlay 的设计目的是让驾驶员在**驾驶时使用**。在设计你的 CarPlay 应用时，请牢记这一使用场景，提供能够帮助人们**快速完成任务**且只需**最少交互**的功能。
+
+- 要创建你的 CarPlay 应用界面，你需要使用与所开发应用类型相匹配的**系统定义模板**，例如音频、通信、导航等类型。对于每一种模板，你的应用负责**提供内容**，而 iOS 会在 CarPlay 中进行渲染。由于系统会显示 UI 组件并处理与车辆的接口，你无需针对不同的屏幕分辨率调整布局，也无需管理来自不同类型硬件（如触摸屏、旋钮或触控板）的输入。
+
+#### iPhone Interactions
+
+- 切勿因为已连接的 iPhone 需要输入而将用户锁定在 CarPlay 之外。你的应用在 iPhone 不可访问时也必须能够正常运行——例如，当人们在驾驶时把手机放在包里或后备箱中。
+
+#### Audio
+
+- 让用户选择何时开始播放。一般来说，应避免自动开始播放，除非你的应用正在恢复之前被中断的音频。另外，在你真正准备好播放音频之前也应避免启动音频会话，因为启动会话会使其他音频源静音，例如汽车内置收音机。
+
+- 在音频已充分加载后立即开始播放。
+
+- 当音频准备好播放时显示“正在播放”屏幕。不要等到描述性信息加载完成后才开始播放。如有必要，可在后台继续加载此类信息，并在可用时显示。
+
+- 在必要时自动调整音频电平，但不要改变整体音量。尽管你的应用可以调整相对、独立的音量级别以实现良好的音频混音，但人们需要控制最终的输出音量。（即你可以管混音，但不能抢占用户的音量控制权）
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311164806718.png" alt="image-20260311164806718" style="zoom:50%;" />
+
+#### Layout
+
+- CarPlay 支持多种显示分辨率，这些分辨率具有不同的像素密度和宽高比。系统会根据显示屏的分辨率**自动缩放应用图标和界面**（也就是自动调整总像素数量），因此它们在屏幕上始终以大致相同的尺寸显示。
+
+- 提供有用且高价值的信息，并采用简洁的布局，使其在驾驶座上也能轻松浏览。
+
+- 在整个应用中保持整体外观的一致性。通常，应确保具有相似功能的元素看起来也相似。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311170719453.png" alt="image-20260311170719453" style="zoom:39%;" />
+
+- 确保主要内容突出且具有可操作性。较大的项目通常比小的更显重要，也更容易被人点击。通常，应将最重要的内容和控件放在屏幕的上半部分。
+
+#### Color
+
+- 颜色可以指示交互性、赋予活力，并提供视觉连续性。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311195759704.png" alt="image-20260311195759704" style="zoom:50%;" />
+
+- 一般来说，优先选择与应用程序标志相协调的**有限配色方案**。对颜色的细微运用是传达品牌形象的绝佳方式。
+
+- 避免为可交互元素和不可交互元素使用相同的颜色。
+
+- 在**真实的汽车环境**中，在**各种光照条件**下测试你应用的配色方案……你在设计时在电脑上看到的颜色，在应用于现实世界时并不总是看起来一样。考虑颜色亮度如何影响夜间驾驶体验，以及低对比度的颜色在直射阳光下如何会变得模糊不清。
+
+- 确保你的应用在深色和浅色环境中都能呈现良好效果。CarPlay 支持浅色和深色外观，并且可能会根据光照条件自动调整当前外观。
+
+#### Icons and Images
+
+- 为你的应用中的所有 CarPlay 图稿提供 **@2x 和 @3x** 的高分辨率图像。
+- **镜像**你的 iPhone 应用图标。一个设计良好的应用图标在 CarPlay 和 iPhone 上都能很好地使用，无需第二个设计。
+- Don’t use black for your icon’s background.
+
+#### Error Handling
+
+- CarPlay 应用需要优雅地处理错误，并且只在绝对必要时才向用户报告这些错误。
+- 在 CarPlay 中报告错误，而不是在已连接的 iPhone 上报告。如果必须通知人们出现了问题，请在 CarPlay 中清楚地说明。绝不要引导人们拿起他们的 iPhone 来阅读或解决错误。
+
+### HealthKit
+
+- HealthKit 是 iOS、iPadOS 和 watchOS 中健康与健身数据的中央存储库。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311204121693.png" alt="image-20260311204121693" style="zoom:39%;" />
+
+- 当你在**应用中支持 HealthKit** 时，你可以请求用户授权以访问和更新他们的健康信息。
+
+#### 隐私保护
+
+- 你必须请求许可才能访问人们的数据，并且必须采取一切必要措施来保护这些数据。在获得许可后，必须通过清楚地向他们展示你如何使用其数据来维持人们的信任。
+- 提供一份连贯的隐私政策。在应用提交过程中，您必须提供一个指向清晰声明的**隐私政策的 URL**，以便用户在点击您应用的 App Store 页面中的链接时查看该政策。
+- 通过在**标准权限屏幕**中添加描述性消息来阐明你的应用意图。
+- 仅通过系统的隐私设置来管理健康数据共享。用户希望在“**设置 > 隐私**”中统一管理对其健康信息的访问权限。
+
+#### Activity Rings
+
+- 你可以通过显示“活动圆环”来增强应用的健康与健身功能。
+
+#### Apple健康图标
+
+- Apple 健康图标表示某个应用可与 HealthKit 和“健康”App 配合使用。
+
+#### 编辑指南
+
+- Refer to the Health app as **Apple Health** or the **Apple Health app**.
+- Don’t use the term HealthKit.
+
+### iCloud
+
+- iCloud 是一项服务，让人们可以从任何设备无缝访问他们关心的内容——照片、视频、文档等——而无需进行显式同步。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311212928019.png" alt="image-20260311212928019" style="zoom:39%;" />
+
+#### Best Practices 
+
+- 让用户能够轻松在你的应用中使用 iCloud。人们会在“设置”中打开 iCloud，并期望应用能够自动与其配合使用。如果你认为用户可能希望选择是否在你的应用中使用 iCloud，可以在应用首次打开时显示一个简单的选项，让用户在为所有数据使用 iCloud 或完全不使用之间进行选择。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311214241767.png" alt="image-20260311214241767" style="zoom:50%;" />
+
+- 避免询问要将哪些文档保存在 iCloud 中。大多数人希望他们的所有内容都能在 iCloud 中可用，并且不想管理单个文档的存储。请考虑你的应用如何处理和展示内容，并尽量自动执行更多文件管理任务。
+
+- 尽可能保持内容为最新。在支持 iCloud 的应用中，用户最好始终能够访问到最新的内容。然而，你需要在这种体验与设备存储和带宽限制之间取得平衡。如果你的应用处理的是非常大的文档，可能更适合让用户自行控制何时下载更新的内容。如果你的应用属于这种情况，应设计一种方式来提示 iCloud 中有文档的较新版本可用。当文档正在更新时，如果下载时间超过几秒，应提供细微的反馈。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311215405722.png" alt="image-20260311215405722" style="zoom:50%;" />
+
+- 尊重 iCloud 存储空间。iCloud 是一种有限资源，人们为此付费。使用 iCloud 存储人们创建并能理解的信息，避免将其用于应用资源或可重新生成的内容。即使你的应用没有实现 iCloud 支持，也要记住 iCloud 备份会包含每个应用 Documents 文件夹中的内容。为了避免占用过多空间，请谨慎选择放入 Documents 文件夹中的内容。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311220025869.png" alt="image-20260311220025869" style="zoom:50%;" />
+
+- 确保当 iCloud 不可用时，你的应用能够正常、适当地运行。
+
+- 将应用状态信息保存在 iCloud 中。除了存储文档和其他文件外，你还可以使用 iCloud 来存储**设置**以及有关**应用状态**的信息。
+
+- 就删除文档的后果发出警告。当有人在支持 iCloud 的应用中删除文档时，该文档也会从 iCloud 以及所有其他设备上移除。在执行删除之前显示警告并请求确认。
+
+- 使**冲突**解决**及时且简单**。在可能的情况下，尽量自动检测并解决版本冲突。如果无法做到，应显示一个不打扰的通知，使用户能够轻松区分并在冲突的版本之间进行选择。理想情况下，应尽可能早地进行冲突解决，这样就不会在错误的版本上浪费时间。
+
+- Include iCloud content in search results.
+
+### In-App Purchase
+
+- 用户可以使用**应用内购买**在你的应用中安全地支付虚拟商品——例如**高级内容、数字商品和订阅**。
+
+#### Best Practices 
+
+- 在购买之前让用户体验你的应用……如果你提供自动续订订阅，请考虑支持对你的内容提供有限的免费访问。
+
+#### 自动续订订阅
+
+- 提供多种内容选择、服务级别和时长。人们会欣赏这种灵活性，从而能够选择最符合其需求的订阅方案。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260311230014867.png" alt="image-20260311230014867" style="zoom:50%;" />
+
+- 在合适的时机提示人们订阅，例如当他们接近每月免费内容的使用上限时。
+
+- 如果你在多个应用中或通过你的网站提供相同的订阅选项，请提供**登录选项**，这样人们就不会认为他们必须为同一项服务支付多次费用。
+
+#### 让注册轻而易举
+
+- 简化**初始注册流程**，只询问必要的信息。冗长的注册流程可能会降低你的订阅转化率。将询问其他信息推迟到用户完成注册之后。
+
+#### 帮用户管理订阅
+
+- 考虑使用系统提供的订阅管理界面。使用 **StoreKit API** 可以让你呈现一致的体验，帮助用户在不离开你的应用的情况下管理或取消他们的订阅。
+- 考虑一些方法来鼓励订阅者继续保持订阅或在之后重新订阅。当你使用 StoreKit API 时，如果有人选择取消他们的订阅，你的应用会收到通知。在这种情况下，你可能希望提供一个**个性化优惠**作为取消订阅的替代方案，或者邀请用户在**退出调查**中描述他们取消订阅的原因。
+- 始终让客户能够轻松取消自动续订订阅。
+
+### Maps
+
+- A map displays outdoor or indoor geographical data in your app.
+- 苹果在中国大陆的地图服务用的是**高德地图**的数据。
+- 地图使用熟悉的界面，支持与系统提供的 **Maps 应用**大部分相同的功能，例如缩放、平移和旋转。地图还可以包含标注和覆盖层并显示路线信息，你可以将其配置为使用标准图形视图、基于卫星图像的视图，或两者混合的视图。
+
+#### Best Practices 
+
+- 选择一种适合你应用需求的地图**强调样式**（emphasis style）。有两种强调样式可供选择：
+
+  - **默认样式**呈现的是一个**颜色完全饱和**的地图版本，对于没有太多自定义元素的大多数标准地图应用来说，这是一个不错的选择。
+  - **Muted 样式**呈现的是地图的**低饱和度**版本。如果你有大量信息丰富的内容需要在地图上突出显示，这种样式非常适合。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312001306285.png" alt="image-20260312001306285" style="zoom:39%;" />
+
+- 帮助人们在你的地图中**找到地点**。考虑提供**搜索**功能，并结合**按类别筛选**位置的方式。例如，购物中心地图的搜索字段可以包含筛选器，使人们能够轻松找到常见的商店类型，如服装、家居用品、电子产品、珠宝和玩具。
+
+- 清晰地标识人们所选择的元素。当有人在地图上选择某个特定区域或其他元素时，使用明显的样式（如轮廓线和颜色变化）来突出显示该选择。
+
+- 将彼此重叠的兴趣点进行**聚类**（cluster），以提升地图的可读性。一个聚类使用单个图钉来表示彼此距离很近的多个兴趣点。当人们在地图上放大时，聚类会逐步展开，从而逐渐显示各个单独的兴趣点。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312002919654.png" alt="image-20260312002919654" style="zoom:39%;" />
+
+#### Custom Infomation
+
+- 使用与应用视觉风格相匹配的**标注**。标注用于在地图上标识自定义的**兴趣点**。默认的标注标记带有红色着色和白色图钉图标。你可以更改着色以匹配应用的配色方案。你也可以将图标更改为字符串或图像，例如logo。图标字符串可以包含任何字符，包括 Unicode 字符，但为了可读性，请将长度保持在两到三个字符。
+- 使用**叠加层**（overlays）来定义与您的内容具有特定关系的地图区域。
+  - 在道路之上（above roads）：即默认层级，会将叠加层放在道路之上，但在建筑物、树木和其他要素之下。这在你希望人们能够大致了解叠加层下方是什么，同时仍能清楚理解它是一个被明确界定的空间时非常适用。
+  - 在标签之上（above labels）：将叠加层放置在道路和标签之上方，隐藏其下方的所有内容。这对于希望内容完全独立于地图要素显示，或者在需要隐藏地图中不相关区域时非常有用。
+- 确保自定义控件与地图之间有足够的**对比度**。对比度不足会使控件难以看清，并可能与地图融为一体。可以考虑使用**细描边**或**轻微的投影**来帮助自定义控件更加突出，或者对地图区域应用**混合模式**，以增加其与上方控件之间的对比度。
+
+#### Place Cards
+
+- **地点卡片**会在你的应用中显示丰富的地点信息，例如营业时间、电话号码、地址等。这使你能够为指定的地点提供结构化且最新的信息，并为搜索结果增加深度。
+
+- The system defines several **place card styles**:
+
+  - **自动样式**（automatic style）会根据地图视图的大小让系统决定地点卡片的样式。
+
+  - **标注样式**（callout style）会在所选地点旁以弹出样式显示一个地点卡片……完整标注（full callout） & 紧凑标注（compact callout）：
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135424632.png" alt="image-20260312135424632" style="zoom:39%;" />
+
+  - **说明文字样式**（caption style）会显示一个“在苹果地图中打开”的链接。
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135852140.png" alt="image-20260312135852140" style="zoom:39%;" />
+
+  - **Sheet 样式**会在 Sheet 中显示一个地点卡片。
+
+    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312135947886.png" alt="image-20260312135947886" style="zoom:39%;" />
+
+- iOS中的完整标注样式（显示为sheet）：
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312140208318.png" alt="image-20260312140208318" style="zoom:39%;" />
+
+- 在选择样式时，请考虑地图的呈现方式。完整的 callout 样式地点卡片为用户提供最丰富的体验，能够在地图中直接向他们展示有关某个地点的最多信息。不过，请务必选择与地图上下文相匹配的地点卡片样式。例如，如果你的应用显示的是一个包含许多标注的小型地图，可以考虑使用紧凑型 callout 样式，以节省空间的方式展示地点信息，同时保持你在地图中指定的其他地点的上下文。
+
+- 避免重复信息。在选择地点卡片样式时，请考虑你的应用已经展示了哪些信息。例如，完整标注样式的地点卡片可能会显示你的应用中已经呈现的信息。在这种情况下，紧凑标注或文字说明样式可能是更好的补充。
+
+- 在显示地点卡片时，请在地图上保持该位置可见。这有助于人们在获取详细地点信息的同时，仍然清楚该位置在地图上的位置。你可以为地点卡片设置一个偏移距离，并将其指向所选位置。
+
+### NFC（近场通信）
+
+- 近场通信允许彼此相距**几厘米以内**的设备以**无线**方式交换信息。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312151708837.png" alt="image-20260312151708837" style="zoom:39%;" />
+
+- 在受支持设备上运行的 iOS 应用可以使用 NFC 扫描来读取附着在现实世界物体上的**电子标签**（electronic tag）中的数据。例如，人们可以扫描一个玩具以将其与电子游戏连接起来，购物者可以扫描店内标牌以获取优惠券，或者零售员工可以扫描商品以跟踪库存。
+
+#### In-App Tag Reading
+
+- 当应用处于活动状态时，可以支持单对象或多对象扫描，并在人们即将扫描某物时显示扫描界面。
+
+  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260312153910893.png" alt="image-20260312153910893" style="zoom:39%;" />
+
+- 不要鼓励人们与实体物体进行接触。要扫描标签，iOS 设备只需在标签的近距离范围内即可。设备实际上不需要触碰标签。当要求人们扫描物体时，请使用“扫描”和“靠近”之类的术语，而不是“轻点”和“触碰”。
+
+#### Background Tag Reading
+
+- 后台标签读取让人们可以随时快速扫描标签，而无需先打开你的应用并启动扫描。
+- 在支持后台标签读取的设备上，只要屏幕被点亮，系统就会自动查找附近兼容的标签。在检测到标签并与某个应用匹配后，系统会显示一条通知，用户可以点击该通知，将标签数据发送到应用进行处理。请注意，在以下情况下无法使用后台读取：当 NFC 扫描界面可见时、正在使用 Wallet 或 Apple Pay 时、相机正在使用时、设备处于飞行模式时，以及设备在重启后处于锁定状态时。
+- 同时支持后台和应用内标签读取。对于不支持后台标签读取的设备，您的应用仍必须提供一种在应用内扫描标签的方式。
+
+### Sign in with Apple
+
+- 使用 Apple 登录为用户提供了一种快速且私密的方式来登录应用和网站，让人们获得一致且值得信赖的体验，同时也无需记住多个账户和密码，更加方便。
+- 你可以在所有平台上的应用或网站的每个版本中提供“Apple 登录”——包括非 Apple 平台。
 
 
 
