@@ -114,7 +114,7 @@ author: Neoren
 
 - Enable services that Apple provides, such as In-App Purchase, Push Notifications, Apple Pay, iCloud and many others
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260122221051873.png" alt="image-20260122221051873" style="zoom:50%;" />
+  <img src="/photos/image-20260122221051873.png" alt="image-20260122221051873" style="zoom:50%;" />
 
 ### Build system
 
@@ -159,7 +159,7 @@ author: Neoren
 
 - 先**国际化**代码，使其“可翻译、可适配”；再**本地化**，真的把内容翻译成各语言/地区版本并接入项目
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123182449671.png" alt="image-20260123182449671" style="zoom:50%;" />
+  <img src="/photos/image-20260123182449671.png" alt="image-20260123182449671" style="zoom:50%;" />
 
 - 正确国际化后，系统会根据语言/地区设置自动提取本地化资源
 
@@ -167,17 +167,17 @@ author: Neoren
 
 - 把你代码里“普通文字”改成通过 _**String(localized:)/AttributedString(localized:)**_ 从本地化资源里取，这样系统会按用户当前语言自动显示对应翻译
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123183530935.png" alt="image-20260123183530935" style="zoom:50%;" />
+  <img src="/photos/image-20260123183530935.png" alt="image-20260123183530935" style="zoom:50%;" />
 
   
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123184146934.png" alt="image-20260123184146934" style="zoom:50%;" />
+  <img src="/photos/image-20260123184146934.png" alt="image-20260123184146934" style="zoom:50%;" />
 
 - SwiftUI 里那些接收 _**LocalizedStringKey**_ 的控件，直接写 "..." 会自动按本地化 key 处理
 
 - 要用 **Foundation** 自带的**格式化器**来生成“可随语言/地区自动变化”的日期和数字字符串
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123185910687.png" alt="image-20260123185910687" style="zoom:50%;" />
+  <img src="/photos/image-20260123185910687.png" alt="image-20260123185910687" style="zoom:50%;" />
 
 ## Tuning and debugging 
 
@@ -189,7 +189,7 @@ author: Neoren
 
 - 找bug流程：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123195622796.png" alt="image-20260123195622796" style="zoom:50%;" />
+  <img src="/photos/image-20260123195622796.png" alt="image-20260123195622796" style="zoom:50%;" />
 
 - 当 App 崩溃、抛异常、或出现运行时问题时，你想直接看 crash 的 **stack trace（调用栈）**去定位问题，往往会很难，因为：
 
@@ -212,7 +212,7 @@ author: Neoren
 
 - Cycle of continuous improvements:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123195515927.png" alt="image-20260123195515927" style="zoom:50%;" />
+  <img src="/photos/image-20260123195515927.png" alt="image-20260123195515927" style="zoom:50%;" />
 
 - **iOS watchdog timer**（看门狗定时器）: iOS系统中一个监控应用响应性的机制。它主要在应用启动、挂起、恢复等关键时刻监视主线程的执行情况，如果应用在规定时间内未能及时响应或发生阻塞，系统会认为应用失去响应能力，从而强制终止该应用。这样做可以防止长时间无响应导致系统卡顿或崩溃，保证用户体验和系统稳定性。
 
@@ -239,17 +239,17 @@ author: Neoren
 
 - **Test Pyramid**:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260123232327121.png" alt="image-20260123232327121" style="zoom: 50%;" />
+  <img src="/photos/image-20260123232327121.png" alt="image-20260123232327121" style="zoom: 50%;" />
 
 - _**Performance test**_: 为了防止性能退化，开发者通常会在持续集成过程中引入性能测试和基准测试来**监控关键代码区域**，及时发现并修复潜在的性能问题
 
 - _**Swift Testing**_：用于单元测试和集成测试
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260124001312755.png" alt="image-20260124001312755" style="zoom:50%;" />
+  <img src="/photos/image-20260124001312755.png" alt="image-20260124001312755" style="zoom:50%;" />
 
 - _**XCTest**_：用于单元测试、集成测试、UI测试、及性能测试
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260124001436273.png" alt="image-20260124001436273" style="zoom:50%;" />
+  <img src="/photos/image-20260124001436273.png" alt="image-20260124001436273" style="zoom:50%;" />
 
 - **AAA (Arrange–Act–Assert)**结构：把一个测试函数按**“准备→执行→验证”**分成三段，便于读、写、维护。
 
@@ -265,7 +265,7 @@ author: Neoren
 
 - **Performance test**: XCTest runs your code multiple times, measuring the requested metrics. You can set a baseline expectation for the metric, and if the measured value is significantly worse than the baseline, XCTest reports a test failure
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260124125330923.png" alt="image-20260124125330923" style="zoom:50%;" />
+  <img src="/photos/image-20260124125330923.png" alt="image-20260124125330923" style="zoom:50%;" />
 
 - **Test Plan**：更细粒度地管理“测试跑哪些、怎么跑、用什么配置”。在_**Product -> Test Plan**_中
 
@@ -315,7 +315,7 @@ author: Neoren
 
 - CI/CD开发循环图：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260124154451238.png" alt="image-20260124154451238" style="zoom:50%;" />
+  <img src="/photos/image-20260124154451238.png" alt="image-20260124154451238" style="zoom:50%;" />
 
 - 
 

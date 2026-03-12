@@ -38,11 +38,11 @@ author: Neoren
 
   - Construction:
 
-    ![image-20260114101428895](/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260114101428895.png)
+    ![image-20260114101428895](/photos/image-20260114101428895.png)
 
     Compiler will generate:
 
-    ![image-20260114101453631](/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260114101453631.png)
+    ![image-20260114101453631](/photos/image-20260114101453631.png)
 
   - Property wrapper can be applied to the “stored property of the type”, “local variable”, “functional parameter”; but can’t be applied to the “computed property” or “property with customized get/set”, and not in protocol definition
 
@@ -94,7 +94,7 @@ author: Neoren
 
 - CaseIterable, allCases
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260117140522808.png" alt="image-20260117140522808"  />
+  <img src="/photos/image-20260117140522808.png" alt="image-20260117140522808"  />
 
 - Capabilities of properties (computed property & static stored property), methods, initialization, extension, and protocols
 
@@ -190,7 +190,7 @@ author: Neoren
 
 - let magicNumber = #fourCharacterCode("ABCD") –> AST
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260120210420436.png" alt="image-20260120210420436" style="zoom:50%;" />
+  <img src="/photos/image-20260120210420436.png" alt="image-20260120210420436" style="zoom:50%;" />
 
 - Swift helps macro authors avoid accidentally reading other input by restricting the code that implements macros:
 
@@ -218,15 +218,15 @@ author: Neoren
     - Import the **CompilerPluginSupport** module
     - Include **macOS 10.15** as a minimum deployment target in the **platforms** list
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260120230300233.png" alt="image-20260120230300233" style="zoom:50%;" />
+    <img src="/photos/image-20260120230300233.png" alt="image-20260120230300233" style="zoom:50%;" />
 
   - Add a **target** for the macro implementation and a **target** for the macro library to your existing **Package.swift** file
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260120231502230.png" alt="image-20260120231502230" style="zoom:50%;" />
+    <img src="/photos/image-20260120231502230.png" alt="image-20260120231502230" style="zoom:50%;" />
 
   - Add a **dependency** on **SwiftSyntax** in your Package.swift file
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260120232011147.png" alt="image-20260120232011147" style="zoom:50%;" />
+    <img src="/photos/image-20260120232011147.png" alt="image-20260120232011147" style="zoom:50%;" />
 
   - **Wait…**
 
@@ -319,7 +319,7 @@ author: Neoren
 
   _**filter**_ :
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128150254690.png" alt="image-20260128150254690" style="zoom:50%;" />
+  <img src="/photos/image-20260128150254690.png" alt="image-20260128150254690" style="zoom:50%;" />
 
 - 强调：数据结构尽量不被修改，而是生成新的数据
 

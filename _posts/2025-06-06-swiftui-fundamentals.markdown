@@ -22,7 +22,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - 状态是**被观察**的，即SwiftUI能“订阅/追踪”的东西：@State (视图内部状态，适合简单值类型状态) / @Binding (父子视图间共享状态，实现单一数据源的双向绑定) / @StateObject (引用类型状态，视图内部创建并需要在视图周期内保持的对象) / @ObservedObject（配合 ObservableObject + @Published）(引用类型状态，由外部注入的可观察对象)/ @Environment & @EnvironmentObject (在更上层环境共享数据)/ @FocusState / @AppStorage / @SceneStorage，以及 Swift 5.9+ 的 @Observable（Observation）体系等（**学习的重中之重**）
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128125626566.png" alt="image-20260128125626566" style="zoom:50%;" />
+  <img src="/photos/image-20260128125626566.png" alt="image-20260128125626566" style="zoom:50%;" />
 
 - 普通数据（不在状态系统里）一般不会自动驱动更新
 
@@ -78,7 +78,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - Business logic & data:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128133636055.png" alt="image-20260128133636055" style="zoom:50%;" />
+  <img src="/photos/image-20260128133636055.png" alt="image-20260128133636055" style="zoom:50%;" />
 
 ## SwiftUI essentials
 
@@ -117,7 +117,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - _**@State**_: works only for value types, such as structures and enumerations
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260127232826238.png" alt="image-20260127232826238" style="zoom:50%;" />
+  <img src="/photos/image-20260127232826238.png" alt="image-20260127232826238" style="zoom:50%;" />
 
   @State只初始化一次，不管是在View的生命周期还是在App的生命周期内
 
@@ -141,9 +141,9 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
     }
     ```
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260126122020258.png" alt="image-20260126122020258" style="zoom:50%;" />
+    <img src="/photos/image-20260126122020258.png" alt="image-20260126122020258" style="zoom:50%;" />
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260126120109019.png" alt="image-20260126120109019" style="zoom:50%;" />
+    <img src="/photos/image-20260126120109019.png" alt="image-20260126120109019" style="zoom:50%;" />
 
     State().wrappedValue 和 Binding().wrappedValue都指向同一个数据源！
 
@@ -215,17 +215,17 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
   - _**ModelContext**_: a connection between the view and the model container, so that you can fetch, insert, delete items in the container. _**context.save**_:
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128160009584.png" alt="image-20260128160009584" style="zoom:50%;" />
+    <img src="/photos/image-20260128160009584.png" alt="image-20260128160009584" style="zoom:50%;" />
 
   - _**Schema**_:
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155020464.png" alt="image-20260128155020464" style="zoom:50%;" />
+    <img src="/photos/image-20260128155020464.png" alt="image-20260128155020464" style="zoom:50%;" />
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155038796.png" alt="image-20260128155038796" style="zoom:50%;" />
+    <img src="/photos/image-20260128155038796.png" alt="image-20260128155038796" style="zoom:50%;" />
 
   - _**ModelConfiguration**_:
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128155503115.png" alt="image-20260128155503115" style="zoom:50%;" />
+    <img src="/photos/image-20260128155503115.png" alt="image-20260128155503115" style="zoom:50%;" />
 
   - **Predicates**: you use predicates to describe conditions for SwiftData to filter data (谓词 = 描述 _对每个模型对象_ 应该返回true还是false的那条规则)
 
@@ -241,7 +241,7 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - **KeyPath**：本质是一个类型安全的属性访问描述符
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128132835406.png" alt="image-20260128132835406" style="zoom:50%;" />
+  <img src="/photos/image-20260128132835406.png" alt="image-20260128132835406" style="zoom:50%;" />
 
 - @Environment(\\.modelContext) var modelContext中的**键路径**是作为给属性包装器**传参**，将其赋予wrappedValue
 
@@ -249,9 +249,9 @@ excerpt: "A comprehensive guide to SwiftUI fundamentals for iOS development"
 
 - 添加**搜索框**思路：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128210647312.png" alt="image-20260128210647312" style="zoom:50%;" />
+  <img src="/photos/image-20260128210647312.png" alt="image-20260128210647312" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260128212758956.png" alt="image-20260128212758956" style="zoom:50%;" />
+  <img src="/photos/image-20260128212758956.png" alt="image-20260128212758956" style="zoom:50%;" />
 
 ## SwiftUI elements
 
@@ -394,40 +394,40 @@ Section("Favorited by") {}
 
 - TabView:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260221215402044.png" alt="image-20260221215402044" style="zoom:50%;" />
+  <img src="/photos/image-20260221215402044.png" alt="image-20260221215402044" style="zoom:50%;" />
 
 - @ModelActor宏：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260221232358519.png" alt="image-20260221232358519" style="zoom:50%;" />
+  <img src="/photos/image-20260221232358519.png" alt="image-20260221232358519" style="zoom:50%;" />
 
 - Sendable引入：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260222001546051.png" alt="image-20260222001546051" style="zoom:50%;" />
+  <img src="/photos/image-20260222001546051.png" alt="image-20260222001546051" style="zoom:50%;" />
 
 - 环境字典扩展：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260222205533041.png" alt="image-20260222205533041" style="zoom:50%;" />
+  <img src="/photos/image-20260222205533041.png" alt="image-20260222205533041" style="zoom:50%;" />
 
 - URLSession:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260222220423418.png" alt="image-20260222220423418" style="zoom:50%;" />
+  <img src="/photos/image-20260222220423418.png" alt="image-20260222220423418" style="zoom:50%;" />
 
 - ToolbarContent协议：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260223225306761.png" alt="image-20260223225306761" style="zoom:50%;" />
+  <img src="/photos/image-20260223225306761.png" alt="image-20260223225306761" style="zoom:50%;" />
 
 - LazyVGrid:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260224232738196.png" alt="image-20260224232738196" style="zoom:50%;" />
+  <img src="/photos/image-20260224232738196.png" alt="image-20260224232738196" style="zoom:50%;" />
 
 - @Namespace:
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260225213545379.png" alt="image-20260225213545379" style="zoom:50%;" />
+  <img src="/photos/image-20260225213545379.png" alt="image-20260225213545379" style="zoom:50%;" />
 
 - ViewModifier协议：
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260226214413004.png" alt="image-20260226214413004" style="zoom:50%;" />
+  <img src="/photos/image-20260226214413004.png" alt="image-20260226214413004" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260226214429513.png" alt="image-20260226214429513" style="zoom:50%;" />
+  <img src="/photos/image-20260226214429513.png" alt="image-20260226214429513" style="zoom:50%;" />
 
 - 

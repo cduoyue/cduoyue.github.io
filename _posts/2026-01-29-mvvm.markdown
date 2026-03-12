@@ -41,11 +41,11 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
   - 把**用户意图**转换成**动作**（对应View中的事件调用，比如：）
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130002359714.png" alt="image-20260130002359714" style="zoom:50%;" />
+    <img src="/photos/image-20260130002359714.png" alt="image-20260130002359714" style="zoom:50%;" />
 
   - 协调业务流程：（意图转换成动作时）调用 UseCase/Service/Repository (**业务编排**)，进行必要的数据转换、格式化、排序、过滤、权限判断等 (**适配/派生**)
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129214614001.png" alt="image-20260129214614001" style="zoom:50%;" />
+    <img src="/photos/image-20260129214614001.png" alt="image-20260129214614001" style="zoom:50%;" />
 
   - **管理异步**：Task {}、async/await，以及**错误处理、取消**（可选）
 
@@ -58,7 +58,7 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
 ### Model层
 
-- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260219153431318.png" alt="image-20260219153431318" style="zoom:50%;" />
+- <img src="/photos/image-20260219153431318.png" alt="image-20260219153431318" style="zoom:50%;" />
 
 - **领域模型**(Domain Model / Entity)职责：
 
@@ -70,24 +70,24 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
   - **Repository**：屏蔽数据来源（网络/数据库/缓存），对上提供统一接口
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260219155049592.png" alt="image-20260219155049592" style="zoom:50%;" />
+    <img src="/photos/image-20260219155049592.png" alt="image-20260219155049592" style="zoom:50%;" />
   - **Service/API Client**：封装网络请求细节
   - **UseCase**（可选）：把“业务动作”封装成可复用单元
   - 是否需要 UseCase 取决于项目规模：中大型项目更值得拆出来，小项目可以 VM 直接调用 Repository。
 
 - 推荐链路：**ViewModel → UseCase → Repository → Domain Model → ViewModel(转UI State)**
 
-- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260218145451100.png" alt="image-20260218145451100" style="zoom:50%;" />
+- <img src="/photos/image-20260218145451100.png" alt="image-20260218145451100" style="zoom:50%;" />
 
-- <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260218145932961.png" alt="image-20260218145932961" style="zoom:50%;" />
+- <img src="/photos/image-20260218145932961.png" alt="image-20260218145932961" style="zoom:50%;" />
 
 ### 小结
 
-<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260129232957932.png" alt="image-20260129232957932" style="zoom:50%;" />
+<img src="/photos/image-20260129232957932.png" alt="image-20260129232957932" style="zoom:50%;" />
 
 ## 数据流向
 
-<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130001346508.png" alt="image-20260130001346508" style="zoom:50%;" />
+<img src="/photos/image-20260130001346508.png" alt="image-20260130001346508" style="zoom:50%;" />
 
 ## MVVM架构的优点
 
@@ -106,21 +106,21 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
 
   - 把代码按职责分层
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130220421343.png" alt="image-20260130220421343" style="zoom:50%;" />
+    <img src="/photos/image-20260130220421343.png" alt="image-20260130220421343" style="zoom:50%;" />
 
   - 让依赖方向保持干净可控
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130220531574.png" alt="image-20260130220531574" style="zoom:50%;" />
+    <img src="/photos/image-20260130220531574.png" alt="image-20260130220531574" style="zoom:50%;" />
 
   - 协议隔离细节
 
-    <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260130231649521.png" alt="image-20260130231649521" style="zoom:50%;" />
+    <img src="/photos/image-20260130231649521.png" alt="image-20260130231649521" style="zoom:50%;" />
 
 ### Cursor代码解读
 
-- 项目结构图：<img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260224212837381.png" alt="image-20260224212837381" style="zoom:50%;" />
+- 项目结构图：<img src="/photos/image-20260224212837381.png" alt="image-20260224212837381" style="zoom:50%;" />
 
-  <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260224212915405.png" alt="image-20260224212915405" style="zoom:50%;" />
+  <img src="/photos/image-20260224212915405.png" alt="image-20260224212915405" style="zoom:50%;" />
 
 - **RootView**用来包装**PokedexView**，它从环境中取出modelContext作为依赖让PokedexView持有**PokedexViewModel**(modelContext: modelContext)和**ItemListViewModel**(modelContext: modelContext)。这两个ViewModel之所以依赖modelContext，是因为它们持有@ModelActor actor **DataStorageReader**，它的初始化DataStorageReader(modelContainer: modelContext.container)需要modelContext.container (这里关键是_**属性宏@ModelActor**_，它会展开生成成员modelContainer、modelContext、和初始化器init(modelContainer:)等)
 
@@ -207,11 +207,11 @@ excerpt: "A comprehensive guide to MVVM for iOS development"
   - CodingKey协议的要求会由编码器自动生成，主要得到一个stringValue属性（比如.id.stringValue），会在解码时被间接调用
   - Keyed 是“字典/对象”，Unkeyed 是“数组/列表”
 
-  - <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260204111043429.png" alt="image-20260204111043429" style="zoom:50%;" />
+  - <img src="/photos/image-20260204111043429.png" alt="image-20260204111043429" style="zoom:50%;" />
 
   - 解码中嵌套类/结构体就是嵌套字典
 
-  - <img src="/Users/zhengjiancheng/Library/Application Support/typora-user-images/image-20260204132947030.png" alt="image-20260204132947030" style="zoom:30%;" />
+  - <img src="/photos/image-20260204132947030.png" alt="image-20260204132947030" style="zoom:30%;" />
   - 核心是把“怎么请求/怎么把响应变成 ViewModel”交给泛型 APIService 和 Config
 
   - PokemonService 是“业务入口”，APIService 是“通用引擎”
