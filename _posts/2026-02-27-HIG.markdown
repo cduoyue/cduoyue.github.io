@@ -2103,6 +2103,8 @@ excerpt: "A comprehensive guide to HIG for iOS development"
 
   ![test](/photos/image-20260312153910893.png)
 
+  <img src="/photos/image-20260312153910893.png" alt="image-20260312153910893" style="zoom:39%;" />
+
 - 不要鼓励人们与实体物体进行接触。要扫描标签，iOS 设备只需在标签的近距离范围内即可。设备实际上不需要触碰标签。当要求人们扫描物体时，请使用“扫描”和“靠近”之类的术语，而不是“轻点”和“触碰”。
 
 #### Background Tag Reading
