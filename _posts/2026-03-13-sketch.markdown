@@ -1,0 +1,486 @@
+---
+layout: post
+title:  "Sketch"
+date:   2026-03-13 00:00:00 +0000
+tags: [iOS Design]
+author: Neoren
+excerpt: "Some essentials about Sketch"
+---
+# GPT5Pro - DR
+
+## Sketch概览
+
+### 工具概况
+
+- **2010** 年由荷兰的 Bohemian Coding 公司（现更名为 **Sketch B.V.**）发布。
+- Sketch 是一款面向界面设计（**UI/UX**）的**矢量图形设计工具**，以其**轻量**和**强大**的功能成为**移动应用和网页设计**领域的主流软件之一。
+
+### 核心功能和特点
+
+- 符号（**Symbols**）：将一个或多个图层封装为可复用的“符号”组件，在多个画板和文档间重复使用，并可同步更新修改。符号支持覆盖（Override）属性，允许在不同实例中替换文本、图片或嵌套符号，从而在保持一致性的同时实现灵活变化。
+- **样式和设计变量**：Sketch 提供**图层样式、文本样式和颜色变量**等功能，将属性组合保存为样式，在多个元素间快速应用和全局同步。（样式 = 复用外观属性；符号 = 复用整个组件结构）
+- **布局与尺寸适配**：为应对多设备尺寸，Sketch 提供灵活的布局工具。智能布局（**Smart Layout / Stacks**）功能允许设置自动排布和填充，使组件根据内容动态调整大小和对齐。设计师可为图层设置固定 pin 与缩放**约束**，在画板尺寸变化时自动适应布局。此外，Sketch 支持常用的对齐和栅格布局工具，一键整齐排列元素或创建规则化网格。（在 Sketch 里实现“画板尺寸变化时布局自适应”，是靠：**用容器组织结构，用约束控制伸缩，用 Smart Layout 控制自动排布，再用多个画板验证不同屏幕尺寸**）
+- **矢量绘图与编辑**：作为矢量工具，Sketch 提供矩形、椭圆、多边形等矢量形状预设和布尔运算工具，可绘制并组合**复杂图标和插图**。设计师可使用钢笔工具**自由绘制路径、编辑锚点**，支持**像素对齐**避免模糊。完整的**图层样式**（填充、描边、阴影、模糊等）也适用于矢量和文本。这些矢量能力有助于**制作高分辨率且可缩放的界面元素**。
+- **插件生态**：丰富的第三方插件是 Sketch 一大优势。Sketch 拥有成千上万的插件供用户选择，几乎任何额外功能需求都可以通过插件实现。
+
+### 多分辨率切图导出与命名规范
+
+- 针对 iOS开发对多分辨率图像的需求，Sketch 提供了强大的**导出切图**功能。设计师可以将图层或画板标记为可导出对象(**Make Exportable**)，并指定**导出倍数**，如 @1x、@2x、@3x 等。Sketch 将自动按照**命名规范**添加文件后缀并导出对应尺寸的 PNG 等位图。例如，导出名为icon的切片，若选择了2x和3x倍率，Sketch 会生成文件 **icon@2x.png 和 icon@3x.png**。这种命名约定符合 Xcode 对图像资源的识别要求：开发者在 Asset Catalog 中导入时，Xcode 将根据@2x/@3x自动将不同分辨率的图片映射为同一素材的变体。设计实践中，大多数设计师采用 1x大小设计（以点为单位），然后由 Sketch 一键导出各倍率图像，从而保证不同设备上显示清晰且比例一致。
+- Sketch 的导出选项还支持多种优化设置，例如**裁剪透明像素(Trim)、添加背景颜色、导出为 PDF/SVG 矢量格式**等。对于 App 图标这种需要多个尺寸的资源，Sketch 提供切片（**slice**）工具一次性导出整套 icon。设计师可以创建一个包含所有所需尺寸的**切片预设**，将其应用于图标画板上，点击导出即可生成完整的 App Icon 套件，省去逐个尺寸调整的麻烦。通过合理命名切片（利用“/”分隔可让 Sketch 自动生成文件夹和文件名），还能将输出文件组织在目录中，直接匹配 Xcode 的资产目录结构。
+
+### 与Xcode的集成方式
+
+- Sketch 与 Xcode的衔接主要体现在**设计资源导出**和**设计规范交付**（把颜色、字体、尺寸、间距这些设计规则交给开发）两方面。
+- 在导出资源方面，Sketch 方便地将设计中的图形元素输出为开发可用的位图或矢量文件。通过导出面板，设计师能一次性导出所有需要的图片资产（icons、切图）到指定文件夹。为了符合 Xcode 对 Asset Catalog 的要求，Sketch 在命名上自动添加倍率后缀。开发者只需将导出文件夹拖入 Xcode，即可识别对应的倍图并组成图片集。
+- 在设计规格标注与测量方面，Sketch 提供了多种途径帮助开发者理解布局细节。通过 **Sketch Cloud** 的 **Handoff** 功能，开发人员可以在**浏览器**中点选界面元素，实时看到其大小、边距、字体字号颜色等属性，并可复制相应的CSS或颜色代码。
+- 除了官方手段和插件，一些团队也使用**第三方协作工具**如 **Zeplin** 来集成 Sketch 与 Xcode 的工作流。设计师从 Sketch 上传设计稿到 Zeplin 后，开发者即可从 Zeplin 界面直接获取切图、查看标注，并将资源一键导入 Xcode 的 .xcassets 目录。Zeplin 还能提供 Swift 代码片段，以加速开发。
+
+### Sketch 与 Figma的比较
+
+- Figma总体来说在**协作便利性**上明显领先。
+
+- Sketch作为**原生 Mac 应用**，性能高效，对系统资源利用优化好。即使是大型项目文件，操作依然流畅，且不受浏览器内存限制。支持**完全离线工作**：没有网络时也可打开编辑文件，本地保存可靠。依托**本地硬件优势**，Sketch 在处理繁重图形时更稳定。缺点是在非 macOS 设备上无法运行。
+
+  <img src="/photos/image-20260313223403100.png" alt="image-20260313223403100" style="zoom:50%;" />
+
+- Figma基于 **Web 技术**，便利的同时也受到浏览器环境限制。提供桌面客户端但本质仍需联网，**离线支持有限**，无网络时可能无法新建或同步文件。
+
+- Sketch长期的生态积累使 Sketch 在特殊需求上“无所不能”，设计师可以找到几乎任何所需插件。Figma虽然插件总数不及 Sketch，但常用的都有所覆盖。
+
+- 如果团队集中在 Mac 平台并深度依赖苹果设计规范，那么 Sketch 在**性能稳定性、本地资源和苹果官方支持**方面更有优势。它的本地**离线能力和庞大插件库**使资深设计师能精细打磨iOS界面设计，并方便地与开发对接。另一方面，Figma 凭借**卓越的实时协作和跨平台特性**，在多人合作、远程办公的情境下表现出色。对于强调**团队同步**、需要**Windows用户**参与设计的项目，Figma 提供了前所未有的便利。
+
+# Documentation
+
+## Getting Started
+
+- 操作快捷键：
+  - 保存**历史版本**：**Control + Command + S**。
+  - **复制**保存文档：**Shift + Command + S**。
+  - 打开Workspace Window：**Command + O**。
+
+## Interface and Settings
+
+### The Mac App Interface
+
+- 操作快捷键：
+
+  - **平移画布**：**Space + click + drag**，或**双指滑移**。
+
+  - **缩放**：
+
+    <img src="/photos/image-20260315134759539.png" alt="image-20260315134759539" style="zoom:50%;" />
+
+  - 显示/隐藏**Minimap**：**Control + M**。
+
+  - 放大超过100%时显示**图像像素方格**（颜色显示由连续转为像素化）：**Control + P**。
+
+  - 放大超过600%时显示**图像像素网格线**：**Control + X**。
+
+  - 显示**标尺**：**Control + R**。
+
+  - 显示**方形网格线及其设置**：**Control + G**，**Control + Command + G**。
+
+  - 显示**布局网格线及其设置**：**Control + L**，**Control + Command + L**。
+
+  - 创建Frame：**F + click + drag**，或**F + 右侧选规格**。复制Frame：**Command + D**。
+
+  - Symbol转化为Frame：**Shift + Command + Y**。
+
+  - **搜索命令**（菜单栏或插件里的几乎所有命令）：**S**。
+
+  - 创建Group：**Command + G**。解除Group：**Shift + Command + G**。
+
+  - 打开导出资源对话框：**Shift + Command + E**。
+
+  - Expand a frame, group, symbol：**Return**。Exit a frame, group, symbol：**ESC**。
+
+  - Edit symbol source：**Command + Return**。
+
+  - Select the next layer：**Tab**。Select the previous layer：**Shift + Tab**。
+
+  - Jump between pages：**Fn + 上下箭头**。
+
+  - 
+
+- 工具栏是**可变**的：无任何选中画图层时对应一组工具；选中图层后对应另一组编辑工具。
+
+- 当你设置好布局网格（layout grid）后，图层会吸附到该网格上，并忽略 Mac 应用的智能参考线（Smart Guides）。
+
+- 要**锁定图层**，按住**Option**，将鼠标悬停在图层名上，然后**点击**出现的**挂锁**图标。
+
+### Settings
+
+- 打开**Settings**：**Command + ,**。
+- 打开**Document Settings**：**Shift + Command + ,**。
+
+### Managing Plugins
+
+- Safe Mode进入mac app：**Shift + 打开app**。此时所有插件都暂时不加载。
+
+## Designing
+
+### Layer Basics
+
+- 操作快捷键：
+  - 背景图层上画选框：**X + click + drag**。
+  - 仅选择完全在选框内部的图层：**Option + click + drag**。
+  - 忽略组用选框选中图层：**Command + click + drag**。
+  - 打开重叠图层的选择菜单：**Shift + 双指点击重叠图层**。
+  - 测量图层间的尺寸：**选中图层1 + 按住Option + 指针移动到图层2**。
+  - 测量组内图层间的尺寸：**选中组图层 + 按住Option和Command + 指针移到待测图层上方**。
+  - 测量到文本的基线的距离或大写字母的高度：**测量距离时按住Option + Control**。
+  - 移动图层：**click + drag**或**三指拖移**；使移动在水平/垂直方向：**再按住Shift**。
+  - 移动选中图层：**选中图层 + 按住Option和Command + 任何位置三指拖移**。
+  - 移动中空图层：**选中图层 + click中空位置 + drag**。
+  - 将组内图层和外边框对齐：**选中组内图层 + 按住Option + 点击对齐按钮**。
+  - 将多个图层保持相对位置不变并将总边界和frame对齐：**选中多个图层 + 按住Option + 点击对齐按钮**。
+  - 创建图层的网格：**选中图层 + 点击菜单Arrange –> Make Grids**。
+  - 等宽高比改变图层大小：**选中图层 + 按住Shift + 缩放图层**。
+  - 从图层中心固定改变图层大小：**选中图层 + 按住Option + 缩放图层**。
+  - 等宽高比缩放图层：**选中图层 + 按K + 输入百分比**。
+  - 选转图层并改变旋转中心：**选中图层 + Control + Command + R**进入旋转状态，**拖动十字旋转中心**，**脚上旋转**。
+  - 复制图层：**按住Option + 移动图层**或**Command + D**。
+
+### Vector Editing
+
+- 操作快捷键：
+  - 画矢量图：**V**。
+  - 画镜像点：进入**矢量绘图**状态，**click + drag**。
+  - 按45度及其倍数增加锚点：进入**矢量绘图**状态，**按住Shift + click**。
+  - 矢量模式编辑已有形状：**双击形状**。
+  - 选择下一个锚点：**选中一个锚点后点击Tab（或Shift + Tab）**。
+  - 选中/去选锚点：**拖动选框覆盖锚点会选中，同时按住Shift会去选**。
+  - 全选锚点：**Command + A**。
+  - 只改变点控制柄长度：**按住Shift + 拖动控制点**。
+  - 查看所有控制柄：**进入矢量编辑状态 + 按住Option**。
+  - 在两点中央创建锚点：**按住Shift + 点击连线**。
+  - 使直线弯曲并给两端点各加一个控制柄：**按住Command + click直线并拖动**。
+  - 描边变轮廓：**选中形状**，**Option + Command + O**。
+  - 扩大或收缩形状的轮廓：**选中形状，点击Layer –> Path –> Offset**。
+- 矢量编辑模式中的四种点类型：
+  - **直线点**是默认的点类型，它会生成一条没有任何手柄控制点的直线路径。如果你想在直线点上创建圆角，输入圆角半径数值。
+  - **镜像点**会创建曲线路径（或贝塞尔曲线），并具有两个控制手柄点。你可以拖动一个控制点来调整曲线，另一个点会镜像跟随。要创建镜像点，请使用矢量工具点击并拖动，或在任何现有的**直线点上双击**。
+  - **断开的点**具有彼此完全独立的控制柄。要将曲线变为直线，**选择任一控制柄控制点并按 Backspace 键**将其删除。**按住 ⌘** 的同时拖动其中一个控制柄控制点，可以将任意点**断开**。
+  - **非对称点**的控制柄可以与矢量点的距离不同，但它们共享相同的角度。
+
+### Frames
+
+- 操作快捷键：
+  - 将选中图层放进一个frame中：**选中图层 + Command + F**。
+  - 插入frame（尺寸是最后选择的最顶层frame）：**F**。
+  - 自动调整frame大小以适应内容：**选中frame + 双击frame边缘或角落**。
+  - 自动pin图层：**选中图层 + Shift + A**。
+  - 自动pin frame中的内容：**选中frame + Option + Shift +A**。
+  - 调整frame大小同时保持内容位置不变（虽然有约束）：**按住Command + 缩放frame**或点击工具栏中**Edit**按钮。
+  - 切换嵌套frame的蓝色fill：**Shift + F**。
+  - 移动图层时不改变它的parent frame：**移动图层时 + 移一点后按住Space**。
+  - 设置一个特定frame为模版：**选中frame + 点击Arrange –> Container –> Set as Template**。
+  - 去掉选中图层后的所有高亮：**选中图层 + 按住Space**。
+- Frame上可以应用Layer Style。
+- 嵌套框架有助于你拆分并组织复杂的布局。
+
+### Graphics
+
+- Graphics are a container for **icons and illustrations**.
+- Graphics share many of the same behaviors as frames.
+- 操作快捷键：
+  - 插入graphic：**G**。
+- Pasting or dragging an **SVG** into the Canvas will insert it as a **Graphic**.
+- Graphic 的核心特点是：它是面向**图标和插画**的容器，**内部内容按比例缩放**，没有 Frame 那套 pinning 和 sizing 约束，更适合当**“整体图形资产容器”**使用。
+
+### Stack Layout
+
+- Stacks are frames with layout properties.
+- 操作快捷键：
+  - 创建堆栈：**选中frame或图层 + Command + L**。
+  - 将堆栈变成frame：**选中堆栈 + Option + Command + L**。
+  - 创建嵌套堆栈：**在一个堆栈中创建一个新堆栈 或 把一个堆栈拖进另一个堆栈**。
+  - 在堆栈中添加item：**把item拖进stack 或 复制item后粘贴，粘贴时可选中stack或粘贴位置的前一个item**。
+- 通过嵌套堆栈，你可以创建混合方向并适应不同尺寸的复杂设计。
+
+### Shapes
+
+- 操作快捷键：
+  - 画等比形状：**按住Shift + 画形状**。
+  - 45度增量画直线或箭头：**按住Shift + 画直线**。
+  - 从形状中心出发画形状：**按住Option + 画形状**。
+  - 移动正在画的形状：**按住Space + 移动形状**。
+  - 打开铅笔：**P**。
+  - 单独调整一个角半径：**按住Command + 移动角手柄**。
+  - 重新调整所有角半径：**按住Option + 移动角手柄**。
+  - 15度增量旋转形状：**按住Shift + 旋转形状**。
+  - 对位于其上面的所有图层应用Mask效果：**选中蒙版形状 + 右键点击 + 选中Use as Mask**。
+  - 去掉形状控制参数并转化成纯矢量路径：**点击Layer –> Combine –> Flatten**。
+  - 绕一个点旋转复制形状：**点击Layer –> Path –> Rotate Copies…**。
+- **平滑圆角**具有曲率连续性，即二阶导数相等。
+- 在**轮廓模式**下，**蒙版**只会显示一个或多个图层中位于其形状范围内的部分。
+- 由于蒙版会影响其上方的所有图层，我们建议将蒙版图层与您想要应用蒙版的图层进行分组（蒙版不会影响组外面的图层）。
+
+### Color Profiles
+
+- 如果你为文档**分配**（Assign）一个新的颜色配置文件，Sketch 会在不同颜色配置文件之间保持相同的 RGB 值……你可以随意来回切换而不会丢失颜色数据。
+- 如果您选择将文档**转换**（Convert）为新的颜色配置文件，其底层的 RGB 数值将会改变，但在画布和导出的图像上呈现的效果将尽可能保持相似。
+- 将文档从 Display P3 转换为 sRGB 时要格外小心，因为 Display P3 色彩配置文件呈现的颜色比 sRGB 更明亮。如果转换为 sRGB，一些颜色看起来会不那么明亮——而且从 sRGB 再转换回 Display P3 也无法恢复这种亮度。
+
+### Images
+
+- 操作快捷键：
+  - 最小化图像的尺寸：**点击Layer –> Image –> Minimize File Size**。
+  - 编辑图像：**双击图像**。
+  - 在图像中多选区域：**按住Shift + 选区域**；删除选中的区域：**按住Option + 选中已选区域**。
+
+### Text
+
+- 操作快捷键：
+  - 粘贴富文本：**Shift + Option + Command + V**。
+  - 将文本吸附到路径上：**文本在路径上层 + 点击Text –> Text on Path + 将文本移到路径上**。
+  - 建立文本列表：**创建多行文本，每行都用回车键 + 点击Text –> List Type –> Numbered/Bullet**。
+  - 文本转化为矢量图：**选中文本 + Option + Command + O**或**选中文本 + 点击Layer –> Convert to Outlines**。
+- 将文本转换为轮廓是一个破坏性的过程——你将无法再编辑文本本身。此外，请记住，将大量文本转换为轮廓可能会使 Sketch 变慢。
+
+### Data
+
+- 使用 **Data** 工具，你可以将不同的**图片和文本**添加到你的设计中，从而创建逼真的模型和原型。
+- Sketch 默认附带多种类型的数据源，包括：
+  - Text Data: names and cities.
+  - 图像数据：一组用于头像和图块的多样化个人资料图片。
+  - 关联数据：一组包含图片和简短个人简介的用户资料。
+- 操作快捷键：
+  - 更新Sketch默认数据库里的图像、文本等数据：**选中数据 + Shift + Control + D**。
+- Linked Data: find Plugin: )
+
+### Importing & Exporting
+
+- 操作快捷键：
+  - 导入Figma文件：**Shift + Command + O + 选中.fig文件打开**。
+  - 打开导出资源对话框：**Shift + Command + E**。
+  - 将图层以PNG格式导出到桌面：**在图层列表中选中图层 + 拖拽到桌面**。
+  - 将图层以PDF格式导出到桌面：**在图层列表中选中图层 + 按住Option + 拖拽到桌面**。
+  - 将frame以PDF格式导出：**点击File –> Export –> Export Frames to PDF + 选中frame导出**。
+  - 将图层或frame以图片形式粘贴到其它app中：**复制粘贴**（如果其它app支持vector，粘贴会保留矢量特征，如果不支持vector，会以**2x**格式输出位图）。
+  - 进行切片：**E**。
+- **位图**是你在 Mac 应用中导出的任何内容的扁平化版本，因此它们在其他应用中会作为**单一图层**打开。Sketch 可以导出为 **PNG、JPG、HEIC、TIFF 和 WebP **格式。
+- **PNG（Portable Network Graphics，无损压缩）**不会因为压缩过程本身而把图压糊（会保留全部像素信息）；**JPEG（有损压缩）**为了让文件更小，会主动丢掉一部分细节，所以保存后会变糊。
+- **矢量图像**格式保留**图层和路径**，因此易于编辑并可无限缩放。Sketch 支持 **SVG（Scalable Vector Graphics）、PDF 和 EPS** 矢量格式。
+
+## Symbols and Styles
+
+### Styling
+
+- 我们可以在检查器中为shape和text等图层，以及frame和graphic等容器添加和编辑样式属性。
+- 操作快捷键：
+  - 关闭/打开图层的所有fill：**Shift + F**。
+  - 给图层采集填充颜色：**选中图层 + Control + C + 采集屏幕某点颜色**。
+  - 为frame, graphic, group, symbol着色：**选中对象 + 在Inspector中点Effects –> Tint**。
+  - 显示/隐藏边界线：**Shift + B**。
+  - 将样式分组：**命名样式为“Group-name/Style-name”**。
+  - 复制样式：**Command + Option + C**；粘贴样式：**Command + Option + V**。
+  - 设置默认形状样式：**选中某形状 + 编辑样式 + 点击Layer –> Style –> Set as Default Style**。
+- **填充**（Fill）可让你为**形状和图层**添加**颜色、渐变或图像**。你可以应用多个填充来创建深度和纹理，调整它们的混合效果，并控制它们与其他图层样式的交互方式。
+- **渲染**（render）的本质是在做：**把图形描述转换成像素颜色分布**。
+- **效果**（Effects）可以提升你项目的整体外观与质感。它们为你的视觉内容增添**深度、氛围以及动态动感**。
+- 你可以将效果应用于任何**形状（包括矢量形状）、图像、文本、框架或图形**。你不能将它们应用于**符号实例或组**。
+- 应用**大量模糊效果（或大范围模糊）**可能会导致 Mac 应用变慢，因为渲染这些效果需要大量的内存和处理能力。
+
+### Text and Layer Styles
+
+- **创建文本样式**后，你可以选择是否将**颜色和对齐方式**包含在该样式中。对于**新的文本样式**，此选项**默认是关闭的**，但**现有样式会包含**这些属性。
+- **图层样式**的工作方式与**文本样式**完全相同。唯一的区别是，它们作用于**形状图层**，而文本样式作用于**文本图层**。
+- 你几乎可以将图层样式应用于任何对象——**形状、矢量、框架、图形或组**。
+- 默认情况下，你创建的任何**新图层样式**都会**包含角点**，但对于**现有的样式**，这一功能是被**禁用**的。
+
+### Color Variables
+
+- **Color token** 就是“**有语义名字的颜色变量**”，用来把设计里的颜色系统标准化，并同步给开发使用。
+
+### Symbols
+
+- 操作快捷键：
+  - 创建symbol：**选中frame, graphic, group, or multiple/single layers + Command + Y**。
+  - 解除symbol source并将全部symbol instances都变成一个frame：**选中Symbols页面的Layer List中的symbol source + Shift + Command + Y**或**在Components View中删除symbol source**。
+  - 解除symbol instance并将其变成一个frame：**选中symbol instance + Shift + Command + Y**。
+  - 解除symbol instance及其内部的所有嵌套symbols：**选中symbol instance + Option + Shift + Command + Y**。
+  - 编辑symbol source：**点击Symbols页面 + 在画布中编辑**。
+  - 编辑symbol instance：**Detach from Symbol解除symbol变成frame + 编辑**或**override某属性但仍保留和symbol source的链接**。
+  - 缩放symbol：**K + 输入比例**。
+  - 
+- 你可以通过在一个不同的符号源中插入一个符号实例来创建嵌套符号（在Symbols页面里编辑）。
+
+### Overrides
+
+- 覆盖让你可以轻松更改 **Symbol 实例**的内容或样式，而不会影响其他实例或 Symbol 源。
+
+### Templates
+
+- 操作快捷键：
+  - 将文档设置成模版：**Shift + Command + , + 在General中将文档设为模版**。
+
+## Libraries
+
+- 库是包含**组件**的 **Sketch 文档**，您可以与多个团队共享，并在所有文档中重复使用。
+
+### Creating and Adding Libraries
+
+- 操作快捷键：
+  - 创建库：**打开文档 + 点击File –> Add as Library**。
+- Libraries you create in My Drafts will only be available for you.
+
+### Library Symbols
+
+- 操作快捷键：
+  - 浏览库里的symbols：**S（打开Search for Commands） + 点击Symbols** 或 **按Y（再Command + F进行选择）**
+  - 编辑库里的symbol源：**选中symbol instance + Command + Return**
+
+## Prototyping
+
+- With prototyping in Sketch you can:
+  - 创建**链接或热点**，以在不同画面之间导航或触发覆盖层。
+  - 显示当你**点击、按下**或将鼠标**悬停**在另一个图层上时出现的**叠加层**。
+  - 在框架内创建**滚动区域**，以便按垂直、水平方向或多个方向滚动浏览内容。
+  - 设置自定义**图层可见性**选项，以更改图层在原型中出现的方式和时间。
+  - 将固定元素固定到滚动原型中（例如菜单栏、工具栏或页脚）。
+  - 使用**框架模板**来创建**滚动框**，并且在不同框架之间也能**保持滚动位置**。
+  - 设置多个起始点，以选择原型从哪里开始播放。
+  - 可以在 Mac 应用中、通过网页应用、或使用 iOS 应用**预览原型**。
+
+### Adding Links
+
+- You can add links from **any layer or frame** and connect them to **any frame**.
+- 操作快捷键：
+  - 添加一个链接：**选中图层/frame + I + 点击目标frame**。
+  - 删除一个链接：**选中链接源图层 + 把链接终点脱离目标并松开**。
+- You can link to any frame in your document — even ones on other pages.
+- 你可以直接将交互添加到 **Symbol Source** 中。这样，该 Symbol 的每个实例都会包含你所设置的交互。
+
+### Adding Hotspots
+
+- 操作快捷键：
+  - 添加一个hotspot：**别选中任何图层 + I –> 画框 –> 点击目标frame**。
+  - Link转化为hotspot：**选中link图层 –> 在Prototyping panel中点击Convert to Hotspot Layer**。
+- 可以为symbol source添加hotspot，添加后可以为每一个实例覆盖新的目标（可以设为none）。
+
+### Adding Animations
+
+- There are four types of animations to choose from:
+  - **Instant**：此过渡会立即跳转到目标帧，并且没有缓动或持续时间选项。
+  - **Slide**。
+  - **Dissolve**：在两个画面之间产生交叉淡化效果，当你需要一种简单且没有运动的过渡时，这是一个很好的选择。
+  - **Smart Animate**：自动为具有相同名称的图层在位置、大小、旋转或形状上的变化添加动画效果。
+- 设置smart animate：
+  - 确保你想要制作动画的**图层**位于一个**框架内**。
+  - 确保你想要制作动画的两个图层具有**相同的名称和类型**。Smart Animate 会识别这两个框架中这些图层**属性**的变化，并自动为其制作动画。
+  - 如果在**位置、形状或大小**发生变化的同时，还存在**颜色、混合模式或滤镜（例如阴影或模糊）**的变化，Sketch 会自动对前者应用**溶解**动画，并对位置、形状或大小的变化继续使用**智能**动画。（注意，形状的智能需要保证形状有**相同的矢量点数量**）
+  - 你无法将 Smart Animate 应用于**路径、边框、具有不同数量矢量点的形状、文本、渐变或叠加层**。
+
+### Customizing Layer Visibility
+
+- 自定义图层可见性会在你**悬停、点击或按压**时**显示或隐藏图层**——当你想在原型中添加按钮、菜单或类似的交互元素时，这尤其有用。
+- 设置方法：**选中图层 –> 打开Prototyping panel –> 在Visibility中点添加再设置**。
+
+### Using Overlays
+
+- You can **create an Overlay** in two ways:
+  - **选择一个frame –> 打开Prototyping panel –> Set as Overlay并进行设置**。
+  - **将link或hotspot的目标连接到一个框架外的“小”图层上，Sketch会自动为它添加框架并设为Overlay类型**。
+- _**图和说明未更新，等待文档更新……**_
+
+### Creating Scrolling Effects 
+
+- 创建可滚动框架：**选中框架 –> 打开Prototyping panel –> 在Scroll旁按添加再设置滚动方向和可视范围**。
+- 创建可滚动区域：**在框架中插入小框架并选中 –> 打开Prototyping panel –> 在Scroll旁按添加再设置滚动方向**。
+
+### Creating Fixed Elements
+
+- 创建固定元素：**选择一个图层或hotspot –> 打开Prototyping panel –> 打开Fix position when scrolling**。
+
+## Developer Handoff
+
+### Inspect
+
+- 操作快捷键：
+  - 在web app中打开检查器：**在web app中按I或点击检查器图标**。
+  - 在框架中打开网格或layout线：**选中框架 + Shift + G/L**。
+
+### Export
+
+- 你需要在文档中启用“**允许下载和检查**”选项，这样**查看者**才能导出资源。
+
+- 要从网页应用导出并下载资源，你首先需要在 Mac 应用中执行以下操作：
+
+  - 将文档中的图层、框架或组设置为可导出。
+  - 创建切片以导出。
+
+  要导出文档中的所有资源，请前往“文档详细信息”面板信息，并选择“导出资源”。
+
+- Design token：把设计系统中的颜色、字号、间距、圆角等可复用样式值，封装成有名字、可同步到代码的标准化变量。
+
+## MCP
+
+- Sketch 内置了一个 **MCP 服务器**，这是一个**轻量级的仅本地运行的 Web 服务器**，它允许像 ChatGPT 或 Claude 这样的 AI 客户端直接与 Sketch 进行交互。
+
+- 通过 MCP 服务器，这些客户端可以使用一组定义好的 MCP 命令（也称为工具）来访问或修改你的 Sketch 文档中的数据。
+
+- 当一个 AI 客户端连接到 Sketch MCP Server 时，它会自动了解有哪些工具可用以及如何使用它们。这些细节由服务器提供并注入到模型的上下文中，使其能够对 Sketch 特定的操作进行推理。
+
+- AI典型用例包括：
+
+  - **导出资源**以供开发交接。
+  - 审查或审核设计系统中的**不一致**之处。
+  - 使用现有组件从模板生成**新界面**。
+
+- 操作快捷键：
+
+  - 打开MCP Server：**打开Setting –> General –> 勾选MCP Server**。
+
+- AI客户端连接MCP：
+
+  - Claude Code (Terminal中)：**打开Terminal –> 运行 claude mcp add --transport http sketch http://localhost:31126/mcp –> 运行 claude mcp get sketch 进行验证是否已连接服务器 （若已连接，运行 claude mcp remove "sketch" -s local 来断开连接）**。
+  - Cursor和Codex的设置很方便。
+
+- Sketch的MCP工具：
+
+  - **get_selection_as_image**：捕获最前面的 Sketch 文档中用户当前选择的图像，并将其返回给 AI 客户端进行分析。
+  - **run_code**：执行由 AI 编写的 SketchAPI 代码，以完成你向其提出的任务。
+
+- run_code 工具特别强大。由于 AI 模型擅长编写代码，它们可以访问整个 SketchAPI——就像 Sketch 插件一样。这意味着 AI 可以通过脚本以多步骤、分支（根据情况写脚本）甚至错误处理的方式（脚本错误时可修改再试）自动化并控制 Sketch。
+
+- 如果 AI 遇到代码错误，它可以进行审查、调整脚本并再次尝试——自动迭代，直到代码达到预期结果。你可以观察这一过程的展开，或在任何时候介入，但 AI 通常也可以完全自行完成整个循环。
+
+- 一些Prompts：
+
+  <img src="/photos/image-20260323173610195.png" alt="image-20260323173610195" style="zoom:39%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
